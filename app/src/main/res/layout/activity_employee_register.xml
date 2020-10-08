@@ -25,7 +25,7 @@
         android:id="@+id/textview_quickCash4"
         android:layout_width="347dp"
         android:layout_height="76dp"
-        android:background="#2196F3"
+        android:background="#215CF3"
         android:gravity="center"
         android:text="Quick Cash"
         android:textColor="#FFFFFF"
