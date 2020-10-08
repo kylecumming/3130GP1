@@ -22,7 +22,20 @@ public class RegistrationActivityTests {
 
         onView(withId(R.id.button_register)).perform(click());
         onView(withText("Create a profile to get started")).check(matches(isDisplayed()));
+    }
 
+    @Test
+    public void employerButtonBringsToEmployerRegistrationPage(){
+        onView(withId(R.id.button_register)).perform(click());
+        onView(withId(R.id.button_employer)).perform(click());
+        onView(withText("Employer Sign up")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void employeeButtonBringsToEmployeeRegistrationPage(){
+        onView(withId(R.id.button_register)).perform(click());
+        onView(withId(R.id.button_employee)).perform(click());
+        onView(withText("Employee Sign up")).check(matches(isDisplayed()));
     }
 
 }
