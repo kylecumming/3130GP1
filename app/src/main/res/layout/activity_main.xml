@@ -8,13 +8,13 @@
 
     <TextView
         android:id="@+id/textview_quickCash"
-        android:layout_width="297dp"
-        android:layout_height="81dp"
+        android:layout_width="347dp"
+        android:layout_height="76dp"
         android:background="#2196F3"
         android:gravity="center"
         android:text="Quick Cash"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
