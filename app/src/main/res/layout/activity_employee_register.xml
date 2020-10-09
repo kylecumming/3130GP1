@@ -147,9 +147,10 @@
         android:text="Month"
         android:textColor="#000000"
         android:textSize="14sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/edittext_monthEmployee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintEnd_toStartOf="@+id/textview_dayEmployee"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
         app:layout_constraintVertical_bias="1.0" />
@@ -175,8 +176,8 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/edittext_yearEmployee"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintStart_toEndOf="@+id/textview_dayEmployee"
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -184,16 +185,15 @@
         android:id="@+id/edittext_monthEmployee"
         android:layout_width="70dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="220dp"
         android:ems="10"
         android:hint="MM"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/edittext_dayEmployee"
-        app:layout_constraintHorizontal_bias="0.594"
+        app:layout_constraintHorizontal_bias="0.632"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.16" />
 
     <EditText
         android:id="@+id/edittext_dayEmployee"
@@ -207,7 +207,7 @@
         app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.164" />
 
     <EditText
         android:id="@+id/edittext_yearEmployee"
@@ -221,13 +221,12 @@
         app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toEndOf="@+id/edittext_dayEmployee"
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.16" />
 
     <TextView
         android:id="@+id/textview_genderEmployee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:text="What's your gender?"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -236,7 +235,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.188"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textview_dayEmployee"
+        app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
         app:layout_constraintVertical_bias="1.0" />
 
     <RadioButton
@@ -249,7 +248,7 @@
         app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintVertical_bias="0.494" />
 
     <RadioButton
         android:id="@+id/radioButton_femaleEmployee"
@@ -261,7 +260,7 @@
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintVertical_bias="0.494" />
 
     <RadioButton
         android:id="@+id/radioButton_otherEmployee"
@@ -273,7 +272,7 @@
         app:layout_constraintHorizontal_bias="0.721"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployee"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintVertical_bias="0.494" />
 
     <Button
         android:id="@+id/button_signUpEmployee"
