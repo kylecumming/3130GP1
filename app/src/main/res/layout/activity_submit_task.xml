@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EmployerHomepageActivity">
+    tools:context=".SubmitTaskActivity">
 
     <TextView
-        android:id="@+id/textview_quickCash5"
+        android:id="@+id/textview_quickCash6"
         android:layout_width="347dp"
         android:layout_height="76dp"
         android:background="#215CF3"
@@ -23,24 +23,27 @@
         app:layout_constraintVertical_bias="0.047" />
 
     <Button
-        android:id="@+id/button_homepageSubmitTask"
+        android:id="@+id/button_submitTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#24C1E8"
         android:text="Submit Task"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5" />
-
-    <TextView
-        android:id="@+id/textview_placeholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Homepage Elements"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash6"
+        app:layout_constraintVertical_bias="0.906" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add edittexts for task details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash6"
+        app:layout_constraintVertical_bias="0.287" />
 </androidx.constraintlayout.widget.ConstraintLayout>
