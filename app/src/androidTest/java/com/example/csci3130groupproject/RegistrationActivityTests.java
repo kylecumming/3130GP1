@@ -43,6 +43,15 @@ public class RegistrationActivityTests {
         onView(withId(R.id.button_register)).perform(click());
         onView(withId(R.id.button_employer)).perform(click());
         onView(withId(R.id.button_signUpEmployer)).perform(click());
+        onView(withId(R.id.button_homepageSubmitTask)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void submitTaskButtonBringsToSubmitTaskActivity(){
+        onView(withId(R.id.button_register)).perform(click());
+        onView(withId(R.id.button_employer)).perform(click());
+        onView(withId(R.id.button_signUpEmployer)).perform(click());
+        onView(withId(R.id.button_homepageSubmitTask)).perform(click());
         onView(withId(R.id.button_submitTask)).check(matches(isDisplayed()));
     }
 
