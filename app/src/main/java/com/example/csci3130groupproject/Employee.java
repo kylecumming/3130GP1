@@ -17,10 +17,24 @@ public class Employee {
         this.gender = gender;
     }
     public Boolean usernameIsValid(){
-        return false;
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
+        Matcher matcher = pattern.matcher(username);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public Boolean emailIsValid(){
-        return false;
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]+");
+        Matcher matcher = pattern.matcher(email);
+        if(matcher.matches()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /* Getter / Setters */
