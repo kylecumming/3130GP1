@@ -13,7 +13,7 @@ public class EmployerHomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employer_homepage);
 
-        findViewById(R.id.button_homepageSubmitTask).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.button_createTask).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 launchSubmitTaskActivity();
