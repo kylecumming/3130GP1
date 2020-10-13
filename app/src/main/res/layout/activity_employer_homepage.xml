@@ -26,7 +26,7 @@
         android:id="@+id/button_homepageSubmitTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit Task"
+        android:text="Create a Task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

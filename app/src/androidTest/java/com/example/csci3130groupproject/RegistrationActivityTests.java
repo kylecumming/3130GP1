@@ -55,4 +55,6 @@ public class RegistrationActivityTests {
         onView(withId(R.id.button_submitTask)).check(matches(isDisplayed()));
     }
 
+    
+
 }
