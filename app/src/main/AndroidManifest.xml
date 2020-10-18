@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SubmitTaskActivity"></activity>
+        <activity android:name=".TaskSubmitted"></activity>
+        <activity android:name=".SubmitTaskActivity" />
         <activity android:name=".EmployerHomepageActivity" />
         <activity android:name=".EmployeeRegisterActivity" />
         <activity android:name=".EmployerRegisterActivity" />
