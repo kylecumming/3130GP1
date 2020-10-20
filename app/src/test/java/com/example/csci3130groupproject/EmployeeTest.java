@@ -23,9 +23,9 @@ public class EmployeeTest {
     }
     @Test
     public void validPasswordTest(){
-        Employee em1 = new Employee("test!@#@email.com", "testuser","04/11/2004", "M", "sample" );
+        Employee em1 = new Employee("test!@#@email.com", "testuser","04/11/2004", "M", "sample123" );
         Employee em2 = new Employee("test@email.com", "testuser","04/11/2004", "M", "sample" );
-        assertTrue(!em1.passwordIsValid());
+        assertTrue(em1.passwordIsValid());
         assertFalse(em2.passwordIsValid());
     }
 }

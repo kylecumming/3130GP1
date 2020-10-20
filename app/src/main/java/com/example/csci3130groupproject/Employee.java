@@ -19,7 +19,7 @@ public class Employee {
         this.password = password;
     }
     public Boolean passwordIsValid(){
-        return true;
+        return password.length() >=8;
     }
     public Boolean usernameIsValid(){
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
