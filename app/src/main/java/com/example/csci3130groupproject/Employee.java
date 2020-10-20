@@ -9,12 +9,17 @@ public class Employee {
     private String username;
     private String dob;
     private String gender;
+    private String password;
 
-    public Employee(String email, String username, String dob, String gender){
+    public Employee(String email, String username, String dob, String gender, String password){
         this.email = email;
         this.username = username;
         this.dob = dob;
         this.gender = gender;
+        this.password = password;
+    }
+    public Boolean passwordIsValid(){
+        return password.length() >=8;
     }
     public Boolean usernameIsValid(){
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
