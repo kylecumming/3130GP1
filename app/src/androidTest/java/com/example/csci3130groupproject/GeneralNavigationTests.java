@@ -63,6 +63,15 @@ public class GeneralNavigationTests {
         onView(withId(R.id.button_viewtasks)).check(matches(isDisplayed()));
     }
 
+    @Test
+    public void viewTasksButtonBringsToViewTasksPage(){
+        onView(withId(R.id.button_register)).perform(click());
+        onView(withId(R.id.button_employee)).perform(click());
+        onView(withId(R.id.button_signUpEmployee)).perform(click());
+        onView(withId(R.id.button_viewtasks)).perform(click());
+        onView(withText("Tasks")).check(matches(isDisplayed()));
+    }
+
     
 
 }
