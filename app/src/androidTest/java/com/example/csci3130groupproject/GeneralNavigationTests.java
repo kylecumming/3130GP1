@@ -42,6 +42,7 @@ public class GeneralNavigationTests {
     public void employerSignUpButtonBringsToEmployerHomepage(){
         onView(withId(R.id.button_register)).perform(click());
         onView(withId(R.id.button_employer)).perform(click());
+        //Add in type text to auto fill sign up form (or this won't pass once error detection exists)
         onView(withId(R.id.button_signUpEmployer)).perform(click());
         onView(withId(R.id.button_homepageSubmitTask)).check(matches(isDisplayed()));
     }
@@ -50,6 +51,7 @@ public class GeneralNavigationTests {
     public void submitTaskButtonBringsToSubmitTaskActivity(){
         onView(withId(R.id.button_register)).perform(click());
         onView(withId(R.id.button_employer)).perform(click());
+        //Add in type text to auto fill sign up form (or this won't pass once error detection exists)
         onView(withId(R.id.button_signUpEmployer)).perform(click());
         onView(withId(R.id.button_homepageSubmitTask)).perform(click());
         onView(withId(R.id.button_submitTask)).check(matches(isDisplayed()));
@@ -59,6 +61,7 @@ public class GeneralNavigationTests {
     public void employeeSignUpButtonBringsToEmployeeHomepage(){
         onView(withId(R.id.button_register)).perform(click());
         onView(withId(R.id.button_employee)).perform(click());
+        //Add in type text to auto fill sign up form (or this won't pass once error detection exists)
         onView(withId(R.id.button_signUpEmployee)).perform(click());
         onView(withId(R.id.button_viewtasks)).check(matches(isDisplayed()));
     }

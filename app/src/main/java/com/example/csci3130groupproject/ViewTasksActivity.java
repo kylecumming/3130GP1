@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +29,6 @@ public class ViewTasksActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot storedTask : snapshot.getChildren()){
                     Task task = storedTask.getValue(Task.class);
-                    Log.d("TAG",task.getTitle());
                 }
             }
 
