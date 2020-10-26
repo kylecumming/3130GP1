@@ -14,6 +14,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+
 public class ViewTasksActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -24,11 +28,15 @@ public class ViewTasksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_tasks);
 
+        final TextView firstText = (TextView) findViewById(R.id.textView2);
+
         allTasks.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot storedTask : snapshot.getChildren()){
                     Task task = storedTask.getValue(Task.class);
+                    firstText.setText("Task Title: " + task.getTitle() + "\nTask Description: " + task.getDescription()
+                            + "\nTask Payment: " + task.getPrice());
                 }
             }
 
