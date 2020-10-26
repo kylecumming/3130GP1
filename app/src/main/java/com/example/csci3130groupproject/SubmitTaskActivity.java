@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SubmitTaskActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference taskId = database.getReference("taskId");
+    DatabaseReference employerId = database.getReference("employerId");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +45,8 @@ public class SubmitTaskActivity extends AppCompatActivity {
         return price;
     }
     //this will add the strings from the textview to the database
-    protected void add_new_task_to_firebase(String title, String desc,String price, String id){
-        this.taskId.push().setValue(id);
-        DatabaseReference employerId = database.getReference().child("taskId").child(id);
+    protected void add_new_task_to_firebase(String title, String desc,String price, String taskId){
+        DatabaseReference employerId = database.getReference().child("employerId").child(taskId);
         employerId.push().setValue(title);
         employerId.push().setValue(desc);
         employerId.push().setValue(price);
@@ -57,8 +56,8 @@ public class SubmitTaskActivity extends AppCompatActivity {
         String title = get_task_title();
         String desc = get_task_desc();
         String price = get_task_price();
-        String id = "EmployerId";
-        this.add_new_task_to_firebase(title,desc,price, id);
+        String taskId = "taskId";
+        this.add_new_task_to_firebase(title,desc,price,taskId);
         startActivity(new Intent(getApplicationContext(), TaskSubmitted.class));
     }
 }
