@@ -55,9 +55,9 @@ public class SubmitTaskActivity extends AppCompatActivity {
         String title = get_task_title();
         String desc = get_task_desc();
         String price = get_task_price();
-        //Add a get_username() method that will grab the username of person submitting task
-        String username = "EmployerUsername";
-        this.add_new_task_to_firebase(title,desc,price, username);
+        //Add a get_author() method that will grab the username of person submitting task
+        String author = "EmployerUsername";
+        this.add_new_task_to_firebase(title,desc,price, author);
         startActivity(new Intent(getApplicationContext(), TaskSubmitted.class));
     }
 }
