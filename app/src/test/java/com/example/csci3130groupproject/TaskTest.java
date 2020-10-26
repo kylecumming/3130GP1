@@ -2,6 +2,8 @@ package com.example.csci3130groupproject;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class TaskTest {
 
     @Test
