@@ -35,7 +35,7 @@ public class SubmitTask_Test {
         onView(withId(R.id.edittext_taskPayment)).perform(typeText("100"), closeSoftKeyboard());
         onView(withId(R.id.button_submitTask)).perform(click());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference employerIdRef = database.getReference().child("taskId").child("EmployerId").child("-MKVKzTsgNykXPEWEEO8");
+        DatabaseReference employerIdRef = database.getReference().child("employerId").child("taskId").child("-MKVKzTsgNykXPEWEEO8");
         employerIdRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
