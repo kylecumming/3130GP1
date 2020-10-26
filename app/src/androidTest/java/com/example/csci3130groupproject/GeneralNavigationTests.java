@@ -70,7 +70,7 @@ public class GeneralNavigationTests {
         //Add in type text to auto fill sign up form (or this won't pass once error detection exists)
         onView(withId(R.id.button_signUpEmployee)).perform(click());
         onView(withId(R.id.button_viewtasks)).perform(click());
-        onView(withText("Tasks")).check(matches(isDisplayed()));
+        onView(withId(R.id.scrollview_tasks)).check(matches(isDisplayed()));
     }
 
     
