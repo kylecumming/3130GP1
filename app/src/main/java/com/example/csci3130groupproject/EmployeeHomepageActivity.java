@@ -6,24 +6,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class EmployeeRegisterActivity extends AppCompatActivity {
+public class EmployeeHomepageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_register);
+        setContentView(R.layout.activity_employee_homepage);
 
-        findViewById(R.id.button_signUpEmployee).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_viewtasks).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchEmployeeHomepageActivity();
+                launchViewTasksActivity();
             }
         });
 
     }
 
-    private void launchEmployeeHomepageActivity(){
-        Intent intent = new Intent(this, EmployeeHomepageActivity.class);
+    private void launchViewTasksActivity(){
+        Intent intent = new Intent(this, ViewTasksActivity.class);
         startActivity(intent);
     }
 

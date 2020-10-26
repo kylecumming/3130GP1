@@ -10,7 +10,7 @@ import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 
-public class RegistrationActivityTests {
+public class GeneralNavigationTests {
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
@@ -42,6 +42,7 @@ public class RegistrationActivityTests {
     public void employerSignUpButtonBringsToEmployerHomepage(){
         onView(withId(R.id.button_register)).perform(click());
         onView(withId(R.id.button_employer)).perform(click());
+        //Add in type text to auto fill sign up form (or this won't pass once error detection exists)
         onView(withId(R.id.button_signUpEmployer)).perform(click());
         onView(withId(R.id.button_homepageSubmitTask)).check(matches(isDisplayed()));
     }
@@ -50,9 +51,29 @@ public class RegistrationActivityTests {
     public void submitTaskButtonBringsToSubmitTaskActivity(){
         onView(withId(R.id.button_register)).perform(click());
         onView(withId(R.id.button_employer)).perform(click());
+        //Add in type text to auto fill sign up form (or this won't pass once error detection exists)
         onView(withId(R.id.button_signUpEmployer)).perform(click());
         onView(withId(R.id.button_homepageSubmitTask)).perform(click());
         onView(withId(R.id.button_submitTask)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void employeeSignUpButtonBringsToEmployeeHomepage(){
+        onView(withId(R.id.button_register)).perform(click());
+        onView(withId(R.id.button_employee)).perform(click());
+        //Add in type text to auto fill sign up form (or this won't pass once error detection exists)
+        onView(withId(R.id.button_signUpEmployee)).perform(click());
+        onView(withId(R.id.button_viewtasks)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void viewTasksButtonBringsToViewTasksPage(){
+        onView(withId(R.id.button_register)).perform(click());
+        onView(withId(R.id.button_employee)).perform(click());
+        //Add in type text to auto fill sign up form (or this won't pass once error detection exists)
+        onView(withId(R.id.button_signUpEmployee)).perform(click());
+        onView(withId(R.id.button_viewtasks)).perform(click());
+        onView(withId(R.id.scrollview_tasks)).check(matches(isDisplayed()));
     }
 
     
