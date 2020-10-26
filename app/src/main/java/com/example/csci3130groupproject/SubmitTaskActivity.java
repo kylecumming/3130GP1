@@ -46,15 +46,16 @@ public class SubmitTaskActivity extends AppCompatActivity {
     }
     //this will add the strings from the textview to the database
     protected void add_new_task_to_firebase(String title, String desc,String price, String employerUsername){
-        databaseReference = databaseReference.child("Tasks").child(employerUsername).child(title);
-        databaseReference.push().setValue(desc);
-        databaseReference.push().setValue(price);
+        Task newTask = new Task(title,desc,price,employerUsername);
+        databaseReference = databaseReference.child("Tasks");
+        databaseReference.push().setValue(newTask);
     }
 
     public void onClick(View view){
         String title = get_task_title();
         String desc = get_task_desc();
         String price = get_task_price();
+        //Add a get_username() method that will grab the username of person submitting task
         String username = "EmployerUsername";
         this.add_new_task_to_firebase(title,desc,price, username);
         startActivity(new Intent(getApplicationContext(), TaskSubmitted.class));

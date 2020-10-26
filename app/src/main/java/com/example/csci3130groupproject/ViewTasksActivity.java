@@ -26,14 +26,10 @@ public class ViewTasksActivity extends AppCompatActivity {
         allTasks.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("TAG", snapshot.getValue().toString());
-
-                /*
-                for(DataSnapshot task : snapshot.getChildren()){
-                    Log.d("TAG",task.getValue().toString());
+                for(DataSnapshot storedTask : snapshot.getChildren()){
+                    Task task = storedTask.getValue(Task.class);
+                    Log.d("TAG",task.getTitle());
                 }
-
-                 */
             }
 
             @Override
