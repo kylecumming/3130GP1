@@ -20,7 +20,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class SubmitTask_Test {
+public class submitTaskTest {
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
@@ -28,6 +28,13 @@ public class SubmitTask_Test {
     public void taskInFirebase(){
         onView(withId(R.id.button_register)).perform(click());
         onView(withId(R.id.button_employer)).perform(click());
+        onView(withId(R.id.edittext_emailEmployer)).perform(typeText("exampleEmployer@gmail.com"));
+        onView(withId(R.id.edittext_passwordEmployer)).perform(typeText("employerpassword123"),closeSoftKeyboard());
+        onView(withId(R.id.edittext_usernameEmployer)).perform(typeText("Employ13"),closeSoftKeyboard());
+        onView(withId(R.id.edittext_monthEmployer)).perform(typeText("03"));
+        onView(withId(R.id.edittext_dayEmployer)).perform(typeText("11"));
+        onView(withId(R.id.edittext_yearEmployer)).perform(typeText("1999"),closeSoftKeyboard());
+        //Add in select radio button for gender
         onView(withId(R.id.button_signUpEmployer)).perform(click());
         onView(withId(R.id.button_homepageSubmitTask)).perform(click());
         onView(withId(R.id.edittext_taskTitle)).perform(typeText("TestTitle"));
