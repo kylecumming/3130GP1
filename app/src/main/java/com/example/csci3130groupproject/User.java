@@ -1,21 +1,30 @@
 package com.example.csci3130groupproject;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Employee {
+public class User {
+    protected String email;
+    protected String username;
+    protected String password;
+    protected ArrayList<String> dob;
+    protected String gender;
+    protected Boolean type;
 
-    private String email;
-    private String username;
-    private String dob;
-    private String gender;
-
-    public Employee(String email, String username, String dob, String gender){
+    public User(String email, String username, String password, ArrayList<String> dob, String gender, Boolean type) {
         this.email = email;
         this.username = username;
+        this.password = password;
         this.dob = dob;
         this.gender = gender;
+        this.type = type;
     }
+
+    public Boolean passwordIsValid(){
+        return password.length() >=8;
+    }
+
     public Boolean usernameIsValid(){
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
         Matcher matcher = pattern.matcher(username);
@@ -26,6 +35,7 @@ public class Employee {
             return false;
         }
     }
+
     public Boolean emailIsValid(){
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]+");
         Matcher matcher = pattern.matcher(email);
@@ -37,13 +47,33 @@ public class Employee {
         }
     }
 
+    public Boolean dobIsValid(){
+        return dob.size() >2;
+    }
+    public String toString(){
+        return   email + " " + username +" " + password + " " + dob.get(0) + "/" + dob.get(1) + "/" + dob.get(2) + gender + " " + type;
+    }
+    public Boolean isValid(){
+        return this.emailIsValid() && this.usernameIsValid() && this.passwordIsValid() && this.dobIsValid();
+    }
+
     /* Getter / Setters */
-    public String getDob() {return dob;}
+    public ArrayList<String> getDob() {return dob;}
+
     public String getEmail() {return email;}
+
+    public Boolean getType() { return type; }
+
     public String getGender() {return gender;}
+
     public String getUsername() {return username;}
-    public void setDob(String dob) {this.dob = dob;}
+
+    public void setDob(ArrayList<String> dob) {this.dob = dob;}
+
     public void setEmail(String email) {this.email = email;}
+
     public void setGender(String gender) {this.gender = gender;}
+
     public void setUsername(String username) {this.username = username;}
+    public void setType(Boolean type){this.type = type;}
 }
