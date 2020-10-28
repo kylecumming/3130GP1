@@ -15,7 +15,7 @@ public class UserTest {
         User em2 =new User("test@email.com", "testuser123","sample123", dob, "M", false);
         assertTrue(em2.usernameIsValid());
         assertFalse(em1.usernameIsValid());
-        assertTrue(em1.dobIsValid());
+        assertFalse(em1.dobIsValid());
     }
     @Test
     public void validEmailTest(){
