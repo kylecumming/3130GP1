@@ -12,6 +12,8 @@ public class User {
     protected String gender;
     protected Boolean type;
 
+    public User(){};
+
     public User(String email, String username, String password, ArrayList<String> dob, String gender, Boolean type) {
         this.email = email;
         this.username = username;
