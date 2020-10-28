@@ -1,5 +1,6 @@
 package com.example.csci3130groupproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -24,6 +25,12 @@ public class EmployerRegisterActivity extends AppCompatActivity {
         findViewById(R.id.button_signUpEmployer).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                findViewById(R.id.emailError2).setVisibility(View.GONE);
+                findViewById(R.id.passwordError2).setVisibility(View.GONE);
+                findViewById(R.id.usernameError2).setVisibility(View.GONE);
+                findViewById(R.id.monthError2).setVisibility(View.GONE);
+                findViewById(R.id.dayError2).setVisibility(View.GONE);
+                findViewById((R.id.yearError2)).setVisibility(View.GONE);
                 TextView emailTextView = findViewById(R.id.edittext_emailEmployer);
                 TextView usernameTextView = findViewById(R.id.edittext_usernameEmployer);
                 TextView passwordTextView = findViewById(R.id.edittext_passwordEmployer);
@@ -33,9 +40,9 @@ public class EmployerRegisterActivity extends AppCompatActivity {
                 String email = emailTextView.getText().toString();
                 String username = usernameTextView.getText().toString();
                 String password = passwordTextView.getText().toString();
-                ArrayList<String> dob = new ArrayList<String>();
-                dob.add(dobTextViewDay.getText().toString());
+                ArrayList<String> dob = new ArrayList<>();
                 dob.add(dobTextViewMonth.getText().toString());
+                dob.add(dobTextViewDay.getText().toString());
                 dob.add(dobTextViewYear.getText().toString());
                 String gender = "Not Specified";
                 RadioGroup genderSelections = findViewById(R.id.radioGroup_Employer);
@@ -47,8 +54,29 @@ public class EmployerRegisterActivity extends AppCompatActivity {
                 }
                 User us = new User(email, username, password,dob, gender, true);
                 /* Further down the line, do something with the created object */
-                Log.d("TAG", us.toString());
-                launchEmployerHomepageActivity();
+                if(us.isValid()){
+                    launchEmployerHomepageActivity();
+                }
+                else{
+                    if(!us.emailIsValid()){
+                        findViewById(R.id.emailError2).setVisibility(View.VISIBLE);
+                    }
+                    if(!us.passwordIsValid()){
+                        findViewById(R.id.passwordError2).setVisibility(View.VISIBLE);
+                    }
+                    if(!us.usernameIsValid()){
+                        findViewById(R.id.usernameError2).setVisibility(View.VISIBLE);
+                    }
+                    if(!us.dobMonthIsValid()){
+                        findViewById(R.id.monthError2).setVisibility(View.VISIBLE);
+                    }
+                    if(!us.dobDayIsValid()){
+                        findViewById(R.id.dayError2).setVisibility(View.VISIBLE);
+                    }
+                    if(!us.dobYearIsValid()){
+                        findViewById((R.id.yearError2)).setVisibility(View.VISIBLE);
+                    }
+                }
             }
         });
 

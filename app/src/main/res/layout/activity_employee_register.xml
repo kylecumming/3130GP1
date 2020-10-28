@@ -6,6 +6,103 @@
     android:layout_height="match_parent"
     tools:context=".EmployeeRegisterActivity">
 
+    <EditText
+        android:id="@+id/usernameError"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:focusable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_usernameEmployee"
+        app:layout_constraintTop_toTopOf="@+id/edittext_usernameEmployee" />
+
+    <EditText
+        android:id="@+id/monthError"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="36dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:focusable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_monthEmployee"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_monthEmployee"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edittext_monthEmployee"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/dayError"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:focusable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_dayEmployee"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_dayEmployee" />
+
+    <EditText
+        android:id="@+id/yearError"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:focusable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_yearEmployee"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_yearEmployee"
+        app:layout_constraintTop_toTopOf="@+id/edittext_yearEmployee" />
+
+    <EditText
+        android:id="@+id/passwordError"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:focusable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_passwordEmployee"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_passwordEmployee"
+        app:layout_constraintTop_toTopOf="@+id/edittext_passwordEmployee" />
+
+    <EditText
+        android:id="@+id/emailError"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:focusable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_emailEmployee"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_emailEmployee"
+        app:layout_constraintTop_toBottomOf="@+id/textview_emailEmployee" />
+
     <TextView
         android:id="@+id/textview_employeeSignUp"
         android:layout_width="wrap_content"
