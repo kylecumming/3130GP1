@@ -13,10 +13,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class EmployeeRegisterActivity extends AppCompatActivity {
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,8 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
                 User us = new User(email, username, password,dob, gender, false);
                 /* Further down the line, do something with the created object */
                 if(us.isValid()){
+                    databaseReference = databaseReference.child("Users");
+                    databaseReference.push().setValue(us);
                     launchEmployeeHomepageActivity();
                 }
                 else{
