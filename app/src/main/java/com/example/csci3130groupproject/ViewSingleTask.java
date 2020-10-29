@@ -29,7 +29,7 @@ public class ViewSingleTask extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_tasks);
+        setContentView(R.layout.activity_view_single_task);
 
         final LinearLayout displayTasks = (LinearLayout) findViewById(R.id.linearlayout_tasks);
 
