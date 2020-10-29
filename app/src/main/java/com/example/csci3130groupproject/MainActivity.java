@@ -28,4 +28,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClick(View view){//this button will be removed later on, I am just using it as a way to skip through the menus so I can quickly test my work
+        startActivity(new Intent(getApplicationContext(), ViewSingleTask.class));
+    }
+
 }
