@@ -209,6 +209,102 @@
         app:layout_constraintVertical_bias="0.12" />
 
     <EditText
+        android:id="@+id/usernameError2"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_usernameEmployer"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_usernameEmployer"
+        app:layout_constraintTop_toTopOf="@+id/edittext_usernameEmployer" />
+
+    <EditText
+        android:id="@+id/monthError2"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_monthEmployer"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_monthEmployer"
+        app:layout_constraintTop_toTopOf="@+id/edittext_monthEmployer" />
+
+    <EditText
+        android:id="@+id/dayError2"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_dayEmployer"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_dayEmployer"
+        app:layout_constraintTop_toTopOf="@+id/edittext_dayEmployer" />
+
+    <EditText
+        android:id="@+id/yearError2"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_yearEmployer"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_yearEmployer"
+        app:layout_constraintTop_toTopOf="@+id/edittext_yearEmployer" />
+
+    <EditText
+        android:id="@+id/passwordError2"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_passwordEmployer"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_passwordEmployer"
+        app:layout_constraintTop_toTopOf="@+id/edittext_passwordEmployer" />
+
+    <EditText
+        android:id="@+id/emailError2"
+        android:layout_width="14dp"
+        android:layout_height="42dp"
+        android:background="#FFFFFF"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_emailEmployer"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_emailEmployer"
+        app:layout_constraintTop_toTopOf="@+id/edittext_emailEmployer" />
+
+    <EditText
         android:id="@+id/edittext_yearEmployer"
         android:layout_width="70dp"
         android:layout_height="41dp"
@@ -222,62 +318,74 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployer"
         app:layout_constraintVertical_bias="0.116" />
 
+
     <TextView
         android:id="@+id/textview_genderEmployer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="0dp"
         android:text="What's your gender?"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/radioButton_maleEmployer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintHorizontal_bias="0.177"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textview_dayEmployer"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_monthEmployer" />
 
-    <RadioButton
+    <RadioGroup
+        android:id="@+id/radioGroup_Employer"
+        android:layout_width="305dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/button_signUpEmployer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_genderEmployer">
+
+        <RadioButton
             android:id="@+id/radioButton_maleEmployer"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:text="Male"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.143"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployer"
-            app:layout_constraintVertical_bias="0.463" />
+            app:layout_constraintVertical_bias="0.494" />
 
         <RadioButton
             android:id="@+id/radioButton_femaleEmployer"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Female"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.447"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployer"
-            app:layout_constraintVertical_bias="0.463" />
+            app:layout_constraintVertical_bias="0.494" />
 
         <RadioButton
             android:id="@+id/radioButton_otherEmployer"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Other"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.721"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_dobEmployer"
-            app:layout_constraintVertical_bias="0.463" />
+            app:layout_constraintVertical_bias="0.494" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/button_signUpEmployer"
         android:layout_width="204dp"
         android:layout_height="68dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#24C1E8"
         android:text="Sign Up"
         android:textColor="#000000"
@@ -285,8 +393,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_genderEmployer"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
