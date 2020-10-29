@@ -100,6 +100,6 @@ public class GeneralNavigationTests {
         onView(withId(R.id.scrollview_tasks)).check(matches(isDisplayed()));
     }
 
-    
+
 
 }

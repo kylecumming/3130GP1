@@ -29,7 +29,7 @@ public class ViewSingleTask extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_tasks);
+        setContentView(R.layout.activity_view_single_task);
 
         final LinearLayout displayTasks = (LinearLayout) findViewById(R.id.linearlayout_tasks);
 
@@ -48,7 +48,7 @@ public class ViewSingleTask extends AppCompatActivity {
                         String title = task.getTitle();
                         String price = task.getPrice();
                         String desc = task.getDescription();
-                        //taskTitle.setText(title);// every time I try and set my textview it instantly crashes the app
+                        //  taskTitle.setText("title");// every time I try and set my textview it instantly crashes the app
                         /*taskTitle.setText(Html.fromHtml(task.getPrice()));
                         taskDesc.setText(Html.fromHtml(task.getDescription()));
                         */
