@@ -3,11 +3,13 @@ package com.example.csci3130groupproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -49,6 +51,7 @@ public class ViewTasksActivity extends AppCompatActivity {
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT
                     ));
+
                     singleTask.setGravity(Gravity.LEFT);
                     singleTask.setTextColor(Color.BLACK);
                     singleTask.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
@@ -56,7 +59,22 @@ public class ViewTasksActivity extends AppCompatActivity {
                     margins.setMargins(54,54,54,0);
                     singleTask.setLayoutParams(margins);
 
-                    displayTasks.addView(singleTask); //Add new button to LinearLayout
+                    final String title = task.getTitle();
+                    final String price = task.getPrice();
+                    final String description = task.getDescription();
+
+                    displayTasks.addView(singleTask);//Add new button to LinearLayout
+                    //when the a button is clicked, this onClick method starts the "ViewSingleTask" activity, and passes over the appropriate data using the putExtra() method.
+                    singleTask.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getApplicationContext(), ViewSingleTask.class);
+                            intent.putExtra("TITLE",title);
+                            intent.putExtra("PRICE",price);
+                            intent.putExtra("DESCRIPTION",description);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
 

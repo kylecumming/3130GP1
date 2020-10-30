@@ -3,6 +3,7 @@ package com.example.csci3130groupproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -24,17 +25,20 @@ import org.w3c.dom.Text;
 
 public class ViewSingleTask extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference allTasks = database.getReference("Tasks");
+    DatabaseReference singleTask = database.getReference("Tasks");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_task);
 
-        final LinearLayout displayTasks = (LinearLayout) findViewById(R.id.linearlayout_tasks);
+        //using intent to grab the appropriate data from the list of tasks in ViewTasksActivity.java
+        Intent intent = getIntent();
+        final String title = intent.getStringExtra("TITLE");
+        final String price = intent.getStringExtra("PRICE");
+        final String description = intent.getStringExtra("DESCRIPTION");
 
-        //Displays all tasks currently stored in Firebase
-        allTasks.addValueEventListener(new ValueEventListener() {
+        singleTask.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int x = 0;
@@ -44,18 +48,12 @@ public class ViewSingleTask extends AppCompatActivity {
                         TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
                         TextView taskPrice = (TextView)findViewById(R.id.viewPrice);
                         TextView taskDesc = (TextView)findViewById(R.id.viewDesc);
-                        Log.d("testytesting",task.getTitle());
-                        String title = task.getTitle();
-                        String price = task.getPrice();
-                        String desc = task.getDescription();
-                        //  taskTitle.setText("title");// every time I try and set my textview it instantly crashes the app
-                        /*taskTitle.setText(Html.fromHtml(task.getPrice()));
-                        taskDesc.setText(Html.fromHtml(task.getDescription()));
-                        */
+                        taskTitle.setText(title);
+                        taskPrice.setText(price);
+                        taskDesc.setText(description);
                         x++;
                     }
                 }
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
