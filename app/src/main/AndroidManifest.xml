@@ -9,8 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".singleTaskViewTest"></activity>
-        <activity android:name=".viewSingleTaskTest" />
         <activity android:name=".ViewSingleTask" />
         <activity android:name=".ViewTasksActivity" />
         <activity android:name=".EmployeeHomepageActivity" />
