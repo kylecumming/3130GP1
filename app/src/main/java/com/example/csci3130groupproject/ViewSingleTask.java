@@ -37,29 +37,13 @@ public class ViewSingleTask extends AppCompatActivity {
         final String title = intent.getStringExtra("TITLE");
         final String price = intent.getStringExtra("PRICE");
         final String description = intent.getStringExtra("DESCRIPTION");
-
-        singleTask.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int x = 0;
-                for(DataSnapshot storedTask : snapshot.getChildren()){
-                    if(x < 1) {
-                        Task task = storedTask.getValue(Task.class); //A single task snapshot
-                        TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
-                        TextView taskPrice = (TextView)findViewById(R.id.viewPrice);
-                        TextView taskDesc = (TextView)findViewById(R.id.viewDesc);
-                        taskTitle.setText(title);
-                        taskPrice.setText(price);
-                        taskDesc.setText(description);
-                        x++;
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        //Setting the data into TextViews on this activity
+        TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
+        TextView taskPrice = (TextView)findViewById(R.id.viewPrice);
+        TextView taskDesc = (TextView)findViewById(R.id.viewDesc);
+        taskTitle.setText(title);
+        taskPrice.setText(price);
+        taskDesc.setText(description);
 
     }
 
