@@ -56,6 +56,27 @@ public class ViewSingleTask extends AppCompatActivity {
             }
         });
 
+        //OnClick method for Apply button
+        Button applyButton = (Button) findViewById(R.id.buttonApplyForTask);
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                allTasks.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot storedTask: snapshot.getChildren()){
+                            
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
     }
 
     private void launchViewTasksActivity(){
