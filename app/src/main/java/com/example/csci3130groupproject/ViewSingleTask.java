@@ -37,6 +37,7 @@ public class ViewSingleTask extends AppCompatActivity {
         final String title = intent.getStringExtra("TITLE");
         final String price = intent.getStringExtra("PRICE");
         final String description = intent.getStringExtra("DESCRIPTION");
+
         //Setting the data into TextViews on this activity
         TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
         TextView taskPrice = (TextView)findViewById(R.id.viewPrice);

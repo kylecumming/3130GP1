@@ -43,8 +43,7 @@ public class ViewTasksActivity extends AppCompatActivity {
                     Button singleTask = new Button(getApplicationContext());
 
                     //Display all task data inside button
-                    singleTask.setText(Html.fromHtml("<b>Task Title</b>: " + task.getTitle() + "<br><b>Task Description</b>: "
-                            + task.getDescription() + "<br><b>Task Payment</b>: " + task.getPrice()));
+                    singleTask.setText(Html.fromHtml(formatTaskData(task)));
 
                     //Setting layout, color, general styles, etc.
                     singleTask.setLayoutParams(new ViewGroup.LayoutParams(
@@ -55,7 +54,9 @@ public class ViewTasksActivity extends AppCompatActivity {
                     singleTask.setGravity(Gravity.LEFT);
                     singleTask.setTextColor(Color.BLACK);
                     singleTask.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                    LinearLayout.LayoutParams margins = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    LinearLayout.LayoutParams margins = new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
                     margins.setMargins(54,54,54,0);
                     singleTask.setLayoutParams(margins);
 
@@ -85,4 +86,11 @@ public class ViewTasksActivity extends AppCompatActivity {
         });
 
     }
+
+    //Returns a formatted String for proper display of tasks on this page
+    public String formatTaskData(Task task){
+        return "<b>Task Title</b>: " + task.getTitle() + "<br><b>Task Description</b>: "
+                + task.getDescription() + "<br><b>Task Payment</b>: " + task.getPrice();
+    }
+
 }
