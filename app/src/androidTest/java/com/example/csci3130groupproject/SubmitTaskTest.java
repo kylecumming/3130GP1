@@ -17,10 +17,11 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class submitTaskTest {
+public class SubmitTaskTest {
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
@@ -46,11 +47,13 @@ public class submitTaskTest {
         allTasks.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Task taskFinal = new Task();
                 for(DataSnapshot storedTasks : snapshot.getChildren()){
                     Task task = storedTasks.getValue(Task.class);
                     if(task.getTitle().equals("TestTitle"))
-                        assertTrue(task.getTitle().equals("TestTitle"));
+                        taskFinal = task;
                 }
+                assertEquals("TestTitle", taskFinal.getTitle());
             }
 
             @Override
