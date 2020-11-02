@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
@@ -31,14 +30,13 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ApplyForTaskTest {
+public class ApplyForTaskTests {
 
     @Rule
-    public ActivityScenarioRule<MainActivity> mActivityTestRule =
-            new ActivityScenarioRule<MainActivity>(MainActivity.class);
+    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void clickingTaskBringsToViewSingleTaskPage() {
+    public void applyForTaskTests() {
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.button_register), withText("Register"),
                         childAtPosition(
@@ -67,9 +65,39 @@ public class ApplyForTaskTest {
                                         0),
                                 9),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("exampleEmployee@gmail.com"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("exampleeEmployee@gmail.com"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.edittext_emailEmployee), withText("exampleeEmployee@gmail.com"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                9),
+                        isDisplayed()));
+        appCompatEditText2.perform(click());
+
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.edittext_emailEmployee), withText("exampleeEmployee@gmail.com"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                9),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("exampleEmployee@gmail.com"));
+
+        ViewInteraction appCompatEditText4 = onView(
+                allOf(withId(R.id.edittext_emailEmployee), withText("exampleEmployee@gmail.com"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                9),
+                        isDisplayed()));
+        appCompatEditText4.perform(closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.edittext_passwordEmployee),
                         childAtPosition(
                                 childAtPosition(
@@ -77,9 +105,9 @@ public class ApplyForTaskTest {
                                         0),
                                 11),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("employeepassword321"), closeSoftKeyboard());
+        appCompatEditText5.perform(replaceText("employeepassword321"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText3 = onView(
+        ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.edittext_usernameEmployee),
                         childAtPosition(
                                 childAtPosition(
@@ -87,9 +115,39 @@ public class ApplyForTaskTest {
                                         0),
                                 13),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("Employee5"), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText("employee5"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText4 = onView(
+        ViewInteraction appCompatEditText7 = onView(
+                allOf(withId(R.id.edittext_usernameEmployee), withText("employee5"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                13),
+                        isDisplayed()));
+        appCompatEditText7.perform(click());
+
+        ViewInteraction appCompatEditText8 = onView(
+                allOf(withId(R.id.edittext_usernameEmployee), withText("employee5"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                13),
+                        isDisplayed()));
+        appCompatEditText8.perform(replaceText("Employee5"));
+
+        ViewInteraction appCompatEditText9 = onView(
+                allOf(withId(R.id.edittext_usernameEmployee), withText("Employee5"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                13),
+                        isDisplayed()));
+        appCompatEditText9.perform(closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText10 = onView(
                 allOf(withId(R.id.edittext_monthEmployee),
                         childAtPosition(
                                 childAtPosition(
@@ -97,9 +155,9 @@ public class ApplyForTaskTest {
                                         0),
                                 18),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("09"), closeSoftKeyboard());
+        appCompatEditText10.perform(replaceText("09"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText5 = onView(
+        ViewInteraction appCompatEditText11 = onView(
                 allOf(withId(R.id.edittext_dayEmployee),
                         childAtPosition(
                                 childAtPosition(
@@ -107,9 +165,9 @@ public class ApplyForTaskTest {
                                         0),
                                 19),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("28"), closeSoftKeyboard());
+        appCompatEditText11.perform(replaceText("28"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText6 = onView(
+        ViewInteraction appCompatEditText12 = onView(
                 allOf(withId(R.id.edittext_yearEmployee),
                         childAtPosition(
                                 childAtPosition(
@@ -117,7 +175,7 @@ public class ApplyForTaskTest {
                                         0),
                                 20),
                         isDisplayed()));
-        appCompatEditText6.perform(replaceText("2000"), closeSoftKeyboard());
+        appCompatEditText12.perform(replaceText("2000"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton3 = onView(
                 allOf(withId(R.id.button_signUpEmployee), withText("Sign Up"),
@@ -148,7 +206,17 @@ public class ApplyForTaskTest {
                                                 0)),
                                 4)));
         button.perform(scrollTo(), click());
-        onView(withId(R.id.buttonReturn)).check(matches(isDisplayed()));
+
+        ViewInteraction appCompatButton5 = onView(
+                allOf(withId(R.id.buttonApplyForTask), withText("Apply"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                4),
+                        isDisplayed()));
+        appCompatButton5.perform(click());
+        onView(withText("You have successfully applied for this task!")).check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(
