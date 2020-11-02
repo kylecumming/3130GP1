@@ -65,7 +65,10 @@ public class ViewTasksActivity extends AppCompatActivity {
                     final String description = task.getDescription();
 
                     displayTasks.addView(singleTask);//Add new button to LinearLayout
-                    //when the a button is clicked, this onClick method starts the "ViewSingleTask" activity, and passes over the appropriate data using the putExtra() method.
+
+                    /* when the a button is clicked, this onClick method starts the "ViewSingleTask"
+                     * activity, and passes over the appropriate data using the putExtra() method.
+                     */
                     singleTask.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

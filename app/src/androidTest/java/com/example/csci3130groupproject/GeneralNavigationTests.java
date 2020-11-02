@@ -99,7 +99,4 @@ public class GeneralNavigationTests {
         onView(withId(R.id.button_viewtasks)).perform(click());
         onView(withId(R.id.scrollview_tasks)).check(matches(isDisplayed()));
     }
-
-
-
 }

@@ -10,6 +10,7 @@ import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -32,7 +33,7 @@ public class ViewSingleTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_task);
 
-        //using intent to grab the appropriate data from the list of tasks in ViewTasksActivity.java
+        //Using intent to grab the appropriate data from the list of tasks in ViewTasksActivity.java
         Intent intent = getIntent();
         final String title = intent.getStringExtra("TITLE");
         final String price = intent.getStringExtra("PRICE");
@@ -46,6 +47,20 @@ public class ViewSingleTask extends AppCompatActivity {
         taskPrice.setText(price);
         taskDesc.setText(description);
 
+        //OnClick method for Return button
+        Button returnButton = (Button) findViewById(R.id.buttonReturn);
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchViewTasksActivity();
+            }
+        });
+
+    }
+
+    private void launchViewTasksActivity(){
+        Intent intent = new Intent(this, ViewTasksActivity.class);
+        startActivity(intent);
     }
 
 }
