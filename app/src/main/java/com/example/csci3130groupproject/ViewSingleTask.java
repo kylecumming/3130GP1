@@ -65,7 +65,7 @@ public class ViewSingleTask extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot storedTask: snapshot.getChildren()){
-                            
+
                         }
                     }
 
