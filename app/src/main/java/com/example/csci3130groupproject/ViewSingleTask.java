@@ -1,8 +1,10 @@
 package com.example.csci3130groupproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,9 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import static android.app.PendingIntent.getActivity;
+
 public class ViewSingleTask extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference allTasks = database.getReference("Tasks");
+    DatabaseReference databaseReference = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class ViewSingleTask extends AppCompatActivity {
         final String title = intent.getStringExtra("TITLE");
         final String price = intent.getStringExtra("PRICE");
         final String description = intent.getStringExtra("DESCRIPTION");
+        final String author = intent.getStringExtra("AUTHOR");
+        final String applicant = "EmployeeUsername"; //This will be changed to username of a signed in user
 
         //Setting the data into TextViews on this activity
         TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
@@ -61,19 +67,17 @@ public class ViewSingleTask extends AppCompatActivity {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                allTasks.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot storedTask: snapshot.getChildren()){
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                storeApplicationOnFirebase(title, applicant, author);
+                AlertDialog.Builder applicationSubmitted = new AlertDialog.Builder(ViewSingleTask.this);
+                applicationSubmitted.setTitle("Application Success")
+                        .setMessage("You have successfully applied for this task!")
+                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                applicationSubmitted.show();
             }
         });
 
@@ -82,6 +86,13 @@ public class ViewSingleTask extends AppCompatActivity {
     private void launchViewTasksActivity(){
         Intent intent = new Intent(this, ViewTasksActivity.class);
         startActivity(intent);
+    }
+
+    //Creates a new application for a task and stores in Firebase
+    private void storeApplicationOnFirebase(String title, String applicant, String author){
+        TaskApplication newApp = new TaskApplication(title, applicant, author);
+        databaseReference = databaseReference.child("Applications");
+        databaseReference.push().setValue(newApp);
     }
 
 }

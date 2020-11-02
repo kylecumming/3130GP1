@@ -61,12 +61,11 @@ public class ViewTasksActivity extends AppCompatActivity {
                             ViewGroup.LayoutParams.WRAP_CONTENT);
                     margins.setMargins(54,54,54,0);
                     singleTask.setLayoutParams(margins);
-                    singleTask.setId(id);
-                    id++; //increment so a unique id will be generated for next task
 
                     final String title = task.getTitle();
                     final String price = task.getPrice();
                     final String description = task.getDescription();
+                    final String author = task.getAuthor();
 
                     displayTasks.addView(singleTask);//Add new button to LinearLayout
 
@@ -80,6 +79,7 @@ public class ViewTasksActivity extends AppCompatActivity {
                             intent.putExtra("TITLE",title);
                             intent.putExtra("PRICE",price);
                             intent.putExtra("DESCRIPTION",description);
+                            intent.putExtra("AUTHOR",author);
                             startActivity(intent);
                         }
                     });
