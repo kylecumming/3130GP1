@@ -11,8 +11,16 @@ public class ApplicationTest {
     @Test
     public void setAttributesApplication(){
         TaskApplication newApp = new TaskApplication();
-        newApp.setTaskTitle();
-        newApp.setApplicant();
+        newApp.setTaskTitle("TestTitle");
+        newApp.setApplicant("Employee5");
+
+        assertEquals("TestTitle", newApp.getTaskTitle());
+        assertEquals("Employee5", newApp.getApplicant());
+    }
+
+    @Test
+    public void constructorWithArguments(){
+        TaskApplication newApp = new TaskApplication("TestTitle", "Employee5");
 
         assertEquals("TestTitle", newApp.getTaskTitle());
         assertEquals("Employee5", newApp.getApplicant());
