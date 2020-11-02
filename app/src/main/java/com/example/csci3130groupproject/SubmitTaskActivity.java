@@ -58,6 +58,6 @@ public class SubmitTaskActivity extends AppCompatActivity {
         //Add a get_author() method that will grab the username of person submitting task
         String author = "EmployerUsername";
         this.add_new_task_to_firebase(title,desc,price, author);
-        startActivity(new Intent(getApplicationContext(), TaskSubmitted.class));
+        startActivity(new Intent(getApplicationContext(), EmployerHomepageActivity.class));
     }
 }

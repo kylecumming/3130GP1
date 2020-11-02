@@ -12,7 +12,6 @@
         <activity android:name=".ViewSingleTask" />
         <activity android:name=".ViewTasksActivity" />
         <activity android:name=".EmployeeHomepageActivity" />
-        <activity android:name=".TaskSubmitted" />
         <activity android:name=".SubmitTaskActivity" />
         <activity android:name=".EmployerHomepageActivity" />
         <activity android:name=".EmployeeRegisterActivity" />
