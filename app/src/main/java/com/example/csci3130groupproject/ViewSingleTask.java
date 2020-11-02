@@ -26,7 +26,7 @@ import org.w3c.dom.Text;
 
 public class ViewSingleTask extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference singleTask = database.getReference("Tasks");
+    DatabaseReference allTasks = database.getReference("Tasks");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
