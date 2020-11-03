@@ -43,4 +43,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5"
         app:layout_constraintVertical_bias="0.241" />
+
+    <Button
+        android:id="@+id/button_viewApplications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Applications"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_homepageSubmitTask"
+        app:layout_constraintVertical_bias="0.112" />
 </androidx.constraintlayout.widget.ConstraintLayout>

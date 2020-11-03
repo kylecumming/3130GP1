@@ -113,7 +113,7 @@ public class GeneralNavigationTests {
         //Add in select radio button for gender
         onView(withId(R.id.button_signUpEmployer)).perform(click());
         onView(withId(R.id.button_viewApplications)).perform(click());
-        onView(withId(R.id.textview_Applications)).check(matches(isDisplayed()));
+        onView(withId(R.id.textview_quickcashApplications)).check(matches(isDisplayed()));
     }
 
 }
