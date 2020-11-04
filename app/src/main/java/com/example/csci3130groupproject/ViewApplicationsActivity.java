@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +28,9 @@ public class ViewApplicationsActivity extends AppCompatActivity {
         allApplications.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                
+                for(DataSnapshot storedApplications : snapshot.getChildren()){
+
+                }
             }
 
             @Override

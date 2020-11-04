@@ -14,10 +14,12 @@ public class ApplicationTest {
         newApp.setTaskTitle("TestTitle");
         newApp.setApplicant("Employee5");
         newApp.setAuthor("EmployerUsername");
+        newApp.setAccepted(true);
 
         assertEquals("TestTitle", newApp.getTaskTitle());
         assertEquals("Employee5", newApp.getApplicant());
         assertEquals("EmployerUsername", newApp.getAuthor());
+        assertEquals(true, newApp.getAccepted());
     }
 
     @Test
@@ -27,6 +29,7 @@ public class ApplicationTest {
         assertEquals("TestTitle", newApp.getTaskTitle());
         assertEquals("Employee5", newApp.getApplicant());
         assertEquals("EmployerUsername", newApp.getAuthor());
+        assertEquals(false, newApp.getAccepted());
     }
 
 }
