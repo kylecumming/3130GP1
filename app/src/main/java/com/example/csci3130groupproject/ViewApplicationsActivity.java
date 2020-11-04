@@ -3,11 +3,13 @@ package com.example.csci3130groupproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -64,6 +66,19 @@ public class ViewApplicationsActivity extends AppCompatActivity {
                         //Save title and applicant info for display on ViewSingleTaskActivity.java
                         final String title = application.getTaskTitle();
                         final String applicant = application.getApplicant();
+
+                        //On button click, will bring to ViewSingleApplicationActivity to allow
+                        //Employer to review and accept application
+                        singleApplication.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(getApplicationContext(), ViewSingleApplicationActivity.class);
+                                intent.putExtra("TITLE", title);
+                                intent.putExtra("APPLICANT", applicant);
+                                startActivity(intent);
+                            }
+                        });
+
                     }
                     else
                         continue;
