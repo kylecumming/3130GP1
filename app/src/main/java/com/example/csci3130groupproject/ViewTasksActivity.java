@@ -36,8 +36,6 @@ public class ViewTasksActivity extends AppCompatActivity {
         allTasks.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //This will increment each iteration of for loop and be used as an ID for a task
-                int id = 0;
                 for(DataSnapshot storedTask : snapshot.getChildren()){
                     Task task = storedTask.getValue(Task.class); //A single task snapshot
                     Button singleTask = new Button(getApplicationContext());
