@@ -75,6 +75,7 @@ public class ViewApplicationsActivity extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), ViewSingleApplicationActivity.class);
                                 intent.putExtra("TITLE", title);
                                 intent.putExtra("APPLICANT", applicant);
+                                intent.putExtra("AUTHOR", "EmployerUsername"); //Update to use Employer's username
                                 startActivity(intent);
                             }
                         });
