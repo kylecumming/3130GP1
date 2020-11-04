@@ -99,4 +99,20 @@ public class GeneralNavigationTests {
         onView(withId(R.id.button_viewtasks)).perform(click());
         onView(withId(R.id.scrollview_tasks)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void viewApplicationsButtonBringsToViewApplicationsPage(){
+        onView(withId(R.id.button_register)).perform(click());
+        onView(withId(R.id.button_employer)).perform(click());
+        onView(withId(R.id.edittext_emailEmployer)).perform(typeText("exampleEmployer@gmail.com"));
+        onView(withId(R.id.edittext_passwordEmployer)).perform(typeText("employerpassword123"),closeSoftKeyboard());
+        onView(withId(R.id.edittext_usernameEmployer)).perform(typeText("Employ13"),closeSoftKeyboard());
+        onView(withId(R.id.edittext_monthEmployer)).perform(typeText("03"));
+        onView(withId(R.id.edittext_dayEmployer)).perform(typeText("11"));
+        onView(withId(R.id.edittext_yearEmployer)).perform(typeText("1999"),closeSoftKeyboard());
+        //Add in select radio button for gender
+        onView(withId(R.id.button_signUpEmployer)).perform(click());
+        onView(withId(R.id.button_viewApplications)).perform(click());
+        onView(withId(R.id.textview_quickcashApplications)).check(matches(isDisplayed()));
+    }
 }
