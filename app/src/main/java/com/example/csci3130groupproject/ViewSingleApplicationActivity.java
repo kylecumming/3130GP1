@@ -83,7 +83,7 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
                     if(singleApplication.getTaskTitle().equals(title) &&
                             singleApplication.getApplicant().equals(applicant) &&
                             singleApplication.getAuthor().equals(author)){
-                        singleApplication.setAccepted(true);
+                        application.getRef().child("accepted").setValue(true);
                     }
                     else if(singleApplication.getTaskTitle().equals(title) &&
                             singleApplication.getAuthor().equals(author)){
