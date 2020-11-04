@@ -115,5 +115,4 @@ public class GeneralNavigationTests {
         onView(withId(R.id.button_viewApplications)).perform(click());
         onView(withId(R.id.textview_quickcashApplications)).check(matches(isDisplayed()));
     }
-
 }
