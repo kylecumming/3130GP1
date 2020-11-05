@@ -66,28 +66,30 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
                     launchEmployeeHomepageActivity();
                 }
                 else{
-                    if(!us.emailIsValid()){
-                        findViewById(R.id.emailError).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.passwordIsValid()){
-                        findViewById(R.id.passwordError).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.usernameIsValid()){
-                        findViewById(R.id.usernameError).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.dobMonthIsValid()){
-                        findViewById(R.id.monthError).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.dobDayIsValid()){
-                        findViewById(R.id.dayError).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.dobYearIsValid()){
-                        findViewById((R.id.yearError)).setVisibility(View.VISIBLE);
-                    }
+                    checkErrors(us);
                 }
             }
         });
-
+    }
+    private void checkErrors(User us){
+        if(!us.emailIsValid()){
+            findViewById(R.id.emailError).setVisibility(View.VISIBLE);
+        }
+        if(!us.passwordIsValid()){
+            findViewById(R.id.passwordError).setVisibility(View.VISIBLE);
+        }
+        if(!us.usernameIsValid()){
+            findViewById(R.id.usernameError).setVisibility(View.VISIBLE);
+        }
+        if(!us.dobMonthIsValid()){
+            findViewById(R.id.monthError).setVisibility(View.VISIBLE);
+        }
+        if(!us.dobDayIsValid()){
+            findViewById(R.id.dayError).setVisibility(View.VISIBLE);
+        }
+        if(!us.dobYearIsValid()){
+            findViewById((R.id.yearError)).setVisibility(View.VISIBLE);
+        }
     }
     private void launchEmployeeHomepageActivity(){
         Intent intent = new Intent(this, EmployeeHomepageActivity.class);

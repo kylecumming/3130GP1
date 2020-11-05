@@ -66,30 +66,31 @@ public class EmployerRegisterActivity extends AppCompatActivity {
                     launchEmployerHomepageActivity();
                 }
                 else{
-                    if(!us.emailIsValid()){
-                        findViewById(R.id.emailError2).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.passwordIsValid()){
-                        findViewById(R.id.passwordError2).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.usernameIsValid()){
-                        findViewById(R.id.usernameError2).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.dobMonthIsValid()){
-                        findViewById(R.id.monthError2).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.dobDayIsValid()){
-                        findViewById(R.id.dayError2).setVisibility(View.VISIBLE);
-                    }
-                    if(!us.dobYearIsValid()){
-                        findViewById((R.id.yearError2)).setVisibility(View.VISIBLE);
-                    }
+                    checkErrors(us);
                 }
             }
         });
-
     }
-
+    private void checkErrors(User us){
+        if(!us.emailIsValid()){
+            findViewById(R.id.emailError2).setVisibility(View.VISIBLE);
+        }
+        if(!us.passwordIsValid()){
+            findViewById(R.id.passwordError2).setVisibility(View.VISIBLE);
+        }
+        if(!us.usernameIsValid()){
+            findViewById(R.id.usernameError2).setVisibility(View.VISIBLE);
+        }
+        if(!us.dobMonthIsValid()){
+            findViewById(R.id.monthError2).setVisibility(View.VISIBLE);
+        }
+        if(!us.dobDayIsValid()){
+            findViewById(R.id.dayError2).setVisibility(View.VISIBLE);
+        }
+        if(!us.dobYearIsValid()){
+            findViewById((R.id.yearError2)).setVisibility(View.VISIBLE);
+        }
+    }
     private void launchEmployerHomepageActivity(){
         Intent intent = new Intent(this, EmployerHomepageActivity.class);
         startActivity(intent);
