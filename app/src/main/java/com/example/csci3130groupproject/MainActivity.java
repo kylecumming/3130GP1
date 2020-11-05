@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
                 launchRegisterActivity();
             }
         });
-
     }
 
     private void launchRegisterActivity(){
