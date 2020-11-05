@@ -19,9 +19,14 @@ public class GeneralNavigationTests {
 
     @Test
     public void registerButtonClickBringsToRegistrationPage(){
-
         onView(withId(R.id.button_register)).perform(click());
         onView(withText("Create a profile to get started")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void loginButtonBringsToLoginPage(){
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.textview_username)).check(matches(isDisplayed()));
     }
 
     @Test
