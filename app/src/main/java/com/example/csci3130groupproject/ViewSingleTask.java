@@ -41,6 +41,7 @@ public class ViewSingleTask extends AppCompatActivity {
         Intent intent = getIntent();
         final String title = intent.getStringExtra("TITLE");
         final String price = intent.getStringExtra("PRICE");
+        final String tags = intent.getStringExtra("TAGS");
         final String description = intent.getStringExtra("DESCRIPTION");
         final String author = intent.getStringExtra("AUTHOR");
         final String applicant = "EmployeeUsername"; //This will be changed to username of a signed in user
@@ -48,9 +49,11 @@ public class ViewSingleTask extends AppCompatActivity {
         //Setting the data into TextViews on this activity
         TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
         TextView taskPrice = (TextView)findViewById(R.id.viewPrice);
+        TextView taskTags = (TextView)findViewById(R.id.viewTags);
         TextView taskDesc = (TextView)findViewById(R.id.viewDesc);
         taskTitle.setText(title);
         taskPrice.setText(price);
+        taskTags.setText(tags);
         taskDesc.setText(description);
 
         //OnClick method for Return button

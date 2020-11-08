@@ -139,13 +139,13 @@ public class NavigationToViewSingleTaskTest {
         appCompatButton4.perform(click());
 
         ViewInteraction button = onView(
-                allOf(withText("Task Title: TestTitle\nTask Description: This is a description\nTask Payment: 100"),
+                allOf(withText("Task Title: TestTitle\nTask Description: This is a description\nTask Tags: Construction\nTask Payment: 100"),
                         childAtPosition(
                                 allOf(withId(R.id.linearlayout_tasks),
                                         childAtPosition(
                                                 withId(R.id.scrollview_tasks),
                                                 0)),
-                                4)));
+                                1)));
         button.perform(scrollTo(), click());
         onView(withId(R.id.buttonReturn)).check(matches(isDisplayed()));
     }

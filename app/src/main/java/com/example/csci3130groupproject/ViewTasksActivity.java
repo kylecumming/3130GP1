@@ -60,6 +60,7 @@ public class ViewTasksActivity extends AppCompatActivity {
 
                     final String title = task.getTitle();
                     final String price = task.getPrice();
+                    final String tags = task.getTags();
                     final String description = task.getDescription();
                     final String author = task.getAuthor();
 
@@ -74,6 +75,7 @@ public class ViewTasksActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), ViewSingleTask.class);
                             intent.putExtra("TITLE",title);
                             intent.putExtra("PRICE",price);
+                            intent.putExtra("TAGS", tags);
                             intent.putExtra("DESCRIPTION",description);
                             intent.putExtra("AUTHOR",author);
                             startActivity(intent);
@@ -93,7 +95,7 @@ public class ViewTasksActivity extends AppCompatActivity {
     //Returns a formatted String for proper display of tasks on this page
     public String formatTaskData(Task task){
         return "<b>Task Title</b>: " + task.getTitle() + "<br><b>Task Description</b>: "
-                + task.getDescription() + "<br><b>Task Payment</b>: " + task.getPrice();
+                + task.getDescription() + "<br><b>Task Tags</b>: " + task.getTags() + "<br><b>Task Payment</b>: " + task.getPrice();
     }
 
 }
