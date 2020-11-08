@@ -1,37 +1,33 @@
 package com.example.csci3130groupproject;
 
-        import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SubmitTaskActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference taskNameRef = database.getReference("taskName");
-    DatabaseReference taskDescRef = database.getReference("taskDesc");
-    DatabaseReference taskPriceRef = database.getReference("taskPrice");
+    DatabaseReference databaseReference = database.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_task);
+
+        this.addTags();
     }
-    protected void initializeFirebase(){
-        this.database = FirebaseDatabase.getInstance();
-        taskNameRef = database.getReference("taskName");
-        taskDescRef = database.getReference("taskDesc");
-        taskPriceRef = database.getReference("taskPrice");
-    }
+
     //this grabs the task title from the appropriate textview
     protected String get_task_title() {
         EditText taskTitleTextBox = (EditText) findViewById(R.id.edittext_taskTitle);
@@ -51,34 +47,40 @@ public class SubmitTaskActivity extends AppCompatActivity {
         return price;
     }
     //this will add the strings from the textview to the database
-    protected void add_new_task_to_firebase(String title, String desc,String price){
-        this.taskNameRef.push().setValue(title);
-        this.taskDescRef.push().setValue(desc);
-        this.taskPriceRef.push().setValue(price);
+    protected void add_new_task_to_firebase(String title, String desc, String tags, String price, String employerUsername){
+        Task newTask = new Task(title,desc,tags,price,employerUsername);
+        databaseReference = databaseReference.child("Tasks");
+        databaseReference.push().setValue(newTask);
+    }
+
+    //This will add the different tags to the tagspinner
+    protected void addTags(){
+        Spinner tagList = (Spinner)findViewById(R.id.tagList);
+        List<String> tags = new ArrayList<String>();
+        tags.add("Lawn Care");
+        tags.add("House work");
+        tags.add("Construction");
+        tags.add("Moving");
+        tags.add("Labour");
+        @SuppressLint("ResourceType")ArrayAdapter<String> tagListAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, tags);
+        tagListAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        tagList.setAdapter(tagListAdapter);
+    }
+
+    protected String get_task_tags(){
+        Spinner tagList = (Spinner)findViewById(R.id.tagList);
+        String tagText = tagList.getSelectedItem().toString();
+        return tagText;
     }
 
     public void onClick(View view){
         String title = get_task_title();
         String desc = get_task_desc();
         String price = get_task_price();
-        this.add_new_task_to_firebase(title,desc,price);
-        startActivity(new Intent(getApplicationContext(), TaskSubmitted.class));
+        String tags = get_task_tags();
+        //Add a get_author() method that will grab the username of person submitting task
+        String author = "EmployerUsername";
+        this.add_new_task_to_firebase(title,desc,tags,price, author);
+        startActivity(new Intent(getApplicationContext(), EmployerHomepageActivity.class));
     }
-    /* this is an older method to test if the data is being properly stored in the database
-    public void testFirebase() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference taskNameRef = database.getReference("taskName");
-        taskNameRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue().toString();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    } */
-
 }
