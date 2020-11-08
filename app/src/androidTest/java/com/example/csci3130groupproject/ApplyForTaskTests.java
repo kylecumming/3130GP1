@@ -198,7 +198,7 @@ public class ApplyForTaskTests {
         appCompatButton4.perform(click());
 
         ViewInteraction button = onView(
-                allOf(withText("Task Title: TestTitle\nTask Description: This is a description\nTask Payment: 100"),
+                allOf(withText("Task Title: TestTitle\nTask Description: This is a description\nTask Tags: Labour\nTask Payment: 100"),
                         childAtPosition(
                                 allOf(withId(R.id.linearlayout_tasks),
                                         childAtPosition(
