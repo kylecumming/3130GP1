@@ -68,18 +68,18 @@
 
     <EditText
         android:id="@+id/edittextmulti_taskDescription"
-        android:layout_width="320dp"
-        android:layout_height="202dp"
+        android:layout_width="315dp"
+        android:layout_height="157dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Enter task description"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext_taskTitle"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintVertical_bias="0.123" />
 
     <TextView
         android:id="@+id/textview_taskPayment"
@@ -100,6 +100,8 @@
         android:id="@+id/edittext_taskPayment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="530dp"
+        android:layout_marginBottom="156dp"
         android:ems="10"
         android:hint="Enter amount $"
         android:inputType="textPersonName"
@@ -107,14 +109,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittextmulti_taskDescription"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_submitTask"
         android:layout_width="204dp"
         android:layout_height="68dp"
         android:backgroundTint="#24C1E8"
+        android:onClick="onClick"
         android:text="Submit Task"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,7 +124,37 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext_taskPayment"
-        app:layout_constraintVertical_bias="0.509"
-        android:onClick="onClick"/>
+        app:layout_constraintVertical_bias="0.509" />
+
+    <TextView
+        android:id="@+id/TaskTags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="290dp"
+        android:text="Task tags:"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittextmulti_taskDescription" />
+
+    <Spinner
+        android:id="@+id/tagList"
+        android:layout_width="307dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/textview_taskPayment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TaskTags"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

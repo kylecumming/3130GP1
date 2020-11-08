@@ -1,5 +1,7 @@
 package com.example.csci3130groupproject;
 
+import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
@@ -12,11 +14,15 @@ import com.google.firebase.database.ValueEventListener;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -40,6 +46,9 @@ public class SubmitTaskTest {
         onView(withId(R.id.button_homepageSubmitTask)).perform(click());
         onView(withId(R.id.edittext_taskTitle)).perform(typeText("TestTitle"));
         onView(withId(R.id.edittextmulti_taskDescription)).perform(typeText("This is a description"),closeSoftKeyboard());
+        //test for tags spinner
+        onView(withId(R.id.tagList)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("House work"))).perform(click());
         onView(withId(R.id.edittext_taskPayment)).perform(typeText("100"), closeSoftKeyboard());
         onView(withId(R.id.button_submitTask)).perform(click());
         FirebaseDatabase database = FirebaseDatabase.getInstance();

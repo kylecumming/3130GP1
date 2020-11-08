@@ -2,11 +2,12 @@ package com.example.csci3130groupproject;
 
 public class Task {
 
-    private String title, description, price, author;
+    private String title, description, tags, price, author;
 
-    public Task(String title, String description, String price, String author){
+    public Task(String title, String description, String tags, String price, String author){
         this.title = title;
         this.description = description;
+        this.tags = tags;
         this.price = price;
         this.author = author;
     }
@@ -19,6 +20,9 @@ public class Task {
     public void setDescription(String description){
         this.description = description;
     }
+    public void setTags(String tags){
+        this.tags = tags;
+    }
     public void setPrice(String price){
         this.price = price;
     }
@@ -30,6 +34,9 @@ public class Task {
     }
     public String getDescription(){
         return this.description;
+    }
+    public String getTags(){
+        return this.tags;
     }
     public String getPrice(){
         return this.price;
