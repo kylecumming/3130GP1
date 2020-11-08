@@ -55,16 +55,16 @@ public class SubmitTaskActivity extends AppCompatActivity {
 
     //This will add the different tags to the tagspinner
     protected void addTags(){
-        Spinner tagList = (Spinner)findViewById(R.id.tagList);
-        List<String> tags = new ArrayList<String>();
-        tags.add("Lawn Care");
-        tags.add("House work");
-        tags.add("Construction");
-        tags.add("Moving");
-        tags.add("Labour");
-        @SuppressLint("ResourceType")ArrayAdapter<String> tagListAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, tags);
-        tagListAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        tagList.setAdapter(tagListAdapter);
+            Spinner tagList = (Spinner)findViewById(R.id.tagList);
+            List<String> tags = new ArrayList<String>();
+            tags.add("Lawn Care");
+            tags.add("House work");
+            tags.add("Construction");
+            tags.add("Moving");
+            tags.add("Labour");
+            @SuppressLint("ResourceType")ArrayAdapter<String> tagListAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, tags);
+            tagListAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+            tagList.setAdapter(tagListAdapter);
     }
 
     protected String get_task_tags(){

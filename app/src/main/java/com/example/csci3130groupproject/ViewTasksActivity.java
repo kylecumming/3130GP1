@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,6 +67,7 @@ public class ViewTasksActivity extends AppCompatActivity {
 
                     displayTasks.addView(singleTask);//Add new button to LinearLayout
 
+
                     /* when the a button is clicked, this onClick method starts the "ViewSingleTask"
                      * activity, and passes over the appropriate data using the putExtra() method.
                      */
@@ -89,8 +91,43 @@ public class ViewTasksActivity extends AppCompatActivity {
 
             }
         });
+        //Searching for inputted word in the ViewTasksActivity
+       final SearchView searchView = (SearchView)findViewById(R.id.searchTasks);
+       final CharSequence query = searchView.getQuery();
+       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+           @Override
+           public boolean onQueryTextSubmit(String query) {
+               for(int i = 0;i < displayTasks.getChildCount();i++){
+                   Button button = (Button) displayTasks.getChildAt(i);
+                   if(button.getText().toString().contains(query)){
+                       button.setVisibility(View.VISIBLE);
+                   }
+                   else{
+                       button.setVisibility(View.GONE);
+                   }
+               }
+               return false;
+           }
+
+           @Override
+           public boolean onQueryTextChange(String newText) {
+               for(int i = 0;i < displayTasks.getChildCount();i++){
+                   Button button = (Button) displayTasks.getChildAt(i);
+                   if(button.getText().toString().contains(query)){
+                       button.setVisibility(View.VISIBLE);
+                   }
+                   else{
+                       button.setVisibility(View.GONE);
+                   }
+               }
+               return false;
+           }
+       });
 
     }
+
+
+
 
     //Returns a formatted String for proper display of tasks on this page
     public String formatTaskData(Task task){
