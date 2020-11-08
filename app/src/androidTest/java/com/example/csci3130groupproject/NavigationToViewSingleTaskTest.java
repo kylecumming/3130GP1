@@ -64,8 +64,8 @@ public class NavigationToViewSingleTaskTest {
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                9),
-                        isDisplayed()));
+        9),
+        isDisplayed()));
         appCompatEditText.perform(replaceText("exampleEmployee@gmail.com"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
