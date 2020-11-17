@@ -71,7 +71,9 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
     private void launchViewApplicationsActivity(String username){
         Intent intent = new Intent(this, ViewApplicationsActivity.class);
         intent.putExtra("username", username);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     private void AcceptApplication(final String title, final String applicant, final String author){

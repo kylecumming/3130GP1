@@ -33,16 +33,10 @@ public class SubmitTaskTest {
             new ActivityScenarioRule<>(MainActivity.class);
     @Test
     public void taskInFirebase(){
-        onView(withId(R.id.button_register)).perform(click());
-        onView(withId(R.id.button_employer)).perform(click());
-        onView(withId(R.id.edittext_emailEmployer)).perform(typeText("exampleEmployer@gmail.com"));
-        onView(withId(R.id.edittext_passwordEmployer)).perform(typeText("employerpassword123"),closeSoftKeyboard());
-        onView(withId(R.id.edittext_usernameEmployer)).perform(typeText("Employ13"),closeSoftKeyboard());
-        onView(withId(R.id.edittext_monthEmployer)).perform(typeText("03"));
-        onView(withId(R.id.edittext_dayEmployer)).perform(typeText("11"));
-        onView(withId(R.id.edittext_yearEmployer)).perform(typeText("1999"),closeSoftKeyboard());
-        //Add in select radio button for gender
-        onView(withId(R.id.button_signUpEmployer)).perform(click());
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.edittext_username)).perform(typeText("TestEmployerBot"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"));
+        onView(withId(R.id.button_finalLogin)).perform(click());
         onView(withId(R.id.button_homepageSubmitTask)).perform(click());
         onView(withId(R.id.edittext_taskTitle)).perform(typeText("TestTitle"));
         onView(withId(R.id.edittextmulti_taskDescription)).perform(typeText("This is a description"),closeSoftKeyboard());

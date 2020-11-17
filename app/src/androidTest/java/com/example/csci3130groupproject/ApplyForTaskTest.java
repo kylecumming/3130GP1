@@ -30,13 +30,13 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class NavigationToViewSingleTaskTest {
+public class ApplyForTaskTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void navigationToViewSingleTaskTest() {
+    public void applyForTaskTest() {
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.button_login), withText("Login"),
                         childAtPosition(
@@ -96,7 +96,17 @@ public class NavigationToViewSingleTaskTest {
                                                 0)),
                                 0)));
         button.perform(scrollTo(), click());
-        onView(withId(R.id.buttonReturn)).check(matches(isDisplayed()));
+
+        ViewInteraction appCompatButton4 = onView(
+                allOf(withId(R.id.buttonApplyForTask), withText("Apply"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                4),
+                        isDisplayed()));
+        appCompatButton4.perform(click());
+        onView(withText("You have successfully applied for this task!")).check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(

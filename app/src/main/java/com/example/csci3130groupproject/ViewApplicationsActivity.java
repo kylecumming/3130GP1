@@ -75,7 +75,9 @@ public class ViewApplicationsActivity extends AppCompatActivity {
                                 intent.putExtra("TITLE", title);
                                 intent.putExtra("APPLICANT", applicant);
                                 intent.putExtra("AUTHOR", username);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
+                                finish();
                             }
                         });
 

@@ -60,16 +60,10 @@ public class GeneralNavigationTests {
 
     @Test
     public void submitTaskButtonBringsToSubmitTaskActivity(){
-        onView(withId(R.id.button_register)).perform(click());
-        onView(withId(R.id.button_employer)).perform(click());
-        onView(withId(R.id.edittext_emailEmployer)).perform(typeText("exampleEmployer@gmail.com"));
-        onView(withId(R.id.edittext_passwordEmployer)).perform(typeText("employerpassword123"),closeSoftKeyboard());
-        onView(withId(R.id.edittext_usernameEmployer)).perform(typeText("Employ13"),closeSoftKeyboard());
-        onView(withId(R.id.edittext_monthEmployer)).perform(typeText("03"));
-        onView(withId(R.id.edittext_dayEmployer)).perform(typeText("11"));
-        onView(withId(R.id.edittext_yearEmployer)).perform(typeText("1999"),closeSoftKeyboard());
-        //Add in select radio button for gender
-        onView(withId(R.id.button_signUpEmployer)).perform(click());
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.edittext_username)).perform(typeText("TestEmployerBot"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
+        onView(withId(R.id.button_finalLogin)).perform(click());
         onView(withId(R.id.button_homepageSubmitTask)).perform(click());
         onView(withId(R.id.button_submitTask)).check(matches(isDisplayed()));
     }
@@ -91,32 +85,20 @@ public class GeneralNavigationTests {
 
     @Test
     public void viewTasksButtonBringsToViewTasksPage(){
-        onView(withId(R.id.button_register)).perform(click());
-        onView(withId(R.id.button_employee)).perform(click());
-        onView(withId(R.id.edittext_emailEmployee)).perform(typeText("exampleEmployee@gmail.com"));
-        onView(withId(R.id.edittext_passwordEmployee)).perform(typeText("employeepassword321"),closeSoftKeyboard());
-        onView(withId(R.id.edittext_usernameEmployee)).perform(typeText("Employee5"),closeSoftKeyboard());
-        onView(withId(R.id.edittext_monthEmployee)).perform(typeText("09"));
-        onView(withId(R.id.edittext_dayEmployee)).perform(typeText("28"));
-        onView(withId(R.id.edittext_yearEmployee)).perform(typeText("2000"),closeSoftKeyboard());
-        //Add in select radio button for gender
-        onView(withId(R.id.button_signUpEmployee)).perform(click());
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.edittext_username)).perform(typeText("TestEmployeeBot"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
+        onView(withId(R.id.button_finalLogin)).perform(click());
         onView(withId(R.id.button_viewtasks)).perform(click());
         onView(withId(R.id.scrollview_tasks)).check(matches(isDisplayed()));
     }
 
     @Test
     public void viewApplicationsButtonBringsToViewApplicationsPage(){
-        onView(withId(R.id.button_register)).perform(click());
-        onView(withId(R.id.button_employer)).perform(click());
-        onView(withId(R.id.edittext_emailEmployer)).perform(typeText("exampleEmployer@gmail.com"));
-        onView(withId(R.id.edittext_passwordEmployer)).perform(typeText("employerpassword123"),closeSoftKeyboard());
-        onView(withId(R.id.edittext_usernameEmployer)).perform(typeText("Employ13"),closeSoftKeyboard());
-        onView(withId(R.id.edittext_monthEmployer)).perform(typeText("03"));
-        onView(withId(R.id.edittext_dayEmployer)).perform(typeText("11"));
-        onView(withId(R.id.edittext_yearEmployer)).perform(typeText("1999"),closeSoftKeyboard());
-        //Add in select radio button for gender
-        onView(withId(R.id.button_signUpEmployer)).perform(click());
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.edittext_username)).perform(typeText("TestEmployerBot"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
+        onView(withId(R.id.button_finalLogin)).perform(click());
         onView(withId(R.id.button_viewApplications)).perform(click());
         onView(withId(R.id.textview_quickcashApplications)).check(matches(isDisplayed()));
     }
