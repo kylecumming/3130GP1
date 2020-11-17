@@ -8,12 +8,12 @@ import android.view.View;
 
 public class EmployeeHomepageActivity extends AppCompatActivity {
 
-    final String username = getIntent().getStringExtra("username");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_homepage);
+
+        final String username = getIntent().getStringExtra("username");
 
         findViewById(R.id.button_viewtasks).setOnClickListener(new View.OnClickListener() {
             @Override
