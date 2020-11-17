@@ -97,6 +97,8 @@ public class User {
 
     public String getUsername() {return username;}
 
+    public String getPassword() {return password;}
+
     public void setDob(ArrayList<String> dob) {this.dob = dob;}
 
     public void setEmail(String email) {this.email = email;}
@@ -104,5 +106,8 @@ public class User {
     public void setGender(String gender) {this.gender = gender;}
 
     public void setUsername(String username) {this.username = username;}
+
+    public void setPassword(String password) { this.password = password;}
+
     public void setType(Boolean type){this.type = type;}
 }
