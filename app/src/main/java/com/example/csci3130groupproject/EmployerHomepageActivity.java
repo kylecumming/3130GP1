@@ -9,6 +9,8 @@ import android.widget.Button;
 
 public class EmployerHomepageActivity extends AppCompatActivity {
 
+    final String username = getIntent().getStringExtra("username");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +37,13 @@ public class EmployerHomepageActivity extends AppCompatActivity {
 
     private void launchSubmitTaskActivity(){
         Intent intent = new Intent(this, SubmitTaskActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
     private void launchViewApplicationsActivity(){
         Intent intent = new Intent(this, ViewApplicationsActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 

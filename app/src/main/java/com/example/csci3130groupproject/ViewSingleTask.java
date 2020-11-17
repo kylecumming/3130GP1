@@ -24,13 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import static android.app.PendingIntent.getActivity;
-
 public class ViewSingleTask extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
+    final String username = getIntent().getStringExtra("username");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +41,7 @@ public class ViewSingleTask extends AppCompatActivity {
         final String tags = intent.getStringExtra("TAGS");
         final String description = intent.getStringExtra("DESCRIPTION");
         final String author = intent.getStringExtra("AUTHOR");
-        final String applicant = "EmployeeUsername"; //This will be changed to username of a signed in user
+        final String applicant = username;
 
         //Setting the data into TextViews on this activity
         TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
@@ -88,6 +85,7 @@ public class ViewSingleTask extends AppCompatActivity {
 
     private void launchViewTasksActivity(){
         Intent intent = new Intent(this, ViewTasksActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 

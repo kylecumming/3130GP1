@@ -25,6 +25,7 @@ public class ViewTasksActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allTasks = database.getReference("Tasks");
+    final String username = getIntent().getStringExtra("username");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,7 @@ public class ViewTasksActivity extends AppCompatActivity {
                             intent.putExtra("TAGS", tags);
                             intent.putExtra("DESCRIPTION",description);
                             intent.putExtra("AUTHOR",author);
+                            intent.putExtra("username", username);
                             startActivity(intent);
                         }
                     });

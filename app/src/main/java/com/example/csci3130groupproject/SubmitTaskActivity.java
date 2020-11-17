@@ -19,6 +19,7 @@ import java.util.List;
 public class SubmitTaskActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
+    final String username = getIntent().getStringExtra("username");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +80,10 @@ public class SubmitTaskActivity extends AppCompatActivity {
         String price = get_task_price();
         String tags = get_task_tags();
         //Add a get_author() method that will grab the username of person submitting task
-        String author = "EmployerUsername";
-        this.add_new_task_to_firebase(title,desc,tags,price, author);
-        startActivity(new Intent(getApplicationContext(), EmployerHomepageActivity.class));
+        String author = username;
+        this.add_new_task_to_firebase(title,desc,tags,price,author);
+        Intent intent = new Intent(this, EmployerHomepageActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
     }
 }

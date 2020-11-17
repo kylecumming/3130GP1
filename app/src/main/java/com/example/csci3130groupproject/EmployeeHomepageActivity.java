@@ -8,6 +8,8 @@ import android.view.View;
 
 public class EmployeeHomepageActivity extends AppCompatActivity {
 
+    final String username = getIntent().getStringExtra("username");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,7 @@ public class EmployeeHomepageActivity extends AppCompatActivity {
 
     private void launchViewTasksActivity(){
         Intent intent = new Intent(this, ViewTasksActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 

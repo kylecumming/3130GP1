@@ -25,7 +25,7 @@ public class ViewApplicationsActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allApplications = database.getReference("Applications");
     //Change this variable to the username of the current employer on the page
-    String employerUsername = "EmployerUsername";
+    final String username = getIntent().getStringExtra("username");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class ViewApplicationsActivity extends AppCompatActivity {
                 for(DataSnapshot storedApplications : snapshot.getChildren()){
                     TaskApplication application = storedApplications.getValue(TaskApplication.class);
                     //Only display the Applications related to this Employer i.e. applications for their tasks
-                    if(employerUsername.equals(application.getAuthor())){
+                    if(username.equals(application.getAuthor())){
                         Button singleApplication = new Button(getApplicationContext());
 
                         //Display application data inside button
@@ -75,7 +75,7 @@ public class ViewApplicationsActivity extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), ViewSingleApplicationActivity.class);
                                 intent.putExtra("TITLE", title);
                                 intent.putExtra("APPLICANT", applicant);
-                                intent.putExtra("AUTHOR", "EmployerUsername"); //Update to use Employer's username
+                                intent.putExtra("username", username);
                                 startActivity(intent);
                             }
                         });
