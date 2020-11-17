@@ -94,7 +94,9 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
     private void launchEmployeeHomepageActivity(String username){
         Intent intent = new Intent(this, EmployeeHomepageActivity.class);
         intent.putExtra("username", username);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
 }
