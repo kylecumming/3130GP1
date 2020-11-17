@@ -27,7 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 public class ViewSingleTask extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
-    final String username = getIntent().getStringExtra("username");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,7 @@ public class ViewSingleTask extends AppCompatActivity {
         final String tags = intent.getStringExtra("TAGS");
         final String description = intent.getStringExtra("DESCRIPTION");
         final String author = intent.getStringExtra("AUTHOR");
-        final String applicant = username;
+        final String applicant = getIntent().getStringExtra("username");
 
         //Setting the data into TextViews on this activity
         TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
@@ -58,7 +57,7 @@ public class ViewSingleTask extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchViewTasksActivity();
+                launchViewTasksActivity(applicant);
             }
         });
 
@@ -83,7 +82,7 @@ public class ViewSingleTask extends AppCompatActivity {
 
     }
 
-    private void launchViewTasksActivity(){
+    private void launchViewTasksActivity(String username){
         Intent intent = new Intent(this, ViewTasksActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);

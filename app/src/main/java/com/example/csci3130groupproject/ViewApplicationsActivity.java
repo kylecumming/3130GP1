@@ -24,14 +24,13 @@ public class ViewApplicationsActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allApplications = database.getReference("Applications");
-    //Change this variable to the username of the current employer on the page
-    final String username = getIntent().getStringExtra("username");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_applications);
 
+        final String username = getIntent().getStringExtra("username");
         final LinearLayout displayApplications = (LinearLayout) findViewById(R.id.linearlayout_applications);
 
         allApplications.addValueEventListener(new ValueEventListener() {
@@ -75,14 +74,12 @@ public class ViewApplicationsActivity extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), ViewSingleApplicationActivity.class);
                                 intent.putExtra("TITLE", title);
                                 intent.putExtra("APPLICANT", applicant);
-                                intent.putExtra("username", username);
+                                intent.putExtra("AUTHOR", username);
                                 startActivity(intent);
                             }
                         });
 
                     }
-                    else
-                        continue;
                 }
             }
 

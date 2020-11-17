@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -19,14 +20,30 @@ import java.util.List;
 public class SubmitTaskActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
-    final String username = getIntent().getStringExtra("username");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_task);
 
+        final String username = getIntent().getStringExtra("username");
+
         this.addTags();
+
+        Button submitTask = (Button) findViewById(R.id.button_submitTask);
+        submitTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String title = get_task_title();
+                String desc = get_task_desc();
+                String price = get_task_price();
+                String tags = get_task_tags();
+                //Add a get_author() method that will grab the username of person submitting task
+                String author = username;
+                add_new_task_to_firebase(title,desc,tags,price,author);
+                launchEmployerHomepageActivity(username);
+            }
+        });
     }
 
     //this grabs the task title from the appropriate textview
@@ -74,14 +91,7 @@ public class SubmitTaskActivity extends AppCompatActivity {
         return tagText;
     }
 
-    public void onClick(View view){
-        String title = get_task_title();
-        String desc = get_task_desc();
-        String price = get_task_price();
-        String tags = get_task_tags();
-        //Add a get_author() method that will grab the username of person submitting task
-        String author = username;
-        this.add_new_task_to_firebase(title,desc,tags,price,author);
+    public void launchEmployerHomepageActivity(String username){
         Intent intent = new Intent(this, EmployerHomepageActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);

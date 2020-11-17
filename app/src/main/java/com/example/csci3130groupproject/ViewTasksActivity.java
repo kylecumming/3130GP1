@@ -25,7 +25,6 @@ public class ViewTasksActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allTasks = database.getReference("Tasks");
-    final String username = getIntent().getStringExtra("username");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,7 @@ public class ViewTasksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_tasks);
 
         final LinearLayout displayTasks = (LinearLayout) findViewById(R.id.linearlayout_tasks);
+        final String username = getIntent().getStringExtra("username");
 
         //Displays all tasks currently stored in Firebase
         allTasks.addValueEventListener(new ValueEventListener() {

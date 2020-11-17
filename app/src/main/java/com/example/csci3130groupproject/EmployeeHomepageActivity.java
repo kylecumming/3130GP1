@@ -18,13 +18,13 @@ public class EmployeeHomepageActivity extends AppCompatActivity {
         findViewById(R.id.button_viewtasks).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchViewTasksActivity();
+                launchViewTasksActivity(username);
             }
         });
 
     }
 
-    private void launchViewTasksActivity(){
+    private void launchViewTasksActivity(String username){
         Intent intent = new Intent(this, ViewTasksActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);

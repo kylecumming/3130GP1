@@ -43,7 +43,7 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchViewApplicationsActivity();
+                launchViewApplicationsActivity(author);
             }
         });
 
@@ -68,8 +68,9 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
 
     }
 
-    private void launchViewApplicationsActivity(){
+    private void launchViewApplicationsActivity(String username){
         Intent intent = new Intent(this, ViewApplicationsActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 

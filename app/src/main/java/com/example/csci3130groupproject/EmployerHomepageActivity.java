@@ -9,12 +9,12 @@ import android.widget.Button;
 
 public class EmployerHomepageActivity extends AppCompatActivity {
 
-    final String username = getIntent().getStringExtra("username");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employer_homepage);
+
+        final String username = getIntent().getStringExtra("username");
 
         Button createTask = (Button) findViewById(R.id.button_homepageSubmitTask);
         Button viewApplications = (Button) findViewById(R.id.button_viewApplications);
@@ -22,26 +22,26 @@ public class EmployerHomepageActivity extends AppCompatActivity {
         createTask.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                launchSubmitTaskActivity();
+                launchSubmitTaskActivity(username);
             }
         });
 
         viewApplications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchViewApplicationsActivity();
+                launchViewApplicationsActivity(username);
             }
         });
 
     }
 
-    private void launchSubmitTaskActivity(){
+    private void launchSubmitTaskActivity(String username){
         Intent intent = new Intent(this, SubmitTaskActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
 
-    private void launchViewApplicationsActivity(){
+    private void launchViewApplicationsActivity(String username){
         Intent intent = new Intent(this, ViewApplicationsActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
