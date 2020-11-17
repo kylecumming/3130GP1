@@ -63,7 +63,7 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
                 if(us.isValid()){
                     databaseReference = databaseReference.child("Users");
                     databaseReference.push().setValue(us);
-                    launchEmployeeHomepageActivity();
+                    launchEmployeeHomepageActivity(us.getUsername());
                 }
                 else{
                     checkErrors(us);
@@ -91,8 +91,9 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
             findViewById((R.id.yearError)).setVisibility(View.VISIBLE);
         }
     }
-    private void launchEmployeeHomepageActivity(){
+    private void launchEmployeeHomepageActivity(String username){
         Intent intent = new Intent(this, EmployeeHomepageActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 

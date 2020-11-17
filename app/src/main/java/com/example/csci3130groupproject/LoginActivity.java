@@ -22,8 +22,6 @@ import java.util.ArrayList;
 public class LoginActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allUsers = database.getReference("Users");
-    User currentUser = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +47,22 @@ public class LoginActivity extends AppCompatActivity {
         allUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User currentUser = null;
                 for(DataSnapshot storedUsers : snapshot.getChildren()){
                     User user = storedUsers.getValue(User.class);
-                    if(user.getUsername().equals(username) && user.getPassword().equals(password)){
-                        if(user.getType()){
-                            launchEmployerHomepageActivity();
-                        }
-                        else{
-                            launchEmployeeHomepageActivity();
-                        }
+                    if(user.getUsername().equals(username) && user.getPassword().equals(password))
+                        currentUser = user;
+                }
+                if(currentUser != null){
+                    if(currentUser.getType()){
+                        launchEmployerHomepageActivity(currentUser.getUsername());
                     }
-
+                    else{
+                        launchEmployeeHomepageActivity(currentUser.getUsername());
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "User not found in database. Please sign up first!", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -70,13 +73,15 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void launchEmployerHomepageActivity(){
+    private void launchEmployerHomepageActivity(String username){
         Intent intent = new Intent(this, EmployerHomepageActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
-    private void launchEmployeeHomepageActivity(){
+    private void launchEmployeeHomepageActivity(String username){
         Intent intent = new Intent(this, EmployeeHomepageActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 

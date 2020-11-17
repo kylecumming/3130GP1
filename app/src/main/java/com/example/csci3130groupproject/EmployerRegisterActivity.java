@@ -63,7 +63,7 @@ public class EmployerRegisterActivity extends AppCompatActivity {
                 if(us.isValid()){
                     databaseReference = databaseReference.child("Users");
                     databaseReference.push().setValue(us);
-                    launchEmployerHomepageActivity();
+                    launchEmployerHomepageActivity(us.getUsername());
                 }
                 else{
                     checkErrors(us);
@@ -91,8 +91,9 @@ public class EmployerRegisterActivity extends AppCompatActivity {
             findViewById((R.id.yearError2)).setVisibility(View.VISIBLE);
         }
     }
-    private void launchEmployerHomepageActivity(){
+    private void launchEmployerHomepageActivity(String username){
         Intent intent = new Intent(this, EmployerHomepageActivity.class);
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
