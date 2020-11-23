@@ -27,7 +27,7 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_task_in_progress);
 
-        //Using intent to grab the appropriate data from the list of tasks in ViewTasksActivity.java
+        //Using intent to grab the appropriate data from the list of tasks in ViewTasksInProgressActivity.java
         Intent intent = getIntent();
         final String title = intent.getStringExtra("TITLE");
         final String price = intent.getStringExtra("PRICE");

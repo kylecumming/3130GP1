@@ -64,7 +64,6 @@ public class ViewCompletedTasksActivity extends AppCompatActivity {
                     final String price = task.getPrice();
                     final String tags = task.getTags();
                     final String description = task.getDescription();
-                    final String author = task.getAuthor();
 
                     displayTasks.addView(singleTask);//Add new button to LinearLayout
 
@@ -75,12 +74,11 @@ public class ViewCompletedTasksActivity extends AppCompatActivity {
                     singleTask.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(getApplicationContext(), ViewSingleTask.class);
+                            Intent intent = new Intent(getApplicationContext(), ViewCompletedTask.class);
                             intent.putExtra("TITLE",title);
                             intent.putExtra("PRICE",price);
                             intent.putExtra("TAGS", tags);
                             intent.putExtra("DESCRIPTION",description);
-                            intent.putExtra("AUTHOR",author);
                             intent.putExtra("username", username);
                             startActivity(intent);
                         }
@@ -101,5 +99,4 @@ public class ViewCompletedTasksActivity extends AppCompatActivity {
         return "<b>Task Title</b>: " + task.getTitle() + "<br><b>Task Description</b>: "
                 + task.getDescription() + "<br><b>Task Tags</b>: " + task.getTags() + "<br><b>Task Payment</b>: " + task.getPrice();
     }
-
 }
