@@ -1,6 +1,17 @@
 package com.example.csci3130groupproject;
 
+import android.os.Bundle;
+import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -110,6 +121,16 @@ public class GeneralNavigationTests {
         onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
         onView(withId(R.id.button_finalLogin)).perform(click());
         onView(withId(R.id.button_viewAcceptedTasks)).perform(click());
+        onView(withText("My Tasks in Progress")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void viewTasksInProgressPageFromEmployerHomepage(){
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.edittext_username)).perform(typeText("TestEmployerBot"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
+        onView(withId(R.id.button_finalLogin)).perform(click());
+        onView(withId(R.id.button_viewMyTasksEmployer)).perform(click());
         onView(withText("My Tasks in Progress")).check(matches(isDisplayed()));
     }
 }
