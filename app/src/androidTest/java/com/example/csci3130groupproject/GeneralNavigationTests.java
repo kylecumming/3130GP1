@@ -131,6 +131,6 @@ public class GeneralNavigationTests {
         onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
         onView(withId(R.id.button_finalLogin)).perform(click());
         onView(withId(R.id.button_viewMyTasksEmployer)).perform(click());
-        onView(withText("My Tasks in Progress")).check(matches(isDisplayed()));
+        onView(withText("Completed Tasks")).check(matches(isDisplayed()));
     }
 }

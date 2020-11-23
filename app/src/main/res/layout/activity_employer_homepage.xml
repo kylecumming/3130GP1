@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/button_viewtasksEmployer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EmployerHomepageActivity">
@@ -55,4 +56,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_homepageSubmitTask"
         app:layout_constraintVertical_bias="0.112" />
+
+    <Button
+        android:id="@+id/button_viewMyTasksEmployer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View My Tasks"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_viewApplications"
+        app:layout_constraintVertical_bias="0.212" />
 </androidx.constraintlayout.widget.ConstraintLayout>

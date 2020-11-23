@@ -18,6 +18,7 @@ public class EmployerHomepageActivity extends AppCompatActivity {
 
         Button createTask = (Button) findViewById(R.id.button_homepageSubmitTask);
         Button viewApplications = (Button) findViewById(R.id.button_viewApplications);
+        Button viewTasks = (Button) findViewById(R.id.button_viewMyTasksEmployer);
 
         createTask.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -33,6 +34,13 @@ public class EmployerHomepageActivity extends AppCompatActivity {
             }
         });
 
+        viewTasks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchViewCompletedTasksActivity(username);
+            }
+        });
+
     }
 
     private void launchSubmitTaskActivity(String username){
@@ -43,6 +51,12 @@ public class EmployerHomepageActivity extends AppCompatActivity {
 
     private void launchViewApplicationsActivity(String username){
         Intent intent = new Intent(this, ViewApplicationsActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+
+    private void launchViewCompletedTasksActivity(String username){
+        Intent intent = new Intent(this, ViewCompletedTasksActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
