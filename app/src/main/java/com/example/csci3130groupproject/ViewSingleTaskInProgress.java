@@ -1,5 +1,6 @@
 package com.example.csci3130groupproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +11,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class ViewSingleTaskInProgress extends AppCompatActivity {
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference allTasks = database.getReference("Tasks");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +81,23 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void markTaskAsComplete(String title, String author){
-        
+    private void markTaskAsComplete(final String title, final String author){
+        allTasks.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot storedTask : snapshot.getChildren()){
+                    Task task = storedTask.getValue(Task.class);
+                    if(task.getAuthor().equals(author) && task.getTitle().equals(title)){
+                        storedTask.getRef().child("complete").setValue(true);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }

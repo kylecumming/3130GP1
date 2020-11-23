@@ -49,7 +49,8 @@ public class ViewTasksInProgressActivity extends AppCompatActivity {
                 for(DataSnapshot storedApplication : snapshot.getChildren()){
                     TaskApplication application = storedApplication.getValue(TaskApplication.class);
                     //When application is related to this user and Employer has approved (.getAccepted() == true)
-                    if(application.getApplicant().equals(username) && application.getAccepted() == true){
+                    if(application.getApplicant().equals(username) && application.getAccepted() == true
+                            || application.getAuthor().equals(username) && application.getAccepted() == true){
                         taskAuthor.add(application.getAuthor());
                         taskTitle.add(application.getTaskTitle());
                     }
@@ -131,8 +132,15 @@ public class ViewTasksInProgressActivity extends AppCompatActivity {
 
     //Returns a formatted String for proper display of tasks on this page
     public String formatTaskData(Task task){
+        String done;
+        if(task.getComplete() == false){
+            done = "Unfinished";
+        }
+        else
+            done = "Finished";
         return "<b>Task Title</b>: " + task.getTitle() + "<br><b>Task Description</b>: "
-                + task.getDescription() + "<br><b>Task Tags</b>: " + task.getTags() + "<br><b>Task Payment</b>: " + task.getPrice();
+                + task.getDescription() + "<br><b>Task Tags</b>: " + task.getTags() + "<br><b>Task Payment</b>: " + task.getPrice()
+                + "<br><b>Completion Status: " + done;
     }
 
 }

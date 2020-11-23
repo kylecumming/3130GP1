@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/button_finished"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
         android:background="#228C22"
         android:text="Mark as Complete"
         android:textColor="#FFFFFF"
