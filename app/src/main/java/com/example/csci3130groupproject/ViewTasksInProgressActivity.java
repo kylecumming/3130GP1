@@ -101,7 +101,7 @@ public class ViewTasksInProgressActivity extends AppCompatActivity {
                             singleTask.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent intent = new Intent(getApplicationContext(), ViewSingleTask.class);
+                                    Intent intent = new Intent(getApplicationContext(), ViewSingleTaskInProgress.class);
                                     intent.putExtra("TITLE",title);
                                     intent.putExtra("PRICE",price);
                                     intent.putExtra("TAGS", tags);

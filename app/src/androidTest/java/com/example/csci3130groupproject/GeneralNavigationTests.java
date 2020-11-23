@@ -112,5 +112,4 @@ public class GeneralNavigationTests {
         onView(withId(R.id.button_viewAcceptedTasks)).perform(click());
         onView(withText("My Tasks in Progress")).check(matches(isDisplayed()));
     }
-
 }
