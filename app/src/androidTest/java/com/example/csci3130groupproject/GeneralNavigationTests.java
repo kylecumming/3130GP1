@@ -102,4 +102,15 @@ public class GeneralNavigationTests {
         onView(withId(R.id.button_viewApplications)).perform(click());
         onView(withId(R.id.textview_quickcashApplications)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void viewAcceptedTaskApplicationsPageFromEmployeeHomepage(){
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.edittext_username)).perform(typeText("TestEmployeeBot"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
+        onView(withId(R.id.button_finalLogin)).perform(click());
+        onView(withId(R.id.button_viewAcceptedTasks)).perform(click());
+        onView(withText("My tasks")).check(matches(isDisplayed()));
+    }
+
 }
