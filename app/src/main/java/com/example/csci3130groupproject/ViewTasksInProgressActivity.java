@@ -49,8 +49,7 @@ public class ViewTasksInProgressActivity extends AppCompatActivity {
                 for(DataSnapshot storedApplication : snapshot.getChildren()){
                     TaskApplication application = storedApplication.getValue(TaskApplication.class);
                     //When application is related to this user and Employer has approved (.getAccepted() == true)
-                    if(application.getApplicant().equals(username) && application.getAccepted() == true
-                            || application.getAuthor().equals(username) && application.getAccepted() == true){
+                    if(application.getApplicant().equals(username) && application.getAccepted() == true){
                         taskAuthor.add(application.getAuthor());
                         taskTitle.add(application.getTaskTitle());
                     }

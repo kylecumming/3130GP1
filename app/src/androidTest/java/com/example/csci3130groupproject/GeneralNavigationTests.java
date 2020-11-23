@@ -104,7 +104,7 @@ public class GeneralNavigationTests {
     }
 
     @Test
-    public void viewAcceptedTaskApplicationsPageFromEmployeeHomepage(){
+    public void viewTasksInProgressPageFromEmployeeHomepage(){
         onView(withId(R.id.button_login)).perform(click());
         onView(withId(R.id.edittext_username)).perform(typeText("TestEmployeeBot"), closeSoftKeyboard());
         onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
