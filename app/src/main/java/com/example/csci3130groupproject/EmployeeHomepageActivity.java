@@ -22,10 +22,23 @@ public class EmployeeHomepageActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.button_viewAcceptedTasks).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchViewTasksInProgressActivity(username);
+            }
+        });
+
     }
 
     private void launchViewTasksActivity(String username){
         Intent intent = new Intent(this, ViewTasksActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+
+    private void launchViewTasksInProgressActivity(String username){
+        Intent intent = new Intent(this, ViewTasksInProgressActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
