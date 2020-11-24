@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewSingleApplicationActivity"></activity>
+        <activity android:name=".ViewCompletedTask"></activity>
+        <activity android:name=".ViewCompletedTasksActivity" />
+        <activity android:name=".ViewSingleTaskInProgress" />
+        <activity android:name=".ViewTasksInProgressActivity" />
+        <activity android:name=".ViewSingleApplicationActivity" />
         <activity android:name=".ViewApplicationsActivity" />
         <activity android:name=".ViewSingleTask" />
         <activity android:name=".ViewTasksActivity" />
