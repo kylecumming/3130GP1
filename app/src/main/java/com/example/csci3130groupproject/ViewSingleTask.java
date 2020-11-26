@@ -66,17 +66,49 @@ public class ViewSingleTask extends AppCompatActivity {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                storeApplicationOnFirebase(title, applicant, author);
-                AlertDialog.Builder applicationSubmitted = new AlertDialog.Builder(ViewSingleTask.this);
-                applicationSubmitted.setTitle("Application Success")
-                        .setMessage("You have successfully applied for this task!")
-                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-                applicationSubmitted.show();
+                DatabaseReference allApplications = databaseReference.child("Applications");
+                allApplications.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        boolean applicationExists = false;
+                        for(DataSnapshot storedApplication : snapshot.getChildren()){
+                            TaskApplication application = storedApplication.getValue(TaskApplication.class);
+                            if(application.getApplicant().equals(applicant) && application.getTaskTitle().equals(title))
+                                applicationExists = true;
+
+                        }
+                        if(applicationExists){
+                            AlertDialog.Builder noSubmission = new AlertDialog.Builder(ViewSingleTask.this);
+                            noSubmission.setTitle("Application Unsuccessful")
+                                    .setMessage("You have already applied for this task!")
+                                    .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    });
+                            noSubmission.show();
+                        }
+                        else{
+                            storeApplicationOnFirebase(title, applicant, author);
+                            AlertDialog.Builder applicationSubmitted = new AlertDialog.Builder(ViewSingleTask.this);
+                            applicationSubmitted.setTitle("Application Success")
+                                    .setMessage("You have successfully applied for this task!")
+                                    .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    });
+                            applicationSubmitted.show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
