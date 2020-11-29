@@ -1,17 +1,18 @@
 package com.example.csci3130groupproject;
-
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class User {
+public class User{
     protected String email;
     protected String username;
     protected String password;
     protected ArrayList<String> dob;
     protected String gender;
     protected Boolean type;
-
+    protected ArrayList<ArrayList<String>> reviews;
+    //review
     public User(){};
 
     public User(String email, String username, String password, ArrayList<String> dob, String gender, Boolean type) {
@@ -21,6 +22,10 @@ public class User {
         this.dob = dob;
         this.gender = gender;
         this.type = type;
+        reviews = new ArrayList<>();
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("title");arr.add("rating");arr.add("comment");
+        reviews.add(arr);
     }
 
     public Boolean passwordIsValid(){
@@ -86,6 +91,15 @@ public class User {
         return this.emailIsValid() && this.usernameIsValid() && this.passwordIsValid() && this.dobIsValid();
     }
 
+    //calculate average rating
+
+    //add review (task title, number rating, comments)
+    public void addReview(int rating, String taskTitle, String comment){
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add(taskTitle);arr.add(String.valueOf(rating));arr.add(comment);
+        reviews.add(arr);
+    }
+
     /* Getter / Setters */
     public ArrayList<String> getDob() {return dob;}
 
@@ -110,4 +124,10 @@ public class User {
     public void setPassword(String password) { this.password = password;}
 
     public void setType(Boolean type){this.type = type;}
+    public ArrayList<ArrayList<String>> getReviews(){//iterate reviews- display task, rating number and text
+        return reviews;
+    }
+    public void setReviews(ArrayList<ArrayList<String>> reviews){
+        this.reviews = reviews;
+    }
 }

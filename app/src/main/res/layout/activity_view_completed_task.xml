@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/submitReviewCheckBox"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewCompletedTask">
@@ -34,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash11"
-        app:layout_constraintVertical_bias="0.074"/>
+        app:layout_constraintVertical_bias="0.074" />
 
     <TextView
         android:id="@+id/textview_taskpriceEmployer"
@@ -62,7 +63,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_taskpriceEmployer"
-        app:layout_constraintVertical_bias="0.156"/>
+        app:layout_constraintVertical_bias="0.156" />
 
     <TextView
         android:id="@+id/textview_taskdescriptionEmployer"
@@ -117,5 +118,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.959" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="278dp"
+        android:layout_height="32dp"
+        android:text="Submit Review?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_return3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

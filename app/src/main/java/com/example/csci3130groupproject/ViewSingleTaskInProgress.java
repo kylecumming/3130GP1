@@ -9,7 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,11 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class ViewSingleTaskInProgress extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allTasks = database.getReference("Tasks");
-
+    DatabaseReference allUsers = database.getReference("Users");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +60,16 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
                 launchViewTasksInProgressActivity(applicant);
             }
         });
+        //Alert for submitting review
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final View submit_review_layout = getLayoutInflater().inflate(R.layout.submit_review_layout, null);
 
         Button markAsCompleted = (Button) findViewById(R.id.button_finished);
         markAsCompleted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                markTaskAsComplete(title, author);
-                AlertDialog.Builder taskCompleted = new AlertDialog.Builder(ViewSingleTaskInProgress.this);
+                final CheckBox reviewCheckbox = (CheckBox)findViewById(R.id.employeeReviewCheckbox);
+                final AlertDialog.Builder taskCompleted = new AlertDialog.Builder(ViewSingleTaskInProgress.this);
                 taskCompleted.setTitle("Task Completed")
                         .setMessage("You have successfully completed this task! Once " + author + " is notified, payment will process momentarily.")
                         .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
@@ -69,12 +78,25 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
                                 dialogInterface.dismiss();
                             }
                         });
+                builder.setTitle("Submit Review for: " + author)
+                        .setView(submit_review_layout)
+                        .setPositiveButton("Submit", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                RatingBar rb = (RatingBar)submit_review_layout.findViewById(R.id.ratingBar);
+                                EditText comment = (EditText) submit_review_layout.findViewById(R.id.reviewCommentText);
+                                submitReview(title, author, (int) rb.getRating(),comment.getText().toString());
+                                dialog.dismiss();
+                            }
+                        });
+                markTaskAsComplete(title, author);
                 taskCompleted.show();
+                if(reviewCheckbox.isChecked()){
+                    builder.show();
+                }
             }
         });
-
     }
-
     private void launchViewTasksInProgressActivity(String username){
         Intent intent = new Intent(this, ViewTasksInProgressActivity.class);
         intent.putExtra("username", username);
@@ -99,5 +121,29 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
             }
         });
     }
+    private void submitReview(final String title, final String author, final int rating, final String comment) {
+        allUsers.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (final DataSnapshot User : snapshot.getChildren()) {
+                    User user = User.getValue(User.class);
+                    if (user.getUsername().equals(author)) {
+                        Toast.makeText(getApplicationContext(), "User = Applicant", Toast.LENGTH_LONG).show();
+                        ArrayList<String> currReview = new ArrayList<>();
+                        currReview.add(title);
+                        currReview.add(String.valueOf(rating));
+                        currReview.add(comment);
+                        ArrayList<ArrayList<String>> tempReviews = (ArrayList<ArrayList<String>>) User.child("reviews").getValue();
+                        tempReviews.add(currReview);
+                        User.child("reviews").getRef().setValue(tempReviews);
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+    }
 }
