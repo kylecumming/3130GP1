@@ -32,26 +32,6 @@ public class UserTest {
         ArrayList<String> dob = new ArrayList<String>(){{add("asd");add("12");add("1999");}};
         User em1 = new User("test!@#@email.com", "testuser!@#","sample", dob, "M", false );
         User em2 =new User("test@email.com", "testuser123","sample123", dob, "M", false);
-        em1.addReview(4, "mow lawn","bad job");
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference allUsers = database.getReference("Users");
-        allUsers.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userFinal = new User();
-                for(DataSnapshot storedUser : snapshot.getChildren()){
-                    User user = storedUser.getValue(User.class);
-                    if(user.getEmail().equals("exampleEmployer@gmail.com"))
-                        userFinal = user;
-                }
-                System.out.println(userFinal.getReviews());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         System.out.println(em1.getReviews());
         assertTrue(em2.emailIsValid());
         assertFalse(em1.emailIsValid());
