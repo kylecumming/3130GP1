@@ -29,6 +29,13 @@ public class EmployeeHomepageActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.button_switchviewsEmployee).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchEmployerHomepageActivity(username);
+            }
+        });
+
     }
 
     private void launchViewTasksActivity(String username){
@@ -41,6 +48,14 @@ public class EmployeeHomepageActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewTasksInProgressActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
+    }
+
+    private void launchEmployerHomepageActivity(String username){
+        Intent intent = new Intent(this, EmployerHomepageActivity.class);
+        intent.putExtra("username", username);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
 }
