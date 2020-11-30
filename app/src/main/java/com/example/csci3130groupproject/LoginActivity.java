@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
      *                 representing the User's password
      */
     private void loginHandler(final String username, final String password){
-        allUsers.addValueEventListener(new ValueEventListener() {
+        allUsers.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User currentUser = null;
