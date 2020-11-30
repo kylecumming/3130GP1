@@ -43,8 +43,18 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Handles login process by checking existing Users in database.
+     * Will either bring the User to their homepage or notify them that
+     * their account does not currently exist in database and prompt them to sign up.
+     *
+     * @param username the String input into the first EditText field on LoginActivity.xml
+     *                 representing the User's username
+     * @param password the String input into the second EditText field on LoginActivity.xml
+     *                 representing the User's password
+     */
     private void loginHandler(final String username, final String password){
-        allUsers.addValueEventListener(new ValueEventListener() {
+        allUsers.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User currentUser = null;
