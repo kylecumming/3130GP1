@@ -5,6 +5,7 @@
     android:id="@+id/submitReviewCheckBox"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ViewCompletedTask">
 
     <TextView
@@ -78,11 +79,13 @@
 
     <Button
         android:id="@+id/button_return3"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FF781F"
         android:text="Return"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.232"
@@ -92,11 +95,14 @@
 
     <Button
         android:id="@+id/button_approvepayment"
+        style="@style/Widget.App.Button"
+        android:backgroundTint="#215CF3"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:layout_width="105dp"
         android:layout_height="50dp"
         android:background="#228C22"
         android:text="Approve Payment"
-        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.783"

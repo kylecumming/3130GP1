@@ -5,4 +5,5 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="homeSwitchRoleButton">#3f51b5</color>
+    <color name="secondButtonColor">#001973</color>
 </resources>
