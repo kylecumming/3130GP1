@@ -40,6 +40,12 @@ public class ViewTasksActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot storedTask : snapshot.getChildren()){
                     Task task = storedTask.getValue(Task.class); //A single task snapshot
+
+                    //Skips this task if it was created by the user viewing the list as there
+                    //is no reason to allow them to apply for the task
+                    if(task.getAuthor().equals(username))
+                        continue;
+
                     Button singleTask = new Button(getApplicationContext());
 
                     //Display all task data inside button
