@@ -5,6 +5,7 @@
     android:id="@+id/button_viewtasksEmployer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".EmployerHomepageActivity">
 
     <TextView
@@ -25,16 +26,27 @@
 
     <Button
         android:id="@+id/button_homepageSubmitTask"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#000000"
+        android:backgroundTint="#215CF3"
         android:text="Create a Task"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5"
+        app:layout_constraintVertical_bias="0.359" />
 
     <Button
         android:id="@+id/button_viewApplications"
+        style="@style/Widget.App.Button"
+        android:background="#000000"
+        android:backgroundTint="#001973"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View Applications"
@@ -47,26 +59,35 @@
 
     <Button
         android:id="@+id/button_viewMyTasksEmployer"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#000000"
+        android:backgroundTint="#215CF3"
         android:text="View Completed Tasks"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_viewApplications"
-        app:layout_constraintVertical_bias="0.212" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <Button
         android:id="@+id/button_switchviewsEmployer"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FF9800"
+        android:background="#000000"
+        android:backgroundTint="#001973"
         android:text="Switch to Employee View"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/button_homepageSubmitTask"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.811" />
 </androidx.constraintlayout.widget.ConstraintLayout>
