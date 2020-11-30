@@ -33,18 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5" />
 
-    <TextView
-        android:id="@+id/textview_placeholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Homepage Elements"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5"
-        app:layout_constraintVertical_bias="0.241" />
-
     <Button
         android:id="@+id/button_viewApplications"
         android:layout_width="wrap_content"
@@ -68,4 +56,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_viewApplications"
         app:layout_constraintVertical_bias="0.212" />
+
+    <Button
+        android:id="@+id/button_switchviewsEmployer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:text="Switch to Employee View"
+        app:layout_constraintBottom_toTopOf="@+id/button_homepageSubmitTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash5"
+        app:layout_constraintVertical_bias="0.191" />
 </androidx.constraintlayout.widget.ConstraintLayout>
