@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ViewSingleTaskInProgress">
 
     <Button
         android:id="@+id/button_return2"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FF781F"
+        android:backgroundTint="@color/homeSwitchRoleButton"
         android:text="Return"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,9 +25,11 @@
 
     <Button
         android:id="@+id/button_finished"
+        style="@style/Widget.App.Button"
         android:layout_width="105dp"
         android:layout_height="50dp"
         android:background="#228C22"
+        android:backgroundTint="@color/secondButtonColor"
         android:text="Mark as Complete"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,6 +46,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="25dp"
         android:text="Submit Review?"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.563"
@@ -82,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textColor="#228B22"
+        android:textColor="@color/secondButtonColor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="TextView"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/textview_taskdescriptionEmployee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -111,6 +118,7 @@
         android:layout_height="198dp"
         android:layout_marginTop="36dp"
         android:text="TextView"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_tasktagsEmployee" />

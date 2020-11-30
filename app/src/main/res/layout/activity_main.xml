@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <TextView
@@ -26,7 +27,8 @@
         android:id="@+id/button_login"
         android:layout_width="237dp"
         android:layout_height="67dp"
-        android:background="#215CF3"
+        android:background="@color/secondButtonColor"
+        android:backgroundTint="@color/secondButtonColor"
         android:text="Login"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -41,7 +43,8 @@
         android:id="@+id/button_register"
         android:layout_width="237dp"
         android:layout_height="67dp"
-        android:background="#000000"
+        android:background="#215CF3"
+        android:backgroundTint="#215CF3"
         android:text="Register"
         android:textColor="#FFFAE3"
         android:textSize="24sp"

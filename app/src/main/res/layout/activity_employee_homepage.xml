@@ -25,16 +25,28 @@
 
     <Button
         android:id="@+id/button_viewtasks"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#000000"
+        android:backgroundTint="#215CF3"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:text="View/Apply For Tasks"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_switchviewsEmployee" />
+        app:layout_constraintTop_toBottomOf="@+id/button_switchviewsEmployee"
+        app:layout_constraintVertical_bias="0.155" />
 
     <Button
         android:id="@+id/button_viewAcceptedTasks"
+        style="@style/Widget.App.Button"
+        android:background="#000000"
+        android:backgroundTint="#001973"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Tasks in Progress"
@@ -46,15 +58,18 @@
 
     <Button
         android:id="@+id/button_switchviewsEmployee"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:backgroundTint="#FF9800"
+        android:background="#000000"
+        android:backgroundTint="#001973"
         android:text="Switch to Employer View"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash7"
-        app:layout_constraintVertical_bias="0.014" />
+        app:layout_constraintVertical_bias="0.161" />
 </androidx.constraintlayout.widget.ConstraintLayout>
