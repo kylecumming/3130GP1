@@ -75,10 +75,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "User not found in database. Please sign up first!", Toast.LENGTH_LONG).show();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getApplicationContext(), "Database error!", Toast.LENGTH_LONG).show();
             }
         });
     }

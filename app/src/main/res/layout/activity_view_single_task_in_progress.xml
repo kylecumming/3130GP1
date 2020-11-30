@@ -7,18 +7,45 @@
     tools:context=".ViewSingleTaskInProgress">
 
     <Button
+        android:id="@+id/button_return2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FF781F"
+        android:text="Return"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.901" />
+
+    <Button
         android:id="@+id/button_finished"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
+        android:layout_width="105dp"
+        android:layout_height="50dp"
         android:background="#228C22"
         android:text="Mark as Complete"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.961" />
+        app:layout_constraintVertical_bias="0.904" />
+
+    <CheckBox
+        android:id="@+id/employeeReviewCheckbox"
+        android:layout_width="278dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="25dp"
+        android:text="Submit Review?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_finished" />
 
     <TextView
         android:id="@+id/textview_quickCash10"
@@ -82,24 +109,10 @@
         android:id="@+id/textview_taskdescriptionEmployee"
         android:layout_width="239dp"
         android:layout_height="198dp"
+        android:layout_marginTop="36dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_taskpriceEmployee"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_tasktagsEmployee" />
 
-    <Button
-        android:id="@+id/button_return2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FF781F"
-        android:text="Return"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/button_finished"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.963" />
 </androidx.constraintlayout.widget.ConstraintLayout>

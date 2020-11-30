@@ -62,6 +62,39 @@ public class UserStoredTests {
         });
 
     }
+    @Test
+    public void reviewIsAdded() {
+        onView(withId(R.id.button_register)).perform(click());
+        onView(withId(R.id.button_employer)).perform(click());
+        onView(withId(R.id.edittext_emailEmployer)).perform(typeText("exampleEmployer@gmail.com"));
+        onView(withId(R.id.edittext_passwordEmployer)).perform(typeText("employerpassword123"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_usernameEmployer)).perform(typeText("Employ13"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_monthEmployer)).perform(typeText("03"));
+        onView(withId(R.id.edittext_dayEmployer)).perform(typeText("11"));
+        onView(withId(R.id.edittext_yearEmployer)).perform(typeText("1999"), closeSoftKeyboard());
+        //Add in select radio button for gender
+        onView(withId(R.id.button_signUpEmployer)).perform(click());
+
+        //Check if User object is stored in Firebase
+        DatabaseReference allUsers = database.getReference("Users");
+        allUsers.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userFinal = new User();
+                for (DataSnapshot storedUser : snapshot.getChildren()) {
+                    User user = storedUser.getValue(User.class);
+                    if (user.getEmail().equals("exampleEmployer@gmail.com"))
+                        userFinal = user;
+                }
+                userFinal.addReview(4, "mow lawn","bad job");
+                System.out.println(userFinal.getReviews());
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     @Test
     public void uponEmployeeSignUpUserIsStored(){

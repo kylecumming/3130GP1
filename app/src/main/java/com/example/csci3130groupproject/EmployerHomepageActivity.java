@@ -1,5 +1,6 @@
 package com.example.csci3130groupproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,7 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class EmployerHomepageActivity extends AppCompatActivity {
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference allUsers = database.getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +29,6 @@ public class EmployerHomepageActivity extends AppCompatActivity {
         Button viewApplications = (Button) findViewById(R.id.button_viewApplications);
         Button viewTasks = (Button) findViewById(R.id.button_viewMyTasksEmployer);
         Button switchViews = (Button) findViewById(R.id.button_switchviewsEmployer);
-
 
         createTask.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -49,6 +57,7 @@ public class EmployerHomepageActivity extends AppCompatActivity {
                 launchEmployeeHomepageActivity(username);
             }
         });
+
 
     }
 
