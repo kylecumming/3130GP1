@@ -31,8 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash7"
-        app:layout_constraintVertical_bias="0.654" />
+        app:layout_constraintTop_toBottomOf="@+id/button_switchviewsEmployee" />
 
     <Button
         android:id="@+id/button_viewAcceptedTasks"
@@ -49,13 +48,13 @@
         android:id="@+id/button_switchviewsEmployee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="264dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#FF9800"
         android:text="Switch to Employer View"
-        app:layout_constraintBottom_toTopOf="@+id/button_viewtasks"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash7"
-        app:layout_constraintVertical_bias="0.707" />
+        app:layout_constraintVertical_bias="0.022" />
 </androidx.constraintlayout.widget.ConstraintLayout>
