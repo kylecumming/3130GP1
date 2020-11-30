@@ -91,13 +91,22 @@ public class User{
         return this.emailIsValid() && this.usernameIsValid() && this.passwordIsValid() && this.dobIsValid();
     }
 
-    //calculate average rating
+
 
     //add review (task title, number rating, comments)
     public void addReview(int rating, String taskTitle, String comment){
         ArrayList<String> arr = new ArrayList<>();
         arr.add(taskTitle);arr.add(String.valueOf(rating));arr.add(comment);
         reviews.add(arr);
+    }
+
+    //calculate average rating
+    public double averageRating(){
+        int rating =0;
+        for(int i=1; i< reviews.size(); i++){
+            rating+= Integer.parseInt(reviews.get(i).get(1));
+        }
+        return ((double)rating/(double)(reviews.size()-1));
     }
 
     /* Getter / Setters */
