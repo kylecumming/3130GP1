@@ -47,19 +47,19 @@ public class MapsActivity  extends AppCompatActivity implements OnMapReadyCallba
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         mMapView.onResume();
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         mMapView.onStart();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         mMapView.onStop();
     }
@@ -70,13 +70,13 @@ public class MapsActivity  extends AppCompatActivity implements OnMapReadyCallba
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         mMapView.onPause();
         super.onPause();
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         mMapView.onDestroy();
         super.onDestroy();
     }
