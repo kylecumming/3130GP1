@@ -28,6 +28,12 @@ public class EmployeeHomepageActivity extends AppCompatActivity {
                 launchViewTasksInProgressActivity(username);
             }
         });
+        findViewById(R.id.button_ViewMaps).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lanunchViewMapsActivity(username);
+            }
+        });
 
     }
 
@@ -39,6 +45,11 @@ public class EmployeeHomepageActivity extends AppCompatActivity {
 
     private void launchViewTasksInProgressActivity(String username){
         Intent intent = new Intent(this, ViewTasksInProgressActivity.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+    private void lanunchViewMapsActivity(String username){
+        Intent intent = new Intent(this, MapsActivity.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
