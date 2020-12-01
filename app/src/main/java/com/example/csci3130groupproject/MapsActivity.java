@@ -20,9 +20,10 @@ public class MapsActivity  extends AppCompatActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_layout);
 
-        // *** IMPORTANT ***
-        // MapView requires that the Bundle you pass contain _ONLY_ MapView SDK
-        // objects or sub-Bundles.
+       makeMap(savedInstanceState);
+    }
+
+    private void makeMap(Bundle savedInstanceState){
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
@@ -67,6 +68,7 @@ public class MapsActivity  extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap map) {
         map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        map.setMyLocationEnabled(true);
     }
 
     @Override
