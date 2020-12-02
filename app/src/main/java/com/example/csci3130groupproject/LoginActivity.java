@@ -88,11 +88,11 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Creates new intent with EmployerHomepageActivity.java, erases Activity stack history
      * and launches this new Activity; bringing User to default Employer homepage and making
-     * previous Activities inaccessible.
+     * previous Activities inaccessible. String 'username' is pushed to next Activity for later use.
      *
-     * @param username the String contained in the first EditText field on LoginActivity.xml
-     *                 representing the User's username. Used in subsequent Activities, through the
-     *                 use of putExtra(), as a way to persist "logged in" functionality.
+     * @param username the String which represents the username of an existing User. Used in 
+     *                 subsequent Activities, through the use of putExtra(), as a way to persist
+     *                 "logged in" functionality.
      */
     private void launchEmployerHomepageActivity(String username){
         Intent intent = new Intent(this, EmployerHomepageActivity.class);
@@ -105,11 +105,11 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Creates new intent with EmployeeHomepageActivity.java, erases Activity stack history
      * and launches this new Activity; bringing User to default Employee homepage and making
-     * previous Activities inaccessible.
+     * previous Activities inaccessible. String 'username' is pushed to next Activity for later use.
      *
-     * @param username the String contained in the first EditText field on LoginActivity.xml
-     *      *                 representing the User's username. Used in subsequent Activities, through the
-     *      *                 use of putExtra(), as a way to persist "logged in" functionality.
+     * @param username the String which represents the username of an existing User. Used in
+     *                 subsequent Activities, through the use of putExtra(), as a way to persist
+     *                 "logged in" functionality.
      */
     private void launchEmployeeHomepageActivity(String username){
         Intent intent = new Intent(this, EmployeeHomepageActivity.class);

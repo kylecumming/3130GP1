@@ -16,14 +16,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
         Button employerRegisterButton = (Button) findViewById(R.id.button_employer);
         Button employeeRegisterButton = (Button) findViewById(R.id.button_employee);
-
+        
         employerRegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 launchEmployerRegisterActivity();
             }
         });
-
+        
         employeeRegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
