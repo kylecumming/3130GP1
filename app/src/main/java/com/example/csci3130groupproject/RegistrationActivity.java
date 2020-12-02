@@ -23,7 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 launchEmployerRegisterActivity();
             }
         });
-        
+
         employeeRegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
