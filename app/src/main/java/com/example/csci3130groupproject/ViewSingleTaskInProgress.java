@@ -28,6 +28,9 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allTasks = database.getReference("Tasks");
     DatabaseReference allUsers = database.getReference("Users");
+
+    //this might frig it up spencer nov 28th
+    DatabaseReference databaseReference = database.getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,24 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
         //Alert for submitting review
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final View submit_review_layout = getLayoutInflater().inflate(R.layout.submit_review_layout, null);
+
+        Button cancelButton = (Button) findViewById(R.id.button_cancel);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelTask(title,applicant,author);
+                AlertDialog.Builder taskCancelled = new AlertDialog.Builder(ViewSingleTaskInProgress.this);
+                taskCancelled.setTitle("Task Cancelled")
+                        .setMessage("You have successfully cancelled this task!.")
+                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                taskCancelled.show();
+            }
+        });
 
         Button markAsCompleted = (Button) findViewById(R.id.button_finished);
         markAsCompleted.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +141,32 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
 
             }
         });
+    }
+    private void cancelTask(final String title, final String applicant, final String author){
+        databaseReference = databaseReference.child("Applications");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot application : snapshot.getChildren()){
+                    TaskApplication singleApplication = application.getValue(TaskApplication.class);
+                    if(singleApplication.getTaskTitle().equals(title) &&
+                            singleApplication.getApplicant().equals(applicant) &&
+                            singleApplication.getAuthor().equals(author)){
+                        application.getRef().removeValue();
+                    }
+                    else if(singleApplication.getTaskTitle().equals(title) &&
+                            singleApplication.getAuthor().equals(author)){
+                        application.getRef().removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
     private void submitReview(final String title, final String author, final int rating, final String comment) {
         allUsers.addListenerForSingleValueEvent(new ValueEventListener() {
