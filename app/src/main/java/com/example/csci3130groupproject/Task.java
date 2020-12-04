@@ -3,7 +3,7 @@ package com.example.csci3130groupproject;
 public class Task {
 
     private String title, description, tags, price, author;
-    private boolean complete;
+    private boolean complete, assigned;
 
     public Task(String title, String description, String tags, String price, String author){
         this.title = title;
@@ -12,6 +12,7 @@ public class Task {
         this.price = price;
         this.author = author;
         this.complete = false;
+        this.assigned = false;
     }
 
     public Task(){ }
@@ -32,6 +33,8 @@ public class Task {
         this.author = author;
     }
     public void setComplete() {this.complete = true;}
+    public void setAssigned() {this.assigned = true;}
+    
     public String getTitle(){
         return this.title;
     }
@@ -48,5 +51,6 @@ public class Task {
         return this.author;
     }
     public boolean getComplete() {return this.complete;}
+    public boolean getAssigned() {return this.assigned;}
 
 }
