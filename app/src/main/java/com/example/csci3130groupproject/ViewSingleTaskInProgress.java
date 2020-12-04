@@ -163,6 +163,24 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
             }
         });
 
+        //Set 'assigned' value to False so Task is availaible to be applied for once again in ViewTasksActivity
+        allTasks.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot storedTask : snapshot.getChildren()){
+                    Task task = storedTask.getValue(Task.class);
+                    if(task.getAuthor().equals(author) && task.getTitle().equals(title)){
+                        storedTask.getRef().child("assigned").setValue(false);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
     private void submitReview(final String title, final String author, final int rating, final String comment) {
         allUsers.addListenerForSingleValueEvent(new ValueEventListener() {
