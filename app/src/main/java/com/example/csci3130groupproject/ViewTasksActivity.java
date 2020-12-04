@@ -43,7 +43,7 @@ public class ViewTasksActivity extends AppCompatActivity {
 
                     //Skips this task if it was created by the user viewing the list as there
                     //is no reason to allow them to apply for the task
-                    if(task.getAuthor().equals(username))
+                    if(task.getAuthor().equals(username) || task.getAssigned())
                         continue;
 
                     Button singleTask = new Button(getApplicationContext());
