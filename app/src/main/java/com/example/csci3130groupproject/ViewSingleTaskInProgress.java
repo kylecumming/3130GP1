@@ -151,11 +151,7 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
                     TaskApplication singleApplication = application.getValue(TaskApplication.class);
                     if(singleApplication.getTaskTitle().equals(title) &&
                             singleApplication.getApplicant().equals(applicant) &&
-                            singleApplication.getAuthor().equals(author)){
-                        application.getRef().removeValue();
-                    }
-                    else if(singleApplication.getTaskTitle().equals(title) &&
-                            singleApplication.getAuthor().equals(author)){
+                            singleApplication.getAuthor().equals(author)) {
                         application.getRef().removeValue();
                     }
                 }
