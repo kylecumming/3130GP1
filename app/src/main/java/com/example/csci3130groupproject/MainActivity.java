@@ -165,12 +165,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onActivityResult: called.");
         switch (requestCode) {
             case PERMISSIONS_REQUEST_ENABLE_GPS: {
-                if(mLocationPermissionGranted){
-
-                }
-                else{
+                if(!mLocationPermissionGranted){
                     getLocationPermission();
                 }
+
             }
         }
 
