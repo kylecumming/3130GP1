@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">CSCI3130GroupProject</string>
+    <string name="app_name"></string>
+    <string name="passwordhint">Enter Password</string>
 </resources>

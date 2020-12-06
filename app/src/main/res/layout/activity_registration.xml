@@ -4,33 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/hs3"
     tools:context=".RegistrationActivity">
 
     <TextView
         android:id="@+id/textview_quickCash2"
         android:layout_width="347dp"
         android:layout_height="76dp"
-        android:background="#215CF3"
+        android:background="#00D3A9"
+        android:fontFamily="@font/questrial"
         android:gravity="center"
         android:text="Quick Cash"
         android:textColor="#FFFFFF"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.119" />
 
     <TextView
         android:id="@+id/textview_registerGreeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create a profile to get started"
+        android:fontFamily="@font/questrial"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -42,32 +43,41 @@
         android:id="@+id/button_employer"
         android:layout_width="237dp"
         android:layout_height="67dp"
-        android:background="#215CF3"
+        android:backgroundTint="#00D3A9"
+        android:fontFamily="@font/questrial"
         android:gravity="center"
         android:text="Employer"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
+        app:cornerRadius="25sp"
         app:layout_constraintBottom_toTopOf="@+id/button_employee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash2"
-        app:layout_constraintVertical_bias="0.654" />
+        app:layout_constraintVertical_bias="0.927" />
 
     <Button
         android:id="@+id/button_employee"
         android:layout_width="237dp"
         android:layout_height="67dp"
-        android:background="#001973"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/questrial"
         android:gravity="center"
         android:text="Employee"
-        android:textColor="#FFFAE3"
+        android:textAllCaps="false"
+        android:textColor="#000000"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
+        app:cornerRadius="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash2"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintVertical_bias="0.349"
+        app:strokeColor="#00FF99"
+        app:strokeWidth="3sp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
