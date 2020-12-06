@@ -165,4 +165,45 @@
         app:layout_constraintTop_toBottomOf="@+id/TaskTags"
         app:layout_constraintVertical_bias="0.0" />
 
+    <EditText
+        android:id="@+id/editText_lat"
+        android:layout_width="72dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="Lat"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71" />
+
+    <EditText
+        android:id="@+id/editText_lng"
+        android:layout_width="72dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="Lng"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/tasklocation"
+        android:layout_width="88dp"
+        android:layout_height="22dp"
+        android:text="Location"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.661" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

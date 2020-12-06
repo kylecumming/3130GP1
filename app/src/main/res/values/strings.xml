@@ -32,4 +32,5 @@
     <string name="employer_view_completed_tasks">View Completed Tasks</string>
     <string name="employer_switch_views">Switch to Employee View</string>
     <string name="employer_payment_button">Payment</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
