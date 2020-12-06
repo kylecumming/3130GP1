@@ -44,4 +44,14 @@ public class UserTest {
         assertFalse(em1.passwordIsValid());
         assertTrue(em2.passwordIsValid());
     }
+    @Test
+    public void getRatingTest(){
+        ArrayList<String> dob = new ArrayList<String>(){{add("asd");add("12");add("1999");}};
+        User em1 = new User("test!@#@email.com", "testuser!@#","sample", dob, "M", false );
+        User em2 =new User("test@email.com", "testuser123","sample123", dob, "M", false);
+        em1.addReview(5, "mow lawn","great job");
+        em1.addReview(2, "Teach Math", "bad teacher");
+        assertEquals(em1.averageRating(), 3.5, 0);
+        //assertTrue(em1.averageRating() == 3.5);
+    }
 }
