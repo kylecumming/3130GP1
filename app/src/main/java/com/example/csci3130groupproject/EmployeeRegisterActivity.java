@@ -31,18 +31,22 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
         findViewById(R.id.button_signUpEmployee).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                //Hide error symbols - visibility will be set to VISIBLE if User enters incorrect
+                //information when registering, otherwise they remain unseen
                 findViewById(R.id.emailError).setVisibility(View.GONE);
                 findViewById(R.id.passwordError).setVisibility(View.GONE);
                 findViewById(R.id.usernameError).setVisibility(View.GONE);
                 findViewById(R.id.monthError).setVisibility(View.GONE);
                 findViewById(R.id.dayError).setVisibility(View.GONE);
                 findViewById((R.id.yearError)).setVisibility(View.GONE);
+
                 TextView emailTextView = findViewById(R.id.edittext_emailEmployee);
                 TextView usernameTextView = findViewById(R.id.edittext_usernameEmployee);
                 TextView passwordTextView = findViewById(R.id.edittext_passwordEmployee);
                 TextView dobTextViewDay= findViewById(R.id.edittext_dayEmployee);
                 TextView dobTextViewMonth = findViewById(R.id.edittext_monthEmployee);
                 TextView dobTextViewYear = findViewById(R.id.edittext_yearEmployee);
+
                 String email = emailTextView.getText().toString();
                 String username = usernameTextView.getText().toString();
                 String password = passwordTextView.getText().toString();
@@ -51,6 +55,7 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
                 dob.add(dobTextViewDay.getText().toString());
                 dob.add(dobTextViewYear.getText().toString());
                 String gender = "Not Specified";
+
                 RadioGroup genderSelections = findViewById(R.id.radioGroup_Employee);
                 for (int i =0; i < genderSelections.getChildCount(); i++ ){
                     RadioButton rb = (RadioButton) genderSelections.getChildAt(i);
@@ -59,7 +64,7 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
                     }
                 }
                 User us = new User(email, username, password,dob, gender, false);
-                /* Further down the line, do something with the created object */
+                
                 if(us.isValid()){
                     databaseReference = databaseReference.child("Users");
                     databaseReference.push().setValue(us);

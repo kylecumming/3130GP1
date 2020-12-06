@@ -43,8 +43,18 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Handles login process by checking existing Users in database.
+     * Will either bring the User to their homepage or notify them that
+     * their account does not currently exist in database and prompt them to sign up.
+     *
+     * @param username the String input into the first EditText field on LoginActivity.xml
+     *                 representing the User's username
+     * @param password the String input into the second EditText field on LoginActivity.xml
+     *                 representing the User's password
+     */
     private void loginHandler(final String username, final String password){
-        allUsers.addValueEventListener(new ValueEventListener() {
+        allUsers.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User currentUser = null;
@@ -54,9 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                         currentUser = user;
                 }
                 if(currentUser != null){
+                    //.getType() returns either true or false, value of true means it is an Employer
+                    //User meaning it should be brought to the default Employer homepage
                     if(currentUser.getType()){
                         launchEmployerHomepageActivity(currentUser.getUsername());
                     }
+                    //Otherwise bring User to default Employee homepage
                     else{
                         launchEmployeeHomepageActivity(currentUser.getUsername());
                     }
@@ -72,6 +85,15 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Creates new intent with EmployerHomepageActivity.java, erases Activity stack history
+     * and launches this new Activity; bringing User to default Employer homepage and making
+     * previous Activities inaccessible. String 'username' is pushed to next Activity for later use.
+     *
+     * @param username the String which represents the username of an existing User. Used in 
+     *                 subsequent Activities, through the use of putExtra(), as a way to persist
+     *                 "logged in" functionality.
+     */
     private void launchEmployerHomepageActivity(String username){
         Intent intent = new Intent(this, EmployerHomepageActivity.class);
         intent.putExtra("username", username);
@@ -80,6 +102,15 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Creates new intent with EmployeeHomepageActivity.java, erases Activity stack history
+     * and launches this new Activity; bringing User to default Employee homepage and making
+     * previous Activities inaccessible. String 'username' is pushed to next Activity for later use.
+     *
+     * @param username the String which represents the username of an existing User. Used in
+     *                 subsequent Activities, through the use of putExtra(), as a way to persist
+     *                 "logged in" functionality.
+     */
     private void launchEmployeeHomepageActivity(String username){
         Intent intent = new Intent(this, EmployeeHomepageActivity.class);
         intent.putExtra("username", username);

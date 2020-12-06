@@ -64,7 +64,7 @@ public class ViewSingleTask extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatabaseReference allApplications = databaseReference.child("Applications");
-                allApplications.addValueEventListener(new ValueEventListener() {
+                allApplications.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         boolean applicationExists = false;

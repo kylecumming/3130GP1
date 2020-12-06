@@ -4,19 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".EmployeeHomepageActivity">
-
-    <TextView
-        android:id="@+id/textview_placeholder2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="520dp"
-        android:text="Add Homepage Elements"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash7"
-        app:layout_constraintVertical_bias="0.87" />
 
     <TextView
         android:id="@+id/textview_quickCash7"
@@ -36,23 +25,65 @@
 
     <Button
         android:id="@+id/button_viewtasks"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="#000000"
+        android:backgroundTint="#215CF3"
         android:text="View/Apply For Tasks"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_viewAcceptedTasks"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_placeholder2"
-        app:layout_constraintVertical_bias="0.654" />
+        app:layout_constraintTop_toBottomOf="@+id/button_switchviewsEmployee" />
 
     <Button
         android:id="@+id/button_viewAcceptedTasks"
+        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#000000"
+        android:backgroundTint="#001973"
         android:text="My Tasks in Progress"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_ViewMaps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_viewtasks" />
+
+    <Button
+        android:id="@+id/button_ViewMaps"
+        style="@style/Widget.App.Button"
+        android:layout_width="183dp"
+        android:layout_height="51dp"
+        android:text="View Maps"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_viewtasks"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintTop_toBottomOf="@+id/button_viewAcceptedTasks"
+        app:layout_constraintVertical_bias="0.274" />
+
+    <Button
+        android:id="@+id/button_switchviewsEmployee"
+        style="@style/Widget.App.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="#000000"
+        android:backgroundTint="#001973"
+        android:text="Switch to Employer View"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash7"
+        app:layout_constraintVertical_bias="0.161" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

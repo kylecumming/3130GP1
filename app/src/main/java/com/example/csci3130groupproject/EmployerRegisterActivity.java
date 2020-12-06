@@ -31,18 +31,22 @@ public class EmployerRegisterActivity extends AppCompatActivity {
         findViewById(R.id.button_signUpEmployer).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                //Hide error symbols - visibility will be set to VISIBLE if User enters incorrect
+                //information when registering
                 findViewById(R.id.emailError2).setVisibility(View.GONE);
                 findViewById(R.id.passwordError2).setVisibility(View.GONE);
                 findViewById(R.id.usernameError2).setVisibility(View.GONE);
                 findViewById(R.id.monthError2).setVisibility(View.GONE);
                 findViewById(R.id.dayError2).setVisibility(View.GONE);
                 findViewById((R.id.yearError2)).setVisibility(View.GONE);
+
                 TextView emailTextView = findViewById(R.id.edittext_emailEmployer);
                 TextView usernameTextView = findViewById(R.id.edittext_usernameEmployer);
                 TextView passwordTextView = findViewById(R.id.edittext_passwordEmployer);
                 TextView dobTextViewDay= findViewById(R.id.edittext_dayEmployer);
                 TextView dobTextViewMonth = findViewById(R.id.edittext_monthEmployer);
                 TextView dobTextViewYear = findViewById(R.id.edittext_yearEmployer);
+
                 String email = emailTextView.getText().toString();
                 String username = usernameTextView.getText().toString();
                 String password = passwordTextView.getText().toString();
@@ -51,6 +55,7 @@ public class EmployerRegisterActivity extends AppCompatActivity {
                 dob.add(dobTextViewDay.getText().toString());
                 dob.add(dobTextViewYear.getText().toString());
                 String gender = "Not Specified";
+
                 RadioGroup genderSelections = findViewById(R.id.radioGroup_Employer);
                 for (int i =0; i < genderSelections.getChildCount(); i++ ){
                     RadioButton rb = (RadioButton) genderSelections.getChildAt(i);
@@ -59,7 +64,7 @@ public class EmployerRegisterActivity extends AppCompatActivity {
                     }
                 }
                 User us = new User(email, username, password,dob, gender, true);
-                /* Further down the line, do something with the created object */
+
                 if(us.isValid()){
                     databaseReference = databaseReference.child("Users");
                     databaseReference.push().setValue(us);
@@ -91,6 +96,16 @@ public class EmployerRegisterActivity extends AppCompatActivity {
             findViewById((R.id.yearError2)).setVisibility(View.VISIBLE);
         }
     }
+
+    /**
+     * Creates new intent with EmployerHomepageActivity.java, erases Activity stack history, and
+     * starts new Activity; bringing User to default Employer homepage and making previous Activities
+     * inaccessible to User. Pushes the String 'username' for use in next Activity.
+     *
+     * @param username the String representing the username created by the new user during
+     *                 registration process. This will be used in subsequent Activities to persist
+     *                 "logged in" behaviours.
+     */
     private void launchEmployerHomepageActivity(String username){
         Intent intent = new Intent(this, EmployerHomepageActivity.class);
         intent.putExtra("username", username);

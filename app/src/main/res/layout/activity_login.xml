@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".LoginActivity">
 
     <TextView
@@ -45,6 +46,8 @@
         android:layout_marginTop="128dp"
         android:ems="10"
         android:hint="Enter username"
+        android:textColorHint="@color/hintHighlight"
+        android:textColor="#000000"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +77,9 @@
         android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="Enter password"
+        android:textColorHint="@color/hintHighlight"
         android:inputType="textPersonName"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +105,8 @@
         android:id="@+id/button_finalLogin"
         android:layout_width="204dp"
         android:layout_height="68dp"
-        android:backgroundTint="#24C1E8"
+        android:backgroundTint="@color/secondButtonColor"
+        android:textColor="#ffffff"
         android:text="Login"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"

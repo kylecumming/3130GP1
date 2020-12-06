@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".SubmitTaskActivity">
 
     <TextView
@@ -43,7 +44,9 @@
         android:layout_height="38dp"
         android:ems="10"
         android:hint="Enter task title"
+        android:textColorHint="@color/hintHighlight"
         android:inputType="textPersonName"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.284"
@@ -73,7 +76,9 @@
         android:ems="10"
         android:gravity="start|top"
         android:hint="Enter task description"
+        android:textColorHint="@color/hintHighlight"
         android:inputType="textMultiLine"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
@@ -104,7 +109,9 @@
         android:layout_marginBottom="156dp"
         android:ems="10"
         android:hint="Enter amount $"
+        android:textColorHint="@color/hintHighlight"
         android:inputType="textPersonName"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.253"
@@ -115,9 +122,10 @@
         android:id="@+id/button_submitTask"
         android:layout_width="204dp"
         android:layout_height="68dp"
-        android:backgroundTint="#24C1E8"
+        android:backgroundTint="@color/secondButtonColor"
         android:text="Submit Task"
         android:textSize="22sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -149,11 +157,53 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="53dp"
         android:layout_marginBottom="26dp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/textview_taskPayment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TaskTags"
         app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editText_lat"
+        android:layout_width="72dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="Lat"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71" />
+
+    <EditText
+        android:id="@+id/editText_lng"
+        android:layout_width="72dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="Lng"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/tasklocation"
+        android:layout_width="88dp"
+        android:layout_height="22dp"
+        android:text="Location"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.661" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

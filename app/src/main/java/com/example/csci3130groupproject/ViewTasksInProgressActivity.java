@@ -61,56 +61,56 @@ public class ViewTasksInProgressActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot storedTask : snapshot.getChildren()){
                             Task task = storedTask.getValue(Task.class); //A single task snapshot
+
                             //Check if this task is a task that has been assigned to this user
-                            //If unrelated then skip displaying this task
-                            if(!taskAuthor.contains(task.getAuthor()) && !taskTitle.contains(task.getTitle()))
-                                continue;
+                            //If unrelated then this code is skipped
+                            if(taskAuthor.contains(task.getAuthor()) && taskTitle.contains(task.getTitle())){
+                                Button singleTask = new Button(getApplicationContext());
 
-                            Button singleTask = new Button(getApplicationContext());
+                                //Display all task data inside button
+                                singleTask.setText(Html.fromHtml(formatTaskData(task)));
 
-                            //Display all task data inside button
-                            singleTask.setText(Html.fromHtml(formatTaskData(task)));
+                                //Setting layout, color, general styles, etc.
+                                singleTask.setLayoutParams(new ViewGroup.LayoutParams(
+                                        ViewGroup.LayoutParams.MATCH_PARENT,
+                                        ViewGroup.LayoutParams.WRAP_CONTENT
+                                ));
 
-                            //Setting layout, color, general styles, etc.
-                            singleTask.setLayoutParams(new ViewGroup.LayoutParams(
-                                    ViewGroup.LayoutParams.MATCH_PARENT,
-                                    ViewGroup.LayoutParams.WRAP_CONTENT
-                            ));
+                                singleTask.setGravity(Gravity.LEFT);
+                                singleTask.setTextColor(Color.BLACK);
+                                singleTask.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                                LinearLayout.LayoutParams margins = new LinearLayout.LayoutParams(
+                                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                                margins.setMargins(54,54,54,0);
+                                singleTask.setLayoutParams(margins);
 
-                            singleTask.setGravity(Gravity.LEFT);
-                            singleTask.setTextColor(Color.BLACK);
-                            singleTask.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                            LinearLayout.LayoutParams margins = new LinearLayout.LayoutParams(
-                                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                                    ViewGroup.LayoutParams.WRAP_CONTENT);
-                            margins.setMargins(54,54,54,0);
-                            singleTask.setLayoutParams(margins);
+                                final String title = task.getTitle();
+                                final String price = task.getPrice();
+                                final String tags = task.getTags();
+                                final String description = task.getDescription();
+                                final String author = task.getAuthor();
 
-                            final String title = task.getTitle();
-                            final String price = task.getPrice();
-                            final String tags = task.getTags();
-                            final String description = task.getDescription();
-                            final String author = task.getAuthor();
-
-                            displayTasks.addView(singleTask);//Add new button to LinearLayout
+                                displayTasks.addView(singleTask);//Add new button to LinearLayout
 
 
-                            /* when the a button is clicked, this onClick method starts the "ViewSingleTaskInProgress"
-                             * activity, and passes over the appropriate data using the putExtra() method.
-                             */
-                            singleTask.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    Intent intent = new Intent(getApplicationContext(), ViewSingleTaskInProgress.class);
-                                    intent.putExtra("TITLE",title);
-                                    intent.putExtra("PRICE",price);
-                                    intent.putExtra("TAGS", tags);
-                                    intent.putExtra("DESCRIPTION",description);
-                                    intent.putExtra("AUTHOR",author);
-                                    intent.putExtra("username", username);
-                                    startActivity(intent);
-                                }
-                            });
+                                /* when the a button is clicked, this onClick method starts the "ViewSingleTaskInProgress"
+                                 * activity, and passes over the appropriate data using the putExtra() method.
+                                 */
+                                singleTask.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Intent intent = new Intent(getApplicationContext(), ViewSingleTaskInProgress.class);
+                                        intent.putExtra("TITLE",title);
+                                        intent.putExtra("PRICE",price);
+                                        intent.putExtra("TAGS", tags);
+                                        intent.putExtra("DESCRIPTION",description);
+                                        intent.putExtra("AUTHOR",author);
+                                        intent.putExtra("username", username);
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
                         }
                     }
 

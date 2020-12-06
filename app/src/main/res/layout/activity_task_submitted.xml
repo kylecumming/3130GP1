@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".TaskSubmitted">
 
     <TextView
         android:id="@+id/submittedTaskTextView"
-        android:layout_width="184dp"
-        android:layout_height="20dp"
+        android:layout_width="196dp"
+        android:layout_height="40dp"
+        android:background="#000000"
+        android:backgroundTint="#001973"
         android:text="Task successfully submitted!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,6 +25,11 @@
 
     <Button
         android:id="@+id/submitAnotherTaskButton"
+        style="@style/Widget.App.Button"
+        android:background="#000000"
+        android:backgroundTint="#215CF3"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit another task"
