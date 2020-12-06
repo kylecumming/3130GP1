@@ -51,7 +51,7 @@ public class GeneralNavigationTests {
     public void employeeButtonBringsToEmployeeRegistrationPage(){
         onView(withId(R.id.button_register)).perform(click());
         onView(withId(R.id.button_employee)).perform(click());
-        onView(withText("Employee Sign up")).check(matches(isDisplayed()));
+        onView(withText("Employee Sign Up")).check(matches(isDisplayed()));
     }
 
     @Test
