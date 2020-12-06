@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3848A1"
+    android:background="#12293E"
     tools:context=".ViewApplicationsActivity">
 
     <TextView
         android:id="@+id/textview_quickcashApplications"
         android:layout_width="347dp"
         android:layout_height="76dp"
-        android:background="#00d3a9"
+        android:background="#12293E"
         android:gravity="center"
         android:text="Quick Cash"
-        font
+        android:fontFamily="@font/questrial"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
         android:textStyle="bold"
