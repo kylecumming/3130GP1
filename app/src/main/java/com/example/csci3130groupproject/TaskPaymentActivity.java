@@ -36,6 +36,7 @@ public class TaskPaymentActivity extends AppCompatActivity{
         setContentView(R.layout.activity_task_payment);
 
         final String username = getIntent().getStringExtra("username");
+        final String price = getIntent().getStringExtra("PRICE");
         //start paypal service
         Intent intent = new Intent(this, PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,config);
@@ -57,6 +58,7 @@ public class TaskPaymentActivity extends AppCompatActivity{
                 launchViewCompletedTasksActivity(username);
             }
         });
+        amount = price;
     }
 
     private void launchViewCompletedTasksActivity(String username){
@@ -66,7 +68,7 @@ public class TaskPaymentActivity extends AppCompatActivity{
     }
 
     private void processPayment() {
-        amount = edtAmount.getText().toString();
+        //amount = edtAmount.getText().toString();
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),"CAD",
                 "Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
