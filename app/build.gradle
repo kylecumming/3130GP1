@@ -23,12 +23,18 @@ android {
     }
 }
 
+ext {
+    gsonVer = "2.1.0"
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.google.firebase:firebase-database:19.5.0'
     implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.15.3'
+    implementation "com.squareup.retrofit2:converter-gson:${gsonVer}"
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.json:json:20140107'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
