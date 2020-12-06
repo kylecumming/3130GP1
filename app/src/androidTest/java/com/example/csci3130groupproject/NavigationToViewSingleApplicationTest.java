@@ -8,6 +8,7 @@ import android.view.ViewParent;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.rule.GrantPermissionRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import org.hamcrest.Description;
@@ -35,9 +36,14 @@ public class NavigationToViewSingleApplicationTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+    @Rule
+    public GrantPermissionRule mGrantPermissionRule =
+            GrantPermissionRule.grant(
+                    "android.permission.ACCESS_FINE_LOCATION");
+
     @Test
-    public void navigationToViewSingleApplication() {
-        ViewInteraction appCompatButton = onView(
+    public void navigationToViewSingleApplicationTest() {
+        ViewInteraction materialButton = onView(
                 allOf(withId(R.id.button_login), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
@@ -45,7 +51,7 @@ public class NavigationToViewSingleApplicationTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatButton.perform(click());
+        materialButton.perform(click());
 
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.edittext_username),
@@ -55,7 +61,7 @@ public class NavigationToViewSingleApplicationTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("TestEmployerBot"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("employer12345"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.edittext_password),
@@ -65,9 +71,9 @@ public class NavigationToViewSingleApplicationTest {
                                         0),
                                 4),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("testingpassword"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("employer12345"), closeSoftKeyboard());
 
-        ViewInteraction appCompatButton2 = onView(
+        ViewInteraction materialButton2 = onView(
                 allOf(withId(R.id.button_finalLogin), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
@@ -75,26 +81,27 @@ public class NavigationToViewSingleApplicationTest {
                                         0),
                                 6),
                         isDisplayed()));
-        appCompatButton2.perform(click());
+        materialButton2.perform(click());
 
-        ViewInteraction appCompatButton3 = onView(
+        ViewInteraction materialButton3 = onView(
                 allOf(withId(R.id.button_viewApplications), withText("View Applications"),
                         childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
+                                allOf(withId(R.id.button_viewtasksEmployer),
+                                        childAtPosition(
+                                                withId(android.R.id.content),
+                                                0)),
+                                2),
                         isDisplayed()));
-        appCompatButton3.perform(click());
+        materialButton3.perform(click());
 
         ViewInteraction button = onView(
-                allOf(withText("Task Title: Testing Title\nTask Applicant: TestEmployeeBot"),
+                allOf(withText("Task Title: Mow my lawn\nTask Applicant: TestEmployeeBot"),
                         childAtPosition(
                                 allOf(withId(R.id.linearlayout_applications),
                                         childAtPosition(
                                                 withId(R.id.scrollview_applications),
                                                 0)),
-                                0)));
+                                1)));
         button.perform(scrollTo(), click());
         onView(withId(R.id.textview_quickcashApplications2)).check(matches(isDisplayed()));
     }

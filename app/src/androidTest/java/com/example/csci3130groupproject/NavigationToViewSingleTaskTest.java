@@ -8,6 +8,7 @@ import android.view.ViewParent;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.rule.GrantPermissionRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import org.hamcrest.Description;
@@ -35,9 +36,14 @@ public class NavigationToViewSingleTaskTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+    @Rule
+    public GrantPermissionRule mGrantPermissionRule =
+            GrantPermissionRule.grant(
+                    "android.permission.ACCESS_FINE_LOCATION");
+
     @Test
     public void navigationToViewSingleTaskTest() {
-        ViewInteraction appCompatButton = onView(
+        ViewInteraction materialButton = onView(
                 allOf(withId(R.id.button_login), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
@@ -45,7 +51,7 @@ public class NavigationToViewSingleTaskTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatButton.perform(click());
+        materialButton.perform(click());
 
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.edittext_username),
@@ -67,7 +73,7 @@ public class NavigationToViewSingleTaskTest {
                         isDisplayed()));
         appCompatEditText2.perform(replaceText("testingpassword"), closeSoftKeyboard());
 
-        ViewInteraction appCompatButton2 = onView(
+        ViewInteraction materialButton2 = onView(
                 allOf(withId(R.id.button_finalLogin), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
@@ -75,20 +81,20 @@ public class NavigationToViewSingleTaskTest {
                                         0),
                                 6),
                         isDisplayed()));
-        appCompatButton2.perform(click());
+        materialButton2.perform(click());
 
-        ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.button_viewtasks), withText("View/Apply For Tasks"),
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.button_viewtasks), withText("View/Apply Tasks"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                2),
+                                1),
                         isDisplayed()));
-        appCompatButton3.perform(click());
+        materialButton3.perform(click());
 
         ViewInteraction button = onView(
-                allOf(withText("Task Title: Testing Title\nTask Description: Test description\nTask Tags: Labour\nTask Payment: 30"),
+                allOf(withText("Task Title: Do some construction\nTask Description: construction\nTask Tags: Construction\nTask Payment: 40"),
                         childAtPosition(
                                 allOf(withId(R.id.linearlayout_tasks),
                                         childAtPosition(
