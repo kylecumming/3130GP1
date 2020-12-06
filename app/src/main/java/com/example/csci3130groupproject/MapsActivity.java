@@ -3,36 +3,25 @@ package com.example.csci3130groupproject;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
 import android.os.Message;
-import android.util.Log;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
@@ -96,7 +85,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     final double latitude = Double.parseDouble(lat);
                     final double longitude = Double.parseDouble(lng);
 
-                    MarkerOptions options = new MarkerOptions().position(new LatLng(latitude,longitude)).title(title);
+                    final MarkerOptions options = new MarkerOptions().position(new LatLng(latitude,longitude)).title(title);
                     mMap.addMarker(options);
                 }
             }
@@ -107,20 +96,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-/*
-        ArrayList<Double> lat = new ArrayList<>();
-        ArrayList<Double> lng = new ArrayList<>();
 
-        lat.add(44.253);
-        lng.add(-76.608);
-        lat.add(44.229);
-        lng.add(-76.493);
-        lat.add(44.233);
-        lng.add(-76.597);
-        for(int i = 0; i < lat.size();i++) {
-            MarkerOptions options = new MarkerOptions().position(new LatLng(lat.get(i), lng.get(i))).title(titles.get(i));
-            mMap.addMarker(options);
-        }*/
+
     }
     @Override
     public void onResume() {
