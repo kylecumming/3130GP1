@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ViewSingleApplicationActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
+    DatabaseReference allTasks = database.getReference("Tasks");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,23 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
                     else if(singleApplication.getTaskTitle().equals(title) &&
                             singleApplication.getAuthor().equals(author)){
                         application.getRef().removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //Set 'assigned' value to True so this Task will no longer show up in ViewTasksActivity.java
+        allTasks.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot storedTask : snapshot.getChildren()){
+                    Task task = storedTask.getValue(Task.class);
+                    if(task.getAuthor().equals(author) && task.getTitle().equals(title)){
+                        storedTask.getRef().child("assigned").setValue(true);
                     }
                 }
             }

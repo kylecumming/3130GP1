@@ -133,4 +133,25 @@ public class GeneralNavigationTests {
         onView(withId(R.id.button_viewMyTasksEmployer)).perform(click());
         onView(withText("Completed Tasks")).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void switchViewsEmployerToEmployee(){
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.edittext_username)).perform(typeText("TestEmployerBot"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
+        onView(withId(R.id.button_finalLogin)).perform(click());
+        onView(withId(R.id.button_switchviewsEmployer)).perform(click());
+        onView(withId(R.id.textview_quickCash7)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void switchViewsEmployeeToEmployer(){
+        onView(withId(R.id.button_login)).perform(click());
+        onView(withId(R.id.edittext_username)).perform(typeText("TestEmployeeBot"), closeSoftKeyboard());
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
+        onView(withId(R.id.button_finalLogin)).perform(click());
+        onView(withId(R.id.button_switchviewsEmployee)).perform(click());
+        onView(withId(R.id.textview_quickCash5)).check(matches(isDisplayed()));
+    }
+
 }

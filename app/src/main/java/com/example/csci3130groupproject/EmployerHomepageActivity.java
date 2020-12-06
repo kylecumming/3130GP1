@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 public class EmployerHomepageActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allUsers = database.getReference("Users");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class EmployerHomepageActivity extends AppCompatActivity {
         Button createTask = (Button) findViewById(R.id.button_homepageSubmitTask);
         Button viewApplications = (Button) findViewById(R.id.button_viewApplications);
         Button viewTasks = (Button) findViewById(R.id.button_viewMyTasksEmployer);
+        Button switchViews = (Button) findViewById(R.id.button_switchviewsEmployer);
 
         createTask.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -48,6 +50,15 @@ public class EmployerHomepageActivity extends AppCompatActivity {
                 launchViewCompletedTasksActivity(username);
             }
         });
+
+        switchViews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchEmployeeHomepageActivity(username);
+            }
+        });
+
+
     }
 
     private void launchSubmitTaskActivity(String username){
@@ -67,4 +78,13 @@ public class EmployerHomepageActivity extends AppCompatActivity {
         intent.putExtra("username", username);
         startActivity(intent);
     }
+
+    private void launchEmployeeHomepageActivity(String username){
+        Intent intent = new Intent(this, EmployeeHomepageActivity.class);
+        intent.putExtra("username", username);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
 }

@@ -2,8 +2,13 @@ package com.example.csci3130groupproject;
 
 public class Task {
 
+<<<<<<< app/src/main/java/com/example/csci3130groupproject/Task.java
     private String title, description, tags, price, author, latitude, longitude;
-    private boolean complete;
+    private boolean complete, assigned;
+=======
+    private String title, description, tags, price, author;
+    private boolean complete, assigned;
+>>>>>>> app/src/main/java/com/example/csci3130groupproject/Task.java
 
     public Task(String title, String description, String tags, String price, String author, String latitude, String longitude){
         this.title = title;
@@ -14,6 +19,7 @@ public class Task {
         this.latitude  = latitude;
         this.longitude = longitude;
         this.complete = false;
+        this.assigned = false;
     }
 
     public Task(){ }
@@ -34,12 +40,17 @@ public class Task {
         this.author = author;
     }
     public void setComplete() {this.complete = true;}
+<<<<<<< app/src/main/java/com/example/csci3130groupproject/Task.java
     public void setLatitude(){
         this.latitude  = latitude;
     }
     public void setLongitude(){
         this.longitude = longitude;
     }
+=======
+    public void setAssigned() {this.assigned = true;}
+    
+>>>>>>> app/src/main/java/com/example/csci3130groupproject/Task.java
     public String getTitle(){
         return this.title;
     }
@@ -56,11 +67,15 @@ public class Task {
         return this.author;
     }
     public boolean getComplete() {return this.complete;}
+<<<<<<< app/src/main/java/com/example/csci3130groupproject/Task.java
     public String getLatitude(){
         return this.latitude;
     }
     public String getLongitude(){
         return this.longitude;
     }
+=======
+    public boolean getAssigned() {return this.assigned;}
+>>>>>>> app/src/main/java/com/example/csci3130groupproject/Task.java
 
 }

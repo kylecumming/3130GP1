@@ -50,11 +50,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Creates new intent with RegistrationActivity.java and starts this Activity;
+     * bringing User to Registration page.
+     */
     private void launchRegisterActivity(){
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Creates new intent with LoginActivity.java and starts this Activity;
+     * bringing User to Login page.
+     */
     private void launchLoginActivity(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
