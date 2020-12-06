@@ -40,7 +40,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private MapView mMapView;
     private GoogleMap mMap;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference allTasks = database.getReference("Tasks");
+    DatabaseReference myRef = database.getReference("Tasks");
+
 
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
@@ -84,14 +85,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void addAddress(){
-        allTasks.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot storedTask : snapshot.getChildren()){
-                    Task task = (Task) storedTask.getValue();
+                    Task task = storedTask.getValue(Task.class);
                     final String title = task.getTitle();
+                    final String lat = task.getLatitude();
+                    final String lng = task.getLongitude();
+                    final double latitude = Double.parseDouble(lat);
+                    final double longitude = Double.parseDouble(lng);
 
-
+                    MarkerOptions options = new MarkerOptions().position(new LatLng(latitude,longitude)).title(title);
+                    mMap.addMarker(options);
                 }
             }
 
@@ -100,6 +106,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
+
+/*
         ArrayList<Double> lat = new ArrayList<>();
         ArrayList<Double> lng = new ArrayList<>();
 
@@ -110,9 +118,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         lat.add(44.233);
         lng.add(-76.597);
         for(int i = 0; i < lat.size();i++) {
-            MarkerOptions options = new MarkerOptions().position(new LatLng(lat.get(i), lng.get(i))).title("My house");
+            MarkerOptions options = new MarkerOptions().position(new LatLng(lat.get(i), lng.get(i))).title(titles.get(i));
             mMap.addMarker(options);
-        }
+        }*/
     }
     @Override
     public void onResume() {
