@@ -165,33 +165,5 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMapView.onLowMemory();
     }
 
-    private class GeoHandler extends Handler {
 
-        public void  handleMessage(Message msg){
-            String address;
-            switch (msg.what){
-                case 1:
-                    Bundle bundle = msg.getData();
-                    address = bundle.getString("address");
-                    break;
-                default:
-                    address = null;
-            }
-        }
-
-        @Override
-        public void publish(LogRecord record) {
-
-        }
-
-        @Override
-        public void flush() {
-
-        }
-
-        @Override
-        public void close() throws SecurityException {
-
-        }
-    }
 }
