@@ -29,7 +29,6 @@ public class EmployerHomepageActivity extends AppCompatActivity {
         Button viewApplications = (Button) findViewById(R.id.button_viewApplications);
         Button viewTasks = (Button) findViewById(R.id.button_viewMyTasksEmployer);
         Button switchViews = (Button) findViewById(R.id.button_switchviewsEmployer);
-        Button paymentTask = (Button) findViewById(R.id.button_paymentEmployer);
 
         createTask.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -58,13 +57,6 @@ public class EmployerHomepageActivity extends AppCompatActivity {
                 launchEmployeeHomepageActivity(username);
             }
         });
-
-        paymentTask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                launchPaymentTaskActivity(username);
-            }
-        });
     }
 
     private void launchSubmitTaskActivity(String username){
@@ -91,12 +83,6 @@ public class EmployerHomepageActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
-    }
-
-    private void launchPaymentTaskActivity(String username){
-        Intent intent = new Intent (this, TaskPaymentActivity.class);
-        intent.putExtra("username", username);
-        startActivity(intent);
     }
 
 }
