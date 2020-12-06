@@ -35,7 +35,7 @@ public class SubmitTaskTest {
     public void taskInFirebase(){
         onView(withId(R.id.button_login)).perform(click());
         onView(withId(R.id.edittext_username)).perform(typeText("TestEmployerBot"), closeSoftKeyboard());
-        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"));
+        onView(withId(R.id.edittext_password)).perform(typeText("testingpassword"), closeSoftKeyboard());
         onView(withId(R.id.button_finalLogin)).perform(click());
         onView(withId(R.id.button_homepageSubmitTask)).perform(click());
         onView(withId(R.id.edittext_taskTitle)).perform(typeText("TestTitle"));
