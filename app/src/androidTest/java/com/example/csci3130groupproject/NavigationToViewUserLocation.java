@@ -22,16 +22,17 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ApproveApplicationTest {
+public class NavigationToViewUserLocation {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -42,8 +43,8 @@ public class ApproveApplicationTest {
                     "android.permission.ACCESS_FINE_LOCATION");
 
     @Test
-    public void approveApplicationTest() {
-        ViewInteraction materialButton = onView(
+    public void navigationToViewUserLocation() {
+        ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.button_login), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
@@ -51,7 +52,7 @@ public class ApproveApplicationTest {
                                         0),
                                 1),
                         isDisplayed()));
-        materialButton.perform(click());
+        appCompatButton.perform(click());
 
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.edittext_username),
@@ -61,7 +62,7 @@ public class ApproveApplicationTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("employer12345"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("employee12345"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.edittext_password),
@@ -71,9 +72,9 @@ public class ApproveApplicationTest {
                                         0),
                                 4),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("employer12345"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("employee12345"), closeSoftKeyboard());
 
-        ViewInteraction materialButton2 = onView(
+        ViewInteraction appCompatButton2 = onView(
                 allOf(withId(R.id.button_finalLogin), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
@@ -81,39 +82,27 @@ public class ApproveApplicationTest {
                                         0),
                                 6),
                         isDisplayed()));
-        materialButton2.perform(click());
+        appCompatButton2.perform(click());
 
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.button_viewApplications), withText("View Applications"),
-                        childAtPosition(
-                                allOf(withId(R.id.button_viewtasksEmployer),
-                                        childAtPosition(
-                                                withId(android.R.id.content),
-                                                0)),
-                                2),
-                        isDisplayed()));
-        materialButton3.perform(click());
-
-        ViewInteraction button = onView(
-                allOf(withText("Task Title: Mow my lawn\nTask Applicant: TestEmployeeBot"),
-                        childAtPosition(
-                                allOf(withId(R.id.linearlayout_applications),
-                                        childAtPosition(
-                                                withId(R.id.scrollview_applications),
-                                                0)),
-                                1)));
-        button.perform(scrollTo(), click());
-
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.button_acceptApplication), withText("Accept"),
+        ViewInteraction appCompatButton3 = onView(
+                allOf(withId(R.id.button_ViewMaps), withText("View Maps"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                3),
+                                4),
                         isDisplayed()));
-        materialButton4.perform(click());
-        onView(withText("You have successfully approved this application!")).check(matches(isDisplayed()));
+        appCompatButton3.perform(click());
+
+        ViewInteraction imageView = onView(
+                allOf(withContentDescription("My Location"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.FrameLayout")),
+                                        2),
+                                0),
+                        isDisplayed()));
+        imageView.perform(click());
     }
 
     private static Matcher<View> childAtPosition(

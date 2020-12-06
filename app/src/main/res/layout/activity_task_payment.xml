@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/submitReviewCheckBox"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".TaskPaymentActivity">
+
+    <TextView
+        android:id="@+id/textview_quickCash11"
+        android:layout_width="347dp"
+        android:layout_height="76dp"
+        android:background="#00D3A9"
+        android:gravity="center"
+        android:text="Quick Cash"
+        android:fontFamily="@font/questrial"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+
+
+    <TextView
+        android:id="@+id/textview_taskcomplete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the amount you'd like to pay"
+        android:fontFamily="@font/questrial"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editview_edtAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash11" />
+
+    <EditText
+        android:id="@+id/editview_edtAmount"
+        android:layout_width="178dp"
+        android:layout_height="38dp"
+        android:ems="10"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="10"
+        android:minLines="10"
+        android:scrollbars="vertical"
+        android:textColor="#000000"
+        android:hint="Enter amount here"
+        android:fontFamily="@font/questrial"
+        android:textColorHint="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/button_approvepayment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash11" />
+
+    <Button
+        android:id="@+id/button_return3"
+        style="@style/Widget.App.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="#FF781F"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/questrial"
+        android:text="Return"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:cornerRadius="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_approvepayment"
+        app:strokeColor="#00D3A9"
+        app:strokeWidth="3sp" />
+
+    <Button
+        android:id="@+id/button_approvepayment"
+        style="@style/Widget.App.Button"
+        android:layout_width="191dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="180dp"
+        android:background="#228C22"
+        android:backgroundTint="#00D3A9"
+        android:fontFamily="@font/questrial"
+        android:text="Send payment"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:cornerRadius="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_quickCash11"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="3sp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

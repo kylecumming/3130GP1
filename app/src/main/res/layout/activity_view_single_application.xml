@@ -78,6 +78,10 @@
         app:layout_constraintVertical_bias="0.606"
         app:strokeColor="#FFFFFF"
         app:strokeWidth="3sp" />
+        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewScrollView"
+        app:layout_constraintVertical_bias="0.188" />
 
     <Button
         android:id="@+id/button_returnApplication"
@@ -101,5 +105,60 @@
         app:layout_constraintVertical_bias="0.606"
         app:strokeColor="#00D3A6"
         app:strokeWidth="3sp" />
+        app:layout_constraintHorizontal_bias="0.269"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewScrollView"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <RatingBar
+        android:id="@+id/averageRatingBar"
+        android:layout_width="240dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:isIndicator="true"
+        android:progressBackgroundTint="#AAAAAA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/averageRatingText"
+        app:layout_constraintTop_toBottomOf="@+id/textview_applicant" />
+
+    <TextView
+        android:id="@+id/averageRatingText"
+        android:layout_width="109dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:text="Overall:"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/reviewScrollView"
+        app:layout_constraintEnd_toStartOf="@+id/averageRatingBar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_applicant"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/reviewScrollView"
+        android:layout_width="349dp"
+        android:layout_height="209dp"
+
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageRatingBar"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/reviewsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+>>>>>>> 4d024216a4320752df7ff2710c23cd2da249d87a
 
 </androidx.constraintlayout.widget.ConstraintLayout>

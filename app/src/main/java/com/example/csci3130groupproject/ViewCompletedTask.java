@@ -32,6 +32,7 @@ import java.util.Map;
 public class ViewCompletedTask extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference allUsers = database.getReference("Users");
+    private String prices;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class ViewCompletedTask extends AppCompatActivity {
         final String description = intent.getStringExtra("DESCRIPTION");
         final String username = getIntent().getStringExtra("username");
         final String[] applicants = new String[1];
-
+        prices = price;
         //Setting the data into TextViews on this activity
         final TextView taskTitle = (TextView)findViewById(R.id.textview_mytasktitleEmployer);
         TextView taskPrice = (TextView)findViewById(R.id.textview_taskpriceEmployer);
@@ -120,7 +121,11 @@ public class ViewCompletedTask extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Submitted review for: " + username, Toast.LENGTH_LONG).show();
         }
         else{
-            Toast.makeText(getApplicationContext(), "Please create approve payment method", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Opening payment option", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, TaskPaymentActivity.class);
+            intent.putExtra("username", username);
+            intent.putExtra("PRICE", prices);
+            startActivity(intent);
         }
     }
     private void submitReview(final String title, final String applicant, final int rating, final String comment) {
