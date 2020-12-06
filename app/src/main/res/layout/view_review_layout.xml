@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
 
     <RatingBar
         android:id="@+id/reviewRating"
@@ -11,6 +12,7 @@
         android:layout_width="235dp"
         android:layout_height="48dp"
         android:isIndicator="true"
+        android:progressBackgroundTint="#AAAAAA"
         app:layout_constraintBottom_toTopOf="@+id/reviewTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.011"
@@ -24,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="636dp"
         android:text="TextView"
+        android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,6 +45,7 @@
         android:gravity="start|top"
         android:inputType="none"
         android:text="No Desciption"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -94,6 +94,7 @@
         android:clickable="false"
         android:focusable="false"
         android:isIndicator="true"
+        android:progressBackgroundTint="#AAAAAA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/averageRatingText"
         app:layout_constraintTop_toBottomOf="@+id/textview_applicant" />
@@ -105,6 +106,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:text="Overall:"
+        android:textColor="#000000"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/reviewScrollView"
         app:layout_constraintEnd_toStartOf="@+id/averageRatingBar"
