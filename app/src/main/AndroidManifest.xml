@@ -45,6 +45,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <activity android:name=".ViewCompletedTask" />
+        <activity android:name=".TaskPaymentActivity" />
         <activity android:name=".ViewCompletedTasksActivity" />
         <activity android:name=".ViewSingleTaskInProgress" />
         <activity android:name=".ViewTasksInProgressActivity" />

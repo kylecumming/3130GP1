@@ -1,4 +1,36 @@
 <resources>
     <string name="app_name">CSCI3130GroupProject</string>
+    <string name="quick_cash">Quick Cash</string>
+    <string name="error_text">X</string>
+<!--    String used in employee register-->
+    <string name="employee_sign_up">Employee Sign Up</string>
+    <string name="enter_email">What is your email?</string>
+    <string name="enter_email_hint">Enter your email</string>
+    <string name="create_password">Create a password</string>
+    <string name="create_password_hint">Enter a password</string>
+    <string name="desired_username">Desired Username</string>
+    <string name="desired_username_hint">Enter a username</string>
+    <string name="birthday">What is your date of birth?</string>
+    <string name="birthday_month">Month</string>
+    <string name="birthday_month_hint">MM</string>
+    <string name="birthday_day">Day</string>
+    <string name="birthday_day_hint">DD</string>
+    <string name="birthday_year">Year</string>
+    <string name="birthday_year_hint">YYYY</string>
+    <string name="user_gender">What is your gender?</string>
+    <string name="user_gender_male">Male</string>
+    <string name="user_gender_female">Female</string>
+    <string name="user_gender_other">Other</string>
+    <string name="sign_up_button">Sign Up</string>
+<!--    Strings used in employee homepage -->
+    <string name="employee_view_apply_tasks">View/Apply Tasks</string>
+    <string name="employee_view_tasks_progress">My Tasks in Progress</string>
+    <string name="employee_switch_views">Switch to Employer View</string>
+<!--    Strings used in employer homepage -->
+    <string name="employer_create_task">Create a Task</string>
+    <string name="employer_view_applications">View Applications</string>
+    <string name="employer_view_completed_tasks">View Completed Tasks</string>
+    <string name="employer_switch_views">Switch to Employee View</string>
+    <string name="employer_payment_button">Payment</string>
     <string name="title_activity_maps">Map</string>
 </resources>
