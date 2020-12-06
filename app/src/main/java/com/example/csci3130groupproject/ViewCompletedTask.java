@@ -120,7 +120,10 @@ public class ViewCompletedTask extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Submitted review for: " + username, Toast.LENGTH_LONG).show();
         }
         else{
-            Toast.makeText(getApplicationContext(), "Please create approve payment method", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Opening payment option", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, TaskPaymentActivity.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
         }
     }
     private void submitReview(final String title, final String applicant, final int rating, final String comment) {
