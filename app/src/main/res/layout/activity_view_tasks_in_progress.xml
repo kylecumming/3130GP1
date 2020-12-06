@@ -27,13 +27,15 @@
             <TextView
                 android:id="@+id/textview_tasksinprogress"
                 android:layout_width="wrap_content"
+                android:background="#00d3a9"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
                 android:text="My Tasks in Progress"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/questrial"/>
         </LinearLayout>
     </ScrollView>
 

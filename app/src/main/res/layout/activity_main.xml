@@ -4,55 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/homescreen"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textview_quickCash"
         android:layout_width="347dp"
         android:layout_height="76dp"
-        android:background="#215CF3"
+        android:background="#0E2133"
+        android:fontFamily="@font/questrial"
         android:gravity="center"
         android:text="Quick Cash"
         android:textColor="#FFFFFF"
-        android:textSize="50sp"
+        android:textSize="67sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.111" />
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="237dp"
+        android:layout_width="275dp"
         android:layout_height="67dp"
-        android:background="@color/secondButtonColor"
-        android:backgroundTint="@color/secondButtonColor"
+        android:background="@drawable/loginbutton"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/questrial"
         android:text="Login"
-        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:textColor="#000000"
         android:textSize="24sp"
+        app:cornerRadius="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash"
-        app:layout_constraintVertical_bias="0.825" />
+        app:layout_constraintVertical_bias="0.905" />
 
     <Button
         android:id="@+id/button_register"
-        android:layout_width="237dp"
+        android:layout_width="275dp"
         android:layout_height="67dp"
         android:background="#215CF3"
-        android:backgroundTint="#215CF3"
+        android:backgroundTint="#44C086"
+        android:fontFamily="@font/questrial"
         android:text="Register"
+        android:textAllCaps="false"
         android:textColor="#FFFAE3"
         android:textSize="24sp"
+        app:cornerRadius="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_quickCash"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.287" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
