@@ -1,30 +1,47 @@
 package com.example.csci3130groupproject;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
+import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
     private MapView mMapView;
     private GoogleMap mMap;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference allTasks = database.getReference("Tasks");
+
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
@@ -36,7 +53,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         makeMap(savedInstanceState);
+
+        addAddress();
+
     }
+
 
     private void makeMap(Bundle savedInstanceState) {
         Bundle mapViewBundle = null;
@@ -62,6 +83,37 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMapView.onSaveInstanceState(mapViewBundle);
     }
 
+    public void addAddress(){
+        allTasks.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot storedTask : snapshot.getChildren()){
+                    Task task = (Task) storedTask.getValue();
+                    final String title = task.getTitle();
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        ArrayList<Double> lat = new ArrayList<>();
+        ArrayList<Double> lng = new ArrayList<>();
+
+        lat.add(44.253);
+        lng.add(-76.608);
+        lat.add(44.229);
+        lng.add(-76.493);
+        lat.add(44.233);
+        lng.add(-76.597);
+        for(int i = 0; i < lat.size();i++) {
+            MarkerOptions options = new MarkerOptions().position(new LatLng(lat.get(i), lng.get(i))).title("My house");
+            mMap.addMarker(options);
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -105,25 +157,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Enable / Disable zooming functionality
         map.getUiSettings().setZoomGesturesEnabled(true);
 
-        geoLocate();
+        addAddress();
     }
 
-    private void geoLocate(){
-       String searchString = "960 Rick Hansen Crescent";
-       Geocoder geocoder = new Geocoder(MapsActivity.this);
-
-       try{
-           List<Address> list = geocoder.getFromLocationName(searchString,1);
-           if(list != null && list.size() > 0){
-               Address address = list.get(0);
-               MarkerOptions options = new MarkerOptions().position(new LatLng(address.getLatitude(),address.getLongitude())).title("My House");
-               mMap.addMarker(options);
-           }
-       }catch(IOException e){
-           Log.e("error","geoLocate Error");
-       }
-
-    }
 
 
     @Override
@@ -142,5 +178,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onLowMemory() {
         super.onLowMemory();
         mMapView.onLowMemory();
+    }
+
+    private class GeoHandler extends Handler {
+
+        public void  handleMessage(Message msg){
+            String address;
+            switch (msg.what){
+                case 1:
+                    Bundle bundle = msg.getData();
+                    address = bundle.getString("address");
+                    break;
+                default:
+                    address = null;
+            }
+        }
+
+        @Override
+        public void publish(LogRecord record) {
+
+        }
+
+        @Override
+        public void flush() {
+
+        }
+
+        @Override
+        public void close() throws SecurityException {
+
+        }
     }
 }
