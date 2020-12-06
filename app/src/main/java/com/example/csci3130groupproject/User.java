@@ -103,10 +103,15 @@ public class User{
     //calculate average rating
     public double averageRating(){
         int rating =0;
-        for(int i=1; i< reviews.size(); i++){
-            rating+= Integer.parseInt(reviews.get(i).get(1));
+        if(reviews.size() ==1){
+            return 0.0;
         }
-        return ((double)rating/(double)(reviews.size()-1));
+        else{
+            for(int i=1; i< reviews.size(); i++){
+                rating+= Integer.parseInt(reviews.get(i).get(1));
+            }
+            return ((double)rating/(double)(reviews.size()-1));
+        }
     }
 
     /* Getter / Setters */

@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-    tools:context=".ViewSingleTask"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewSingleTask">
+
+    <RatingBar
+        android:id="@+id/averageRatingBar2"
+        android:layout_width="237dp"
+        android:layout_height="46dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:isIndicator="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/employerRating"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743" />
 
     <TextView
         android:id="@+id/textview_quickCash8"
@@ -40,20 +53,20 @@
         app:layout_constraintVertical_bias="0.245" />
 
     <TextView
-        android:layout_height="wrap_content"
+        android:id="@+id/viewPrice"
         android:layout_width="wrap_content"
-        app:layout_constraintVertical_bias="0.235"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="292dp"
         android:text="TextView"
         android:textColor="#228B22"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:id="@+id/viewPrice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewTitle"
-        android:layout_marginBottom="292dp"/>
+        app:layout_constraintVertical_bias="0.081" />
 
     <TextView
         android:id="@+id/viewDesc"
@@ -64,38 +77,37 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.604"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPrice"
-        app:layout_constraintVertical_bias="0.318" />
+        app:layout_constraintVertical_bias="0.221" />
 
     <Button
-        android:layout_height="49dp"
-        android:layout_width="97dp"
-        app:layout_constraintVertical_bias="0.904"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="#FFFFFF"
-        android:text="Apply"
-        android:background="#228C22"
         android:id="@+id/buttonApplyForTask"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="97dp"
+        android:layout_height="49dp"
+        android:background="#228C22"
+        android:text="Apply"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.783"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917" />
 
     <Button
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintVertical_bias="0.904"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="#FFFFFF"
-        android:text="Return"
-        android:background="#FF781F"
         android:id="@+id/buttonReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FF781F"
+        android:text="Return"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.918" />
 
     <TextView
         android:id="@+id/viewTags"
@@ -110,9 +122,43 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/viewDesc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPrice"
-        app:layout_constraintVertical_bias="0.857" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/showReviewsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:text="See EMployer Reviews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.828" />
+
+    <TextView
+        android:id="@+id/employerRating"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:text="Overall"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/averageRatingBar2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743" />
+
+    <LinearLayout
+        android:id="@+id/reviewLinearLayout2"
+        android:layout_width="409dp"
+        android:layout_height="29dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

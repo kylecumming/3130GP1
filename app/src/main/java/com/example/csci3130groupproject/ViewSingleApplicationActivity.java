@@ -102,15 +102,14 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
                         ArrayList<ArrayList<String>> reviewList = currUser.getReviews();
                         if(reviewList.size()>1){
                             for(int i=1; i<reviewList.size(); i++){
-                                View view_review_layout = getLayoutInflater().inflate(R.layout.view_review_layout, null);
+                                View view_review_layout = getLayoutInflater().inflate(R.layout.view_review_layout, null,false);
                                 RatingBar rb = view_review_layout.findViewById(R.id.reviewRating);
                                 TextView taskTitle = view_review_layout.findViewById(R.id.reviewTitle);
                                 TextView taskComments= view_review_layout.findViewById(R.id.reviewDescription);
                                 rb.setRating(Float.parseFloat(reviewList.get(i).get(1)));
-                                taskTitle.setText(reviewList.get(i).get(0).toString());
-                                taskComments.setText(reviewList.get(i).get(2).toString());
+                                taskTitle.setText(reviewList.get(i).get(0));
+                                taskComments.setText(reviewList.get(i).get(2));
                                 reviewLinearLayout.addView(view_review_layout);
-                                
                             }
                         }
                         else{
@@ -159,7 +158,6 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
                     DataSnapshot user = users.next();
                     User currUser = user.getValue(User.class);
                     if(currUser.getUsername().equals(applicant)){
-                        rb.setStepSize((float)currUser.averageRating());
                         rb.setRating((float)currUser.averageRating());
                         break;
                     }
