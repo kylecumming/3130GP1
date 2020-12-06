@@ -39,7 +39,9 @@ public class SubmitTaskActivity extends AppCompatActivity {
                 String price = get_task_price();
                 String tags = get_task_tags();
                 String author = username;
-                add_new_task_to_firebase(title,desc,tags,price,author);
+                String lat = get_task_lat();
+                String lng = get_task_lng();
+                add_new_task_to_firebase(title,desc,tags,price,author, lat, lng);
                 launchEmployerHomepageActivity(username);
             }
         });
@@ -64,8 +66,8 @@ public class SubmitTaskActivity extends AppCompatActivity {
         return price;
     }
     //this will add the strings from the textview to the database
-    protected void add_new_task_to_firebase(String title, String desc, String tags, String price, String employerUsername){
-        Task newTask = new Task(title,desc,tags,price,employerUsername);
+    protected void add_new_task_to_firebase(String title, String desc, String tags, String price, String employerUsername, String lat,  String lng){
+        Task newTask = new Task(title,desc,tags,price,employerUsername, lat,  lng);
         databaseReference = databaseReference.child("Tasks");
         databaseReference.push().setValue(newTask);
     }
@@ -88,6 +90,18 @@ public class SubmitTaskActivity extends AppCompatActivity {
         Spinner tagList = (Spinner)findViewById(R.id.tagList);
         String tagText = tagList.getSelectedItem().toString();
         return tagText;
+    }
+
+    protected String get_task_lat(){
+        EditText taskLat = (EditText) findViewById(R.id.editText_lat);
+        String lat = taskLat.getText().toString();
+        return lat;
+    }
+
+    protected String get_task_lng(){
+        EditText tasklng = (EditText) findViewById(R.id.editText_lng);
+        String lng = tasklng.getText().toString();
+        return lng;
     }
 
     public void launchEmployerHomepageActivity(String username){
