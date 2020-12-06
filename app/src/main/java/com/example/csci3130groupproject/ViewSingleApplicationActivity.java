@@ -8,7 +8,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +20,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ViewSingleApplicationActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -39,6 +48,10 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
         taskTitle.setText("Task: " + title);
         applicantTextview.setText("Applicant: " + applicant);
 
+        //Rating bar
+        RatingBar averageRating = (RatingBar)findViewById(R.id.averageRatingBar);
+        //display rating bar filled with applicant's average rating
+        getAverage(applicant, averageRating);
         //OnClick method for Return button
         Button returnButton = (Button) findViewById(R.id.button_returnApplication);
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +60,10 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
                 launchViewApplicationsActivity(author);
             }
         });
+        ScrollView reviews = findViewById(R.id.reviewScrollView);
+        LinearLayout reviewsLinearLayout = findViewById(R.id.reviewsLinearLayout);
 
+        plotReviews(applicant,reviewsLinearLayout);
         //OnClick method for Accept button
         Button acceptButton = (Button) findViewById(R.id.button_acceptApplication);
         acceptButton.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +92,40 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    private void plotReviews(final String applicant, final LinearLayout reviewLinearLayout){
+        database.getReference().child("Users").addValueEventListener(new ValueEventListener() {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterator<DataSnapshot> users = snapshot.getChildren().iterator();
+                while(users.hasNext()){
+                    DataSnapshot user = users.next();
+                    User currUser = user.getValue(User.class);
+                    if(currUser.getUsername().equals(applicant)){
+                        ArrayList<ArrayList<String>> reviewList = currUser.getReviews();
+                        if(reviewList.size()>1){
+                            for(int i=1; i<reviewList.size(); i++){
+                                View view_review_layout = getLayoutInflater().inflate(R.layout.view_review_layout, null,false);
+                                RatingBar rb = view_review_layout.findViewById(R.id.reviewRating);
+                                TextView taskTitle = view_review_layout.findViewById(R.id.reviewTitle);
+                                TextView taskComments= view_review_layout.findViewById(R.id.reviewDescription);
+                                rb.setRating(Float.parseFloat(reviewList.get(i).get(1)));
+                                taskTitle.setText(reviewList.get(i).get(0));
+                                taskComments.setText(reviewList.get(i).get(2));
+                                reviewLinearLayout.addView(view_review_layout);
+                            }
+                        }
+                        else{
+                            break;
+                        }
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
+    }
     private void AcceptApplication(final String title, final String applicant, final String author){
         databaseReference = databaseReference.child("Applications");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -101,6 +150,7 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
 
             }
         });
+        
         //Set 'assigned' value to True so this Task will no longer show up in ViewTasksActivity.java
         allTasks.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -116,6 +166,25 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+    }
+    private void getAverage(final String applicant, final RatingBar rb){
+        database.getReference().child("Users").addValueEventListener(new ValueEventListener() {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterator<DataSnapshot> users = snapshot.getChildren().iterator();
+                while(users.hasNext()){
+                    DataSnapshot user = users.next();
+                    User currUser = user.getValue(User.class);
+                    if(currUser.getUsername().equals(applicant)){
+                        rb.setRating((float)currUser.averageRating());
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 

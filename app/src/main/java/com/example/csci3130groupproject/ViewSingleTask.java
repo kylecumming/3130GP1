@@ -6,16 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +18,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ViewSingleTask extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -41,7 +39,6 @@ public class ViewSingleTask extends AppCompatActivity {
         final String description = intent.getStringExtra("DESCRIPTION");
         final String author = intent.getStringExtra("AUTHOR");
         final String applicant = getIntent().getStringExtra("username");
-
         //Setting the data into TextViews on this activity
         TextView taskTitle = (TextView)findViewById(R.id.viewTitle);
         TextView taskPrice = (TextView)findViewById(R.id.viewPrice);
@@ -111,7 +108,26 @@ public class ViewSingleTask extends AppCompatActivity {
                 });
             }
         });
+        RatingBar reviewRatingBar = (RatingBar) findViewById(R.id.averageRatingBar2);
+        getAverage(author, reviewRatingBar);
+        final LinearLayout reviewsLayout = findViewById(R.id.reviewLinearLayout2);
+        plotReviews(author, reviewsLayout);
 
+        Button showReviews = findViewById(R.id.showReviewsButton);
+        showReviews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("Reviews for " + author)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                builder.show();
+            }
+        });
     }
 
     private void launchViewTasksActivity(String username){
@@ -126,5 +142,57 @@ public class ViewSingleTask extends AppCompatActivity {
         databaseReference = databaseReference.child("Applications");
         databaseReference.push().setValue(newApp);
     }
+    private void plotReviews(final String author, final LinearLayout reviewLinearLayout){
+        database.getReference().child("Users").addValueEventListener(new ValueEventListener() {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterator<DataSnapshot> users = snapshot.getChildren().iterator();
+                while(users.hasNext()){
+                    DataSnapshot user = users.next();
+                    User currUser = user.getValue(User.class);
+                    if(currUser.getUsername().equals(author)){
+                        ArrayList<ArrayList<String>> reviewList = currUser.getReviews();
+                        if(reviewList.size()>1){
+                            for(int i=1; i<reviewList.size(); i++){
+                                View view_review_layout = getLayoutInflater().inflate(R.layout.view_review_layout, null);
+                                RatingBar rb = view_review_layout.findViewById(R.id.reviewRating);
+                                TextView taskTitle = view_review_layout.findViewById(R.id.reviewTitle);
+                                TextView taskComments= view_review_layout.findViewById(R.id.reviewDescription);
+                                rb.setRating(Float.parseFloat(reviewList.get(i).get(1)));
+                                taskTitle.setText(reviewList.get(i).get(0));
+                                taskComments.setText(reviewList.get(i).get(2));
+                                reviewLinearLayout.addView(view_review_layout);
 
+                            }
+                        }
+                        else{
+                            break;
+                        }
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+    private void getAverage(final String author, final RatingBar rb){
+        database.getReference().child("Users").addValueEventListener(new ValueEventListener() {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterator<DataSnapshot> users = snapshot.getChildren().iterator();
+                while(users.hasNext()){
+                    DataSnapshot user = users.next();
+                    User currUser = user.getValue(User.class);
+                    if(currUser.getUsername().equals(author)){
+                        rb.setRating((float)currUser.averageRating());
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+    }
 }

@@ -5,8 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".ViewSingleTask">
+
+    <RatingBar
+        android:id="@+id/averageRatingBar2"
+        android:layout_width="237dp"
+        android:layout_height="46dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:isIndicator="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/employerRating"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743" />
 
     <TextView
         android:id="@+id/textview_quickCash8"
@@ -50,10 +63,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewTitle"
-        app:layout_constraintVertical_bias="0.235" />
+        app:layout_constraintVertical_bias="0.081" />
 
     <TextView
         android:id="@+id/viewDesc"
@@ -66,15 +79,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPrice"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintVertical_bias="0.221" />
 
     <Button
         android:id="@+id/buttonApplyForTask"
-        style="@style/Widget.App.Button"
         android:layout_width="97dp"
         android:layout_height="49dp"
-        android:background="@color/secondButtonColor"
-        android:backgroundTint="@color/secondButtonColor"
+        android:background="#228C22"
         android:text="Apply"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,22 +93,21 @@
         app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.917" />
 
     <Button
         android:id="@+id/buttonReturn"
-        style="@style/Widget.App.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/homeSwitchRoleButton"
+        android:background="#FF781F"
         android:text="Return"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.918" />
 
     <TextView
         android:id="@+id/viewTags"
@@ -116,6 +126,46 @@
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPrice"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/showReviewsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:text="See EMployer Reviews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.828" />
+
+    <TextView
+        android:id="@+id/employerRating"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:text="Overall"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/averageRatingBar2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743" />
+
+    <LinearLayout
+        android:id="@+id/reviewLinearLayout2"
+        android:layout_width="409dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/textview_quickCash8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

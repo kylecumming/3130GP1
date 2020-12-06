@@ -127,6 +127,7 @@
         android:layout_width="119dp"
         android:layout_height="53dp"
         android:background="#FF0000"
+        android:backgroundTint="#E50000"
         android:text="Cancel task"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/button_finished"
