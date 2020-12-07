@@ -1,8 +1,5 @@
 <resources>
-<<<<<<< HEAD
-    <string name="app_name"></string>
     <string name="passwordhint">Enter Password</string>
-=======
     <string name="app_name">CSCI3130GroupProject</string>
     <string name="quick_cash">Quick Cash</string>
     <string name="error_text">X</string>
@@ -37,5 +34,4 @@
     <string name="employer_switch_views">Switch to Employee View</string>
     <string name="employer_payment_button">Payment</string>
     <string name="title_activity_maps">Map</string>
->>>>>>> 4d024216a4320752df7ff2710c23cd2da249d87a
 </resources>
