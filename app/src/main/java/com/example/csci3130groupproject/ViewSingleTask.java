@@ -54,7 +54,7 @@ public class ViewSingleTask extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchViewTasksActivity(applicant);
+                launchEmployeeHomepage(applicant);
             }
         });
 
@@ -130,10 +130,12 @@ public class ViewSingleTask extends AppCompatActivity {
         });
     }
 
-    private void launchViewTasksActivity(String username){
-        Intent intent = new Intent(this, ViewTasksActivity.class);
+    private void launchEmployeeHomepage(String username){
+        Intent intent = new Intent(this, EmployeeHomepageActivity.class);
         intent.putExtra("username", username);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     //Creates a new application for a task and stores in Firebase

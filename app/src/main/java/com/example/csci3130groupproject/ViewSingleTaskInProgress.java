@@ -60,7 +60,7 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchViewTasksInProgressActivity(applicant);
+                launchEmployeeHomepage(applicant);
             }
         });
         //Alert for submitting review
@@ -118,10 +118,12 @@ public class ViewSingleTaskInProgress extends AppCompatActivity {
             }
         });
     }
-    private void launchViewTasksInProgressActivity(String username){
-        Intent intent = new Intent(this, ViewTasksInProgressActivity.class);
+    private void launchEmployeeHomepage(String username){
+        Intent intent = new Intent(this, EmployeeHomepageActivity.class);
         intent.putExtra("username", username);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     private void markTaskAsComplete(final String title, final String author){

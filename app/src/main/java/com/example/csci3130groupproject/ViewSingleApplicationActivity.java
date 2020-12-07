@@ -57,7 +57,7 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchViewApplicationsActivity(author);
+                launchEmployerHomepage(author);
             }
         });
         ScrollView reviews = findViewById(R.id.reviewScrollView);
@@ -85,8 +85,8 @@ public class ViewSingleApplicationActivity extends AppCompatActivity {
 
     }
 
-    private void launchViewApplicationsActivity(String username){
-        Intent intent = new Intent(this, ViewApplicationsActivity.class);
+    private void launchEmployerHomepage(String username){
+        Intent intent = new Intent(this, EmployerHomepageActivity.class);
         intent.putExtra("username", username);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

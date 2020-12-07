@@ -96,7 +96,7 @@ public class ViewCompletedTask extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchViewCompletedTasksActivity(username);
+                launchEmployerHomepage(username);
             }
         });
         approvePayment.setOnClickListener(new View.OnClickListener() {
@@ -108,10 +108,12 @@ public class ViewCompletedTask extends AppCompatActivity {
         });
     }
 
-    private void launchViewCompletedTasksActivity(String username){
+    private void launchEmployerHomepage(String username){
         Intent intent = new Intent(this, ViewCompletedTasksActivity.class);
         intent.putExtra("username", username);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     private void approvePayment(CheckBox submitReview, String username, AlertDialog.Builder builder){
